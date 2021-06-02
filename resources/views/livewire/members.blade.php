@@ -93,7 +93,7 @@
             </form>
         </div>
     </div>
-    <div wire:loading class="loading">
+    <div wire:loading.delay class="loading">
         Loading! Please Wait...
     </div>
 </div>
