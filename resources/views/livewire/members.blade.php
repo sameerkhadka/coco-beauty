@@ -93,7 +93,7 @@
             </form>
         </div>
     </div>
-    <div wire:loading.delay class="loading">
+    <div wire:loading wire:target = "editMember, cancelEdit, submit" class="loading">
         Loading! Please Wait...
     </div>
 </div>
