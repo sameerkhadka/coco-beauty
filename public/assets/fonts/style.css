@@ -1,0 +1,40 @@
+@font-face {
+font-family: 'SF Pro Display Thin';
+font-style: normal;
+font-weight: normal;
+src: local('SF Pro Display Thin'), url('SF Pro Display Thin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF Pro Display Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Pro Display Light'), url('SF Pro Display Light.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Pro Display'), url('SF Pro Display.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF Pro Display Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Pro Display Bold'), url('SF Pro Display Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF Pro Display Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Pro Display Black'), url('SF Pro Display Black.woff') format('woff');
+}
+
+
+    
+
+
+

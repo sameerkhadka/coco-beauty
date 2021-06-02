@@ -1,0 +1,231 @@
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 10%;
+  height: 100vh;
+  overflow: hidden;
+  background: #d6be58;
+  text-align: center;
+  position: fixed;
+}
+
+.logo img {
+  height: 70px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.navigation {
+  height: calc(100% - 100px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navigation li.active a {
+  background-color: #fbdb5473;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.navigation li {
+  margin-bottom: 20px;
+}
+
+.navigation li:last-child {
+  margin-bottom: 0;
+}
+
+.navigation li a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: transparent;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navigation li a img {
+  height: 30px;
+  display: block;
+  margin: auto;
+}
+
+.main {
+  width: 90%;
+  padding: 10px 20px;
+  background: #f9f9fa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 10%;
+}
+
+.main .main-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 0;
+}
+
+.main .main-header h2 {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.main .main-header h4 {
+  font-size: 18px;
+}
+
+.main .search {
+  position: relative;
+  margin: 15px 0 10px;
+}
+
+.main .search input {
+  padding: 8px 10px 8px 40px;
+  width: 100%;
+  border: 1px solid #f9f9fa;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+}
+
+.main .search input:focus {
+  outline: none;
+  border: 1px solid #d6be58;
+}
+
+.main .search i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-53%);
+          transform: translateY(-53%);
+  color: #848281;
+  font-size: 13px;
+}
+
+.main-content {
+  width: 65%;
+  padding-right: 20px;
+}
+
+.main-content .content {
+  height: calc(100% - 100px);
+  overflow: scroll;
+}
+
+.main-content .content table {
+  width: 100%;
+}
+
+.main-content .content table thead {
+  background: #e4e4e4;
+}
+
+.main-content .content table th {
+  font-size: 17px;
+  font-family: 'SF Pro Display Bold';
+  padding: 8px 0;
+}
+
+.main-content .content table th:first-child {
+  width: 40px;
+}
+
+.main-content .content table td {
+  font-size: 16px;
+  font-family: 'SF Pro Display Light';
+  padding: 10px 0;
+}
+
+.main-aside {
+  width: 35%;
+  background: #fff;
+  border-radius: 25px;
+  padding: 5px 20px;
+}
+
+.main-aside .main-header {
+  border-bottom: 1px solid #d0d0d4;
+  padding-bottom: 10px;
+}
+
+.main-aside .aside-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  background: #d6be58;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'SF Pro Display Bold';
+}
+
+.add-mem {
+  margin-top: 20px;
+}
+
+.add-mem h4 {
+  font-size: 18px;
+}
+
+.add-mem .addm-sing {
+  margin: 15px 0;
+}
+
+.add-mem .addm-sing input {
+  border: 1px solid #d0d0d4;
+  width: 100%;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  padding: 5px 10px;
+}
+
+.add-mem .addm-sing input:focus {
+  outline: none;
+  border: 1px solid #d6be58;
+}
+
+.add-mem .addm-sing label {
+  display: block;
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=style.css.map */
