@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/members',function(){
     return view('pages.members');
-});
+})->name('members');

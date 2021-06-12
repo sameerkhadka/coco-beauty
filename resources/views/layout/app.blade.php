@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +18,15 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/fonts/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     @yield('css')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 
@@ -37,12 +42,41 @@
 
             <div class="navigation">
                 <ul>
-                    <li class="active"><a href=""><img src="{{ asset('images/menu-icons/services.svg') }}" alt=""> </a></li>
-                    <li><a href=""><img src="{{ asset('images/menu-icons/members.svg') }}" alt=""> </a></li>
-                    <li><a href=""><img src="{{ asset('images/menu-icons/aoointment.svg') }}" alt=""> </a></li>
-                    <li><a href=""><img src="{{ asset('images/menu-icons/transaction.svg') }}" alt=""> </a></li>
-                    <li><a href=""><img src="{{ asset('images/menu-icons/gift.svg') }}" alt=""> </a></li>
-                    <li><a href=""><img src="{{ asset('images/menu-icons/birthday.svg') }}" alt=""> </a></li>
+                    <li>
+                        <a href="services.html" title="Services" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/services.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="{{ Request::segment(1)=='members' ? 'active' : '' }}">
+                        <a href="{{ route('members') }}" title="Members" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/members.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="appointment.html" title="Appointment" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/aoointment.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transaction.html" title="Transaction" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/transaction.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gift.html" title="Gifts Voucher" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/gift.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="promotion.html" title="Promotions" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/promotion.svg') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="birthday.html" title="Birthday" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/birthday.svg') }}" alt="">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,11 +85,53 @@
     </section>
 
 
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "300",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        window.addEventListener('from-backend', function(e) {
+            if (e.detail.is == 'alert') {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('deleteConfirmed')
+                    }
+                })
+            }
+            if (e.detail.is == 'toastr') {
+                toastr[e.detail.type](e.detail.message);
+            }
+        })
+
+    </script>
     @yield('js')
 </body>
+
 </html>

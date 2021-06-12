@@ -17,6 +17,10 @@ body {
     font-family: 'SF Pro Display';
     color: #1E130C;
   }
+
+  a:hover {
+    text-decoration: none;
+  }
   
 
 ul {
@@ -27,4 +31,26 @@ ul {
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'SF Pro Display Bold';
+}
+
+.main-content.aside-open {
+  width: 65%;
+}
+
+.main-aside.open {
+  display: block;
+}
+
+
+.switch input:checked + .slider {
+  background-color: #d6be58;
+}
+
+.switch input:focus + .slider {
+  /* box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.7); */
+  outline: none;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(26px);
 }

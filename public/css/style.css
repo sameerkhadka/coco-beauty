@@ -47,6 +47,27 @@
   margin-bottom: 0;
 }
 
+.navigation li .tooltips:hover:after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #444;
+  border-radius: 4px;
+  color: #fff;
+  content: attr(title);
+  margin: -52px auto 0;
+  font-size: 16px;
+  padding: 7px 10px;
+  width: 134px;
+  position: absolute;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: 'SF Pro Display Bold';
+}
+
 .navigation li a {
   width: 40px;
   height: 40px;
@@ -62,6 +83,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .navigation li a img {
@@ -84,6 +106,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -130,8 +155,8 @@
 }
 
 .main-content {
-  width: 65%;
   padding-right: 20px;
+  width: 100%;
 }
 
 .main-content .content {
@@ -147,6 +172,11 @@
   background: #e4e4e4;
 }
 
+.main-content .content table th.action {
+  width: 135px;
+  text-align: center;
+}
+
 .main-content .content table th {
   font-size: 17px;
   font-family: 'SF Pro Display Bold';
@@ -160,7 +190,11 @@
 .main-content .content table td {
   font-size: 16px;
   font-family: 'SF Pro Display Light';
-  padding: 10px 0;
+  padding: 12px 0;
+}
+
+.main-content .content table tbody tr {
+  border-bottom: 1px solid #d0d0d4;
 }
 
 .main-aside {
@@ -168,6 +202,7 @@
   background: #fff;
   border-radius: 25px;
   padding: 5px 20px;
+  display: none;
 }
 
 .main-aside .main-header {
@@ -185,14 +220,13 @@
   color: #fff;
   border-radius: 4px;
   font-size: 18px;
-  text-transform: uppercase;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'SF Pro Display Bold';
+  font-family: 'SF Pro Display';
 }
 
 .add-mem {
@@ -227,5 +261,339 @@
   font-family: 'SF Pro Display Light';
   margin-bottom: 5px;
   font-size: 14px;
+}
+
+.login-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.login-page .log-half {
+  width: 50%;
+}
+
+.login-page .login-logo img {
+  width: 50px;
+  margin-top: 20px;
+}
+
+.login-page .login-content {
+  padding-top: 80px;
+}
+
+.login-page .login-content h4 {
+  font-size: 28px;
+}
+
+.login-page .log-half.img-bg {
+  background: #d4d4de;
+  width: 50%;
+  height: 100vh;
+}
+
+.login-page .log-half.lg-wrap {
+  padding-left: 90px;
+}
+
+.login-page .log-wrap {
+  margin-top: 40px;
+}
+
+.login-page .log-wrap button {
+  display: block;
+  width: 350px;
+  background: #d6be58;
+  height: 40px;
+  border: 0;
+  color: #fff;
+  margin-top: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-page .log-wrap button:hover {
+  background: #eccd43;
+}
+
+.login-page .log-wrap .log-form {
+  margin-bottom: 20px;
+}
+
+.login-page .log-wrap .log-form label {
+  display: block;
+  font-family: 'SF Pro Display Bold';
+}
+
+.login-page .log-wrap .log-form input {
+  border: 1px solid #d0d0d4;
+  width: 350px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  padding: 7px 10px;
+}
+
+.login-page .log-wrap .log-form input:focus {
+  outline: none;
+  background: #e6e6ef;
+}
+
+.mem-desc {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.mem-desc p {
+  margin-bottom: 5px;
+}
+
+.mn-head {
+  text-align: center;
+}
+
+.mn-head img {
+  padding-top: 10px;
+  height: 100px;
+}
+
+.mn-card-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 80px;
+}
+
+.mn-card-wrap .mn-card {
+  margin: 15px;
+  border: 1px solid #df974b;
+  width: 200px;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+}
+
+.mn-card-wrap .mn-card a {
+  color: #d6be58;
+  font-family: 'SF Pro Display Bold';
+  text-transform: uppercase;
+}
+
+.mn-card-wrap .mn-card img {
+  width: 80px;
+  display: block;
+  margin: auto;
+}
+
+.search-filter {
+  margin: 20px 0;
+}
+
+.search-filter a {
+  display: inline;
+  margin-right: 15px;
+  background: #efefef;
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.new-btn, .del-btn {
+  background: #d6be58;
+  width: 100px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #fff;
+  height: 35px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 16px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 16px;
+}
+
+.del-btn {
+  margin-right: 10px;
+  background: #d65858;
+}
+
+.tab-content {
+  border-top: 1px solid #dedede;
+  margin-top: 30px;
+  padding-top: 15px;
+  padding-right: 20px;
+}
+
+.tab-content .ser-sing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+.tab-content .ser-sing h5 {
+  margin-bottom: 2px;
+  font-family: 'SF Pro Display Bold';
+  font-size: 16px;
+}
+
+.tab-content .ser-sing p {
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 0;
+  color: #948d8d;
+}
+
+.tab-content .ser-sing label {
+  font-family: 'SF Pro Display Bold';
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #d6be58;
+}
+
+.ser-tab {
+  margin-top: 10px;
+}
+
+.ser-tab ul.nav.nav-tabs {
+  border-bottom: 0;
+}
+
+.ser-tab ul.nav.nav-tabs li.active {
+  background: #d6be58;
+}
+
+.ser-tab ul.nav.nav-tabs img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.ser-tab ul.nav.nav-tabs li {
+  width: 90px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #f3f3f3;
+  margin-right: 15px;
+  border-radius: 20px;
+  background: #f3f3f3;
+}
+
+.ser-tab ul.nav.nav-tabs li a span {
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  display: block;
+  line-height: 1.3;
+  margin-top: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch .slider.round {
+  border-radius: 34px;
+}
+
+.switch .slider.round::before {
+  border-radius: 50%;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #6E6E6E;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch .slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.actn-btn a, .actn-btn button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 8px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.actn-btn .view-btn {
+  background: #d6be58;
+}
+
+.actn-btn .edit-btn {
+  background: #6bd658;
+}
+
+.actn-btn .delete-single {
+  background: #d65858;
 }
 /*# sourceMappingURL=style.css.map */

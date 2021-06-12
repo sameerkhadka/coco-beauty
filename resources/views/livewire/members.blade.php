@@ -1,10 +1,16 @@
 <div class="main">
-    <div class="main-content">
+    <div class="main-content {{ $menuOpen ? 'aside-open' : '' }}">
         <div class="main-header" x-data>
             <h2>Members</h2>
-            @if (!$memberID)
-                <button x-on:click="confirm('Are You Sure') ? @this.deleteSelected() : ''">Delete Selected</button>
-            @endif
+            <div class="mn-right">
+                @if (!$memberID && !$menuOpen)
+                <a href="#" id="deleteMultiple" wire:click="{{ !empty($checkedItems) ? 'confirmBox()' : '' }}" class="del-btn">Delete</a>
+                <a href="#" wire:click="addMember()" class="new-btn">Add New</a>
+                @endif
+                @if($menuOpen)
+                <a href="#" wire:click="cancelEdit()" class="new-btn">Cancel</a>
+                @endif
+            </div>
         </div>
 
         <div class="search">
@@ -13,7 +19,7 @@
         </div>
 
         <div class="content">
-            <table class="member " id="member">
+            <table class="member" id="member">
                 <thead>
                     <tr>
                         <th><input type="checkbox" wire:model="checkAll">
@@ -22,21 +28,27 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Phone</th>
-                        <th>Action</th>
+                        <th class="action">Action</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody x-data>
                     @foreach ($members as $item)
                         <tr>
                             <td>
                                 <input type="checkbox" value="{{ $item->id }}" wire:model="checkedItems">
                                 <span class="checkmark"></span>
                             </td>
-                            <td>{{ $item->id }}</td>
+                            <td>CBL{{ $item->id }}</td>
                             <td>{{ $item->first_name . ' ' . $item->last_name }}</td>
                             <td>{{ $item->phone }}</td>
-                            <td><button wire:click="editMember({{ $item->id }})">Edit</button></td>
+                            <td>
+                                <div class="actn-btn">
+                                    <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
+                                    <a href="#" wire:click="editMember({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
+                                    <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -44,18 +56,9 @@
         </div>
     </div>
 
-    <div class="main-aside">
-        <div class="main-header">
-            <h4>All Members</h4>
-
-            <h2>{{ $totalMembers }}</h2>
-        </div>
-
+    <div class="main-aside {{ $menuOpen ? 'open' : '' }}">
         <div class="add-mem">
             <h4>{{ $memberID ? 'Update' : 'Add' }} Membership</h4>
-            @if ($memberID)
-                <button wire:click="cancelEdit">Cancel</button>
-            @endif
             <form wire:submit.prevent="submit" autocomplete="off">
                 <div class="addm-sing">
                     <label>First Name</label>
@@ -86,10 +89,8 @@
                     <label>DOB</label>
                     <input type="date" wire:model.debounce.500ms="dob">
                 </div>
-                @if ($submitButton)
-                    <button wire:loading.attr="disabled" class="aside-btn ">{{ $memberID ? 'Update' : 'Add' }}
+                <button wire:loading.attr="disabled" class="aside-btn ">{{ $memberID ? 'Update' : 'Add' }}
                         Membership</button>
-                @endif
             </form>
         </div>
     </div>
