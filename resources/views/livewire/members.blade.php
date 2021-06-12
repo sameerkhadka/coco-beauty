@@ -94,7 +94,7 @@
             </form>
         </div>
     </div>
-    <div wire:loading wire:target = "editMember, cancelEdit, submit" class="loading">
+    <div wire:loading wire:target = "editMember, cancelEdit, submit,addMember" class="loading">
         Loading! Please Wait...
     </div>
 </div>
