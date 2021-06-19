@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     @yield('css')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
@@ -52,8 +53,8 @@
                             <img src="{{ asset('images/menu-icons/members.svg') }}" alt="">
                         </a>
                     </li>
-                    <li>
-                        <a href="appointment.html" title="Appointment" class="tooltips">
+                    <li class="{{ Request::segment(1)=='appointments' ? 'active' : '' }}">
+                        <a href="{{ route('appointments') }}" title="Appointment" class="tooltips">
                             <img src="{{ asset('images/menu-icons/aoointment.svg') }}" alt="">
                         </a>
                     </li>
@@ -91,6 +92,10 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @yield('js')
+    @stack('scripts')
     <script>
         toastr.options = {
             "closeButton": true,
@@ -131,7 +136,6 @@
         })
 
     </script>
-    @yield('js')
 </body>
 
 </html>

@@ -9,5 +9,7 @@
 @endsection
 
 @section('main')
-   @livewire('members')
+   @livewire($type)
 @endsection
+
+

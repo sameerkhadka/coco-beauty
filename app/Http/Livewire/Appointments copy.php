@@ -2,22 +2,27 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Appointment;
 use App\Models\Member;
 use Livewire\Component;
 
-class Members extends Component
+class Appointments extends Component
 {
     protected $listeners = ['deleteConfirmed'=>'deleteSelected'];
-    public $checkbox,$menuOpen=false, $memberID, $firstName, $lastName, $address, $phone, $email, $dob, $members, $totalMembers, $submitButton = false, $checkedItems=[], $checkAll=false;
+    //commons
+    public $appointments,$checkbox,$menuOpen=false, $appointmentID, $totalAppointments, $submitButton = false, $checkedItems=[], $checkAll=false;
+
+    //model data
+    public  $memberID, $phone, $date, $time, $technicianName;
 
 
     //deleting
     public function deleteSelected(){
-        Member::destroy($this->checkedItems);
+         Appointment::destroy($this->checkedItems);
 
-        // if memberID has been
-        if(in_array($this->memberID,$this->checkedItems)){
-            $this->memberID = null;
+        // if appointmentID has been
+        if(in_array($this->appointmentID,$this->checkedItems)){
+            $this->appointmentID = null;
             $this->emptyData();
             $this->menuOpen = false;
         }
@@ -41,30 +46,29 @@ class Members extends Component
         }
     }
 
-    //add member
-    public function addMember(){
+    //add data
+    public function addData(){
         $this->menuOpen = true;
         $this->emptyData();
     }
 
-    //edit member
-    public function editMember($id){
-        $this->memberID = $id;
+    //edit data
+    public function editData($id){
+        $this->appointmentID = $id;
         $this->menuOpen = true;
-        $member = Member::find($id);
-        $this->firstName = $member->first_name;
-        $this->lastName = $member->last_name;
-        $this->address = $member->address;
-        $this->phone = $member->phone;
-        $this->email = $member->email;
-        $this->dob = $member->dob;
+        $appointment = Appointment::find($id);
+        $this->memberID = $appointment->member_id;
+        $this->phone = $appointment->phone;
+        $this->date = $appointment->date;
+        $this->time = $appointment->time;
+        $this->technicianName = $appointment->technician_name;
     }
 
 
     public function pluckedMembers(){
         return array_map(function($el) {
             return  (string)$el;
-          }, $this->members->pluck('id')->toArray());
+          }, $this->appointments->pluck('id')->toArray());
     }
 
 
@@ -79,7 +83,7 @@ class Members extends Component
     }
 
     public function updatedCheckedItems(){
-        if(array_sum($this->checkedItems) == array_sum($this->members->pluck('id')->toArray())){
+        if(array_sum($this->checkedItems) == array_sum($this->appointments->pluck('id')->toArray())){
             $this->checkAll = true;
         }
         else{
@@ -87,13 +91,7 @@ class Members extends Component
         }
     }
 
-    public function render()
-    {
-        // $this->checkForSubmitButton();
-        $this->members = Member::orderBy('created_at','desc')->get();
-        $this->totalMembers = $this->members->count();
-        return view('livewire.members');
-    }
+
 
     // private function checkForSubmitButton(){
     //     if(!empty($this->firstName) || !empty($this->lastName) || !empty($this->address) || !empty($this->phone) || !empty($this->email) || !empty($this->dob)){
@@ -103,53 +101,58 @@ class Members extends Component
     //         $this->submitButton = false;
     //     }
     // }
-    //cancel can be used in both add and update as it only empty members data;
+    //cancel can be used in both add and update as it only empty appointments data;
     public function cancelEdit(){
         $this->menuOpen = false;
-        $this->memberID = null;
+        $this->appointmentID = null;
         $this->emptyData();
     }
 
     public function submit(){
-        if($this->memberID){
-            $member = Member::find($this->memberID);
-            $member->first_name = $this->firstName;
-            $member->last_name = $this->lastName;
-            $member->address = $this->address;
-            $member->phone = $this->phone;
-            $member->email = $this->email;
-            if($this->dob){
-                $member->dob = $this->dob;
+        if($this->appointmentID){
+            $appointment = Appointment::find($this->appointmentID);
+            $appointment->member_id=$this->memberID;
+            $appointment->phone=$this->phone;
+            $appointment->time=$this->time;
+            $appointment->technician_name=$this->technicianName;
+            if($this->date){
+                $appointment->date=$this->date;
             }
-            $member->update();
-            $this->memberID = null;
+            $appointment->update();
+            $this->appointmentID = null;
             $this->menuOpen = false;
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Member Updated Successfully']);
         }
         else{
-            $member = new Member();
-            $member->first_name = $this->firstName;
-            $member->last_name = $this->lastName;
-            $member->address = $this->address;
-            $member->phone = $this->phone;
-            $member->email = $this->email;
-            if($this->dob){
-                $member->dob = $this->dob;
+            $appointment = new Appointment();
+            $appointment->member_id = $this->memberID;
+            $appointment->phone=$this->phone;
+            $appointment->time=$this->time;
+            $appointment->technician_name=$this->technicianName;
+            if($this->date){
+                $appointment->date=$this->date;
             }
-            $member->save();
+            $appointment->save();
             $this->menuOpen = false;
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Member Added Successfully']);
-
         }
         $this->emptyData();
     }
 
     private function emptyData(){
-        $this->firstName = "";
-        $this->lastName = "";
-        $this->address = "";
+        $this->memberID = "";
         $this->phone = "";
-        $this->email = "";
-        $this->dob = "";
+        $this->date = "";
+        $this->time = "";
+        $this->technicianName = "";
     }
+
+    public function render()
+    {
+         // $this->checkForSubmitButton();
+         $this->appointments = Appointment::orderBy('created_at','desc')->get();
+         $this->totalAppointments = $this->appointments->count();
+        return view('livewire.appointments');
+    }
+
 }

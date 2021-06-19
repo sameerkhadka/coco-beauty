@@ -21,7 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->date('dob')->nullable();
+            $table->date('dob')->nullable()->default(null);
         });
     }
 

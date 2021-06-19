@@ -18,5 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/members',function(){
-    return view('pages.members');
+    return view('pages.main',[
+        'type' => 'members'
+    ]);
 })->name('members');
+
+Route::get('/appointments',function(){
+    return view('pages.main',[
+        'type'=>'appointments'
+    ]);
+})->name('appointments');
