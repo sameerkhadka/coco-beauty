@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','services'];
+$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions'];
 
 foreach($routes as $route){
     Route::get($route,function() use ($route){
@@ -26,5 +26,17 @@ foreach($routes as $route){
         ]);
     })->name($route);
 }
+
+Route::get('admin/services',function(){
+    return view('pages.main',[
+        'type'=>'crud-services'
+    ]);
+})->name('crud.services');
+
+Route::get('admin/items',function(){
+    return view('pages.main',[
+        'type'=>'crud-items'
+    ]);
+})->name('crud.items');
 
 
