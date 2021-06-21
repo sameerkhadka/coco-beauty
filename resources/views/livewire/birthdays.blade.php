@@ -1,5 +1,6 @@
-<div>
-    <div class="main">
+
+<div class="main">
+
         <div class="main-content">
             <div class="main-header">
                 <h2>Birthday</h2>
@@ -17,7 +18,7 @@
             </div>
 
             <div class="search-filter">
-                <a href="">This Month</a>
+                <a href="">This Month</a> <a href="">Last Month</a>
             </div>
 
             <div class="content">
@@ -89,5 +90,4 @@
                 <a href="" class="aside-btn">Add Gift Voucher</a>
             </div>
         </div>
-    </div>
 </div>
