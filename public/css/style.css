@@ -747,4 +747,60 @@
 .cart-sing .cart-rem button:focus {
   outline: none;
 }
+
+.checkout-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkout-box .cart-wrap {
+  width: 35%;
+  background: #fff;
+  padding: 1px 20px;
+  height: calc(100vh - 20px);
+}
+
+.checkout-head {
+  margin: 20px 0;
+  margin-bottom: 30px;
+}
+
+.checkout-head h4 {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.checkout-head p {
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+}
+
+.cart-checkback {
+  margin-top: 50px;
+}
+
+.cart-checkback a, .cart-checkback button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'SF Pro Display';
+  font-size: 16px;
+  background: #d6be58;
+  color: #fff;
+  width: 250px;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.cart-checkback a i, .cart-checkback button i {
+  margin-right: 10px;
+}
 /*# sourceMappingURL=style.css.map */

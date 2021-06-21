@@ -727,3 +727,53 @@
     }
 
 }
+
+
+.checkout-box {
+    display: flex;
+
+    .cart-wrap {
+        width: 35%;
+        background: #fff;
+        padding: 1px 20px;
+        height: calc(100vh - 20px);
+    }
+}
+
+.checkout-head {
+    margin: 20px 0;
+    margin-bottom: 30px;
+    
+    h4 {
+        font-size: 22px;
+        margin-bottom: 0;
+    }
+
+    p {
+        font-size: 14px;
+        font-family: 'SF Pro Display Light';
+    }
+}
+
+.cart-checkback {
+    margin-top: 50px;
+
+    a,button {
+        display:flex;
+        margin: 0 auto;
+        justify-content:center;
+        align-items: center;
+        font-family: 'SF Pro Display';
+        font-size: 16px;
+        background: #d6be58;
+        color: #fff;
+        width: 250px;
+        border-radius: 4px;
+        height: 40px;
+
+
+        i {
+            margin-right: 10px;
+        }
+    }
+}

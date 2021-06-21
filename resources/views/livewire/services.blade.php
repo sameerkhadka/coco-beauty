@@ -1,4 +1,4 @@
-<div>
+
     <div class="main">
         <div class="main-content">
             <div class="main-header">
@@ -203,11 +203,11 @@
             </div>
 
             <div class="checkout">
-                <a href="" class="aside-btn">Checkout</a>
+                <a href="{{ route('checkout') }}" class="aside-btn">Checkout</a>
             </div>
         </div>
     </div>
-</div>
+
 
 
 
