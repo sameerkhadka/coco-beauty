@@ -35,24 +35,24 @@ class Appointments extends Component
         ];
     //trial
 
-    public function __construct()
-    {
-        $item = [
-            'id' => 1,
-            'name' => 'item 1',
-            'price' => 40
-        ];
-        $toBePushed  = ['item' => $item, 'quantity'=>2];
-        array_push($this->cart['items'],$toBePushed);
-        $item = [
-            'id' => 2,
-            'name' => 'item 2',
-            'price' => 20
-        ];
-        $toBePushed  = ['item' => $item, 'quantity'=>3];
-        array_push($this->cart['items'],$toBePushed);
+    // public function __construct()
+    // {
+    //     $item = [
+    //         'id' => 1,
+    //         'name' => 'item 1',
+    //         'price' => 40
+    //     ];
+    //     $toBePushed  = ['item' => $item, 'quantity'=>2];
+    //     array_push($this->cart['items'],$toBePushed);
+    //     $item = [
+    //         'id' => 2,
+    //         'name' => 'item 2',
+    //         'price' => 20
+    //     ];
+    //     $toBePushed  = ['item' => $item, 'quantity'=>3];
+    //     array_push($this->cart['items'],$toBePushed);
 
-    }
+    // }
 
     private function reCalculate(){
         $cartItems = collect($this->cart['items']);
@@ -211,7 +211,6 @@ class Appointments extends Component
 
     public function render()
     {
-         // $this->checkForSubmitButton();
         $this->dispatchBrowserEvent('select2');
         $this->members =  Member::all();
 

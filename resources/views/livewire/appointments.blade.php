@@ -132,7 +132,7 @@
         $('#searchable').change(function(){
             var data = $('#searchable').select2("val");
             @this.set('modelData.member_id',data);
-        })
+        });
     })
 </script>
 @endpush
