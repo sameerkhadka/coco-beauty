@@ -38,3 +38,6 @@ btnOpen.addEventListener('click', function(e){
     mainContent.classList.toggle('aside-open');
     sideContent.classList.toggle('open');
 })
+
+
+

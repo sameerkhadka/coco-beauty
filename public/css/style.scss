@@ -410,7 +410,7 @@
     }
 }
 
-.new-btn,.del-btn {
+.new-btn,.del-btn,.cart-btn {
     background: #d6be58;
     width: 100px;
     display: inline-flex;
@@ -420,6 +420,10 @@
     border-radius: 16px;
     justify-content: center;
     font-size: 16px;
+
+    .cart-count {
+        margin-left: 5px;
+    }
 }
 
 .del-btn {
@@ -440,34 +444,55 @@
     //     flex-wrap: wrap;
     // }
 
-    .ser-sing {
-        display: flex;
-        height: 80px;
-        justify-content: space-between;
-        align-items: center;
+    .ser-item {
+        
+
+        
         border: 1px solid #ddd;
         padding: 10px 20px;
         border-radius: 4px;
         margin: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         
         h5 {
-            margin-bottom: 2px;
-            font-family: 'SF Pro Display Bold';
-            font-size: 16px;
+            margin-bottom: 5px;
+            font-size: 15px;
         }
 
-        p {
-            font-size: 14px;
+        h6 {
+            font-size: 13px;
             font-family: 'SF Pro Display Light';
-            margin-bottom: 0;
+           
             color: #948d8d;
         }
 
-        label {
-            font-family: 'SF Pro Display Bold';
+        p {
+            font-family: 'SF Pro Display';
             margin-bottom: 0;
             font-size: 18px;  
             color: #d6be58;
+            margin-top: 10px;
+            line-height: 1;
+        }
+
+        .add-to-cart {
+            color: #fff;
+            background: #d6be58;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+            cursor: pointer; 
+            font-size: 14px;
+            &:hover {
+                background: #c7a309;
+            }
+
         }
 
     }
@@ -590,4 +615,115 @@
     .delete-single {
         background: #d65858;
     }
+}
+
+.cart-head {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #d0d0d4;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+
+    h4 {
+        font-size:18px;
+    }
+
+    button,a {
+        display: inline-flex;
+        border: 0;
+        width: 80px;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        background: #d65858;
+        border-radius: 20px;
+        font-family: 'SF Pro Display Light';
+        font-size: 14px;
+        color: #ffff;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+}
+
+.cart-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h6 {
+        margin-right: 50px;
+    }
+}
+
+.checkout {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cart-sing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin: 25px 0;
+
+
+    .cart-ser-des {
+        width: 230px;
+
+        h5 {
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        p {
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+            margin-bottom: 5px;
+        }
+
+        h6 {
+            font-family: 'SF Pro Display'; 
+            margin-bottom: 0;
+        }
+    }
+
+    .cart-qty {
+        input {
+            width: 40px;
+            border: 1px solid #f9f9fa;
+            border-radius: 8px;
+            padding: 3px 5px;
+            background: #f3f3f3;
+            text-align: center;
+            font-size: 15px;
+            
+            
+            &:focus {
+                outline: none;
+                border: 1px solid #d6be58;
+
+            }
+        }
+    }
+
+    .cart-rem {
+        button {
+            background: transparent;
+            border: 0;
+            color: #f44e4e;
+            line-height: 1;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
 }

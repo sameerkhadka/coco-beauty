@@ -27,6 +27,42 @@ class Appointments extends Component
     ];
 
 
+    //trial
+
+        public $cart = [
+            'items' => [],
+            'total' => null
+        ];
+    //trial
+
+    public function __construct()
+    {
+        $item = [
+            'id' => 1,
+            'name' => 'item 1',
+            'price' => 40
+        ];
+        $toBePushed  = ['item' => $item, 'quantity'=>2];
+        array_push($this->cart['items'],$toBePushed);
+        $item = [
+            'id' => 2,
+            'name' => 'item 2',
+            'price' => 20
+        ];
+        $toBePushed  = ['item' => $item, 'quantity'=>3];
+        array_push($this->cart['items'],$toBePushed);
+
+    }
+
+    private function reCalculate(){
+        $cartItems = collect($this->cart['items']);
+        $this->cart['total'] = $cartItems->sum(function($cartItem){
+            return (float)$cartItem['item']['price']*(float)$cartItem['quantity'];
+        });
+    }
+    //trial
+
+
     //deleting
     public function deleteSelected(){
          Appointment::destroy($this->checkedItems);

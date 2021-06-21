@@ -17,14 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/members',function(){
-    return view('pages.main',[
-        'type' => 'members'
-    ]);
-})->name('members');
+$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','services'];
 
-Route::get('/appointments',function(){
-    return view('pages.main',[
-        'type'=>'appointments'
-    ]);
-})->name('appointments');
+foreach($routes as $route){
+    Route::get($route,function() use ($route){
+        return view('pages.main',[
+            'type' => $route
+        ]);
+    })->name($route);
+}
+
+

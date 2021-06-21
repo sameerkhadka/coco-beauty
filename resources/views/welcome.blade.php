@@ -38,7 +38,7 @@
         <div class="mn-card-wrap">
 
             <div class="mn-card">
-                <a href="services.html">
+                <a href="{{ route('services') }}">
                     <img src="./images/menu-icons/services.svg" alt="">
                     Services
                 </a>
@@ -52,35 +52,35 @@
             </div>
 
             <div class="mn-card">
-                <a href="appointment.html">
+                <a href="{{ route('appointments') }}">
                     <img src="./images/menu-icons/aoointment.svg" alt="">
                     Appointment
                 </a>
             </div>
 
             <div class="mn-card">
-                <a href="transaction.html">
+                <a href="{{ route('transactions') }}">
                     <img src="./images/menu-icons/transaction.svg" alt="">
                     Transaction
                 </a>
             </div>
 
             <div class="mn-card">
-                <a href="gift.html">
+                <a href="{{ route('gift-vouchers') }}">
                     <img src="./images/menu-icons/gift.svg" alt="">
                     Gift Voucher
                 </a>
             </div>
 
             <div class="mn-card">
-                <a href="promotion.html">
+                <a href="promotions">
                     <img src="./images/menu-icons/promotion.svg" alt="">
                     Promotion
                 </a>
             </div>
 
             <div class="mn-card">
-                <a href="birthday.html">
+                <a href="{{ route('birthdays') }}">
                     <img src="./images/menu-icons/birthday.svg" alt="">
                     Birthday
                 </a>
@@ -96,6 +96,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 
 </body>
 

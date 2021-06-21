@@ -416,7 +416,7 @@
   font-size: 13px;
 }
 
-.new-btn, .del-btn {
+.new-btn, .del-btn, .cart-btn {
   background: #d6be58;
   width: 100px;
   display: -webkit-inline-box;
@@ -434,6 +434,10 @@
   font-size: 16px;
 }
 
+.new-btn .cart-count, .del-btn .cart-count, .cart-btn .cart-count {
+  margin-left: 5px;
+}
+
 .del-btn {
   margin-right: 10px;
   background: #d65858;
@@ -446,41 +450,63 @@
   padding-right: 20px;
 }
 
-.tab-content .ser-sing {
+.tab-content .ser-item {
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 15px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 80px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
-  border-radius: 4px;
-  margin: 15px 0;
 }
 
-.tab-content .ser-sing h5 {
-  margin-bottom: 2px;
-  font-family: 'SF Pro Display Bold';
-  font-size: 16px;
+.tab-content .ser-item h5 {
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 
-.tab-content .ser-sing p {
-  font-size: 14px;
+.tab-content .ser-item h6 {
+  font-size: 13px;
   font-family: 'SF Pro Display Light';
-  margin-bottom: 0;
   color: #948d8d;
 }
 
-.tab-content .ser-sing label {
-  font-family: 'SF Pro Display Bold';
+.tab-content .ser-item p {
+  font-family: 'SF Pro Display';
   margin-bottom: 0;
   font-size: 18px;
   color: #d6be58;
+  margin-top: 10px;
+  line-height: 1;
+}
+
+.tab-content .ser-item .add-to-cart {
+  color: #fff;
+  background: #d6be58;
+  width: 30px;
+  height: 30px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tab-content .ser-item .add-to-cart:hover {
+  background: #c7a309;
 }
 
 .ser-tab {
@@ -595,5 +621,130 @@
 
 .actn-btn .delete-single {
   background: #d65858;
+}
+
+.cart-head {
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #d0d0d4;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.cart-head h4 {
+  font-size: 18px;
+}
+
+.cart-head button, .cart-head a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border: 0;
+  width: 80px;
+  height: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #d65858;
+  border-radius: 20px;
+  font-family: 'SF Pro Display Light';
+  font-size: 14px;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.cart-head button:focus, .cart-head a:focus {
+  outline: none;
+}
+
+.cart-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart-total h6 {
+  margin-right: 50px;
+}
+
+.checkout {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cart-sing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+  margin: 25px 0;
+}
+
+.cart-sing .cart-ser-des {
+  width: 230px;
+}
+
+.cart-sing .cart-ser-des h5 {
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.cart-sing .cart-ser-des p {
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 5px;
+}
+
+.cart-sing .cart-ser-des h6 {
+  font-family: 'SF Pro Display';
+  margin-bottom: 0;
+}
+
+.cart-sing .cart-qty input {
+  width: 40px;
+  border: 1px solid #f9f9fa;
+  border-radius: 8px;
+  padding: 3px 5px;
+  background: #f3f3f3;
+  text-align: center;
+  font-size: 15px;
+}
+
+.cart-sing .cart-qty input:focus {
+  outline: none;
+  border: 1px solid #d6be58;
+}
+
+.cart-sing .cart-rem button {
+  background: transparent;
+  border: 0;
+  color: #f44e4e;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cart-sing .cart-rem button:focus {
+  outline: none;
 }
 /*# sourceMappingURL=style.css.map */

@@ -42,9 +42,9 @@
             </div>
 
             <div class="navigation">
-                <ul>
+                <ul class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                     <li>
-                        <a href="services.html" title="Services" class="tooltips">
+                        <a href="{{ route('services') }}" title="Services" class="tooltips">
                             <img src="{{ asset('images/menu-icons/services.svg') }}" alt="">
                         </a>
                     </li>
@@ -58,23 +58,23 @@
                             <img src="{{ asset('images/menu-icons/aoointment.svg') }}" alt="">
                         </a>
                     </li>
-                    <li>
-                        <a href="transaction.html" title="Transaction" class="tooltips">
+                    <li class="{{ Request::segment(1)=='transactions' ? 'active' : '' }}">
+                        <a href="{{ route('transactions') }}" title="Transaction" class="tooltips">
                             <img src="{{ asset('images/menu-icons/transaction.svg') }}" alt="">
                         </a>
                     </li>
-                    <li>
-                        <a href="gift.html" title="Gifts Voucher" class="tooltips">
+                    <li class="{{ Request::segment(1)=='gift-vouchers' ? 'active' : '' }}">
+                        <a href="{{ route('gift-vouchers') }}" title="Gifts Voucher" class="tooltips">
                             <img src="{{ asset('images/menu-icons/gift.svg') }}" alt="">
                         </a>
                     </li>
-                    <li>
-                        <a href="promotion.html" title="Promotions" class="tooltips">
+                    <li class="{{ Request::segment(1)=='promotions' ? 'active' : '' }}">
+                        <a href="{{ route('promotions') }}" title="Promotions" class="tooltips">
                             <img src="{{ asset('images/menu-icons/promotion.svg') }}" alt="">
                         </a>
                     </li>
-                    <li>
-                        <a href="birthday.html" title="Birthday" class="tooltips">
+                    <li class="{{ Request::segment(1)=='birthdays' ? 'active' : '' }}" >
+                        <a href="{{ route('birthdays') }}" title="Birthday" class="tooltips">
                             <img src="{{ asset('images/menu-icons/birthday.svg') }}" alt="">
                         </a>
                     </li>
@@ -92,6 +92,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('js')
