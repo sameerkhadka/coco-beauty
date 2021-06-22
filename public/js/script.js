@@ -1,4 +1,3 @@
-
 function searchFunction() {
     (function () {
         var showResults;
@@ -24,20 +23,23 @@ var mainContent = document.querySelector('.main-content');
 var sideContent = document.querySelector('.main-aside');
 
 
-btnOpen.addEventListener('click', function(e){
+if(btnOpen) {
+    btnOpen.addEventListener('click', function(e){
     
-    e.preventDefault();
-    if(btnOpen.innerHTML === "Add New") {
-      
-        btnOpen.innerHTML = "Close";
-    } else {
-        btnOpen.innerHTML = "Add New";
-    }
-     
+        e.preventDefault();
+        if(btnOpen.innerHTML === "Add New") {
+          
+            btnOpen.innerHTML = "Close";
+        } else {
+            btnOpen.innerHTML = "Add New";
+        }
+         
+    
+        mainContent.classList.toggle('aside-open');
+        sideContent.classList.toggle('open');
+    })
+}
 
-    mainContent.classList.toggle('aside-open');
-    sideContent.classList.toggle('open');
-})
 
 
 
