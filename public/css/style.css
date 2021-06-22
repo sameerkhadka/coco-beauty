@@ -681,6 +681,48 @@
   margin-right: 50px;
 }
 
+.cart-total h4 {
+  font-size: 22px;
+}
+
+.cart-grand-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart-grand-total h4 {
+  margin-left: 20px;
+}
+
+.cart-amount .discount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px 0;
+}
+
+.cart-amount .discount h6 {
+  font-family: 'SF Pro Display Light';
+}
+
+.cart-amount .discount h5 {
+  margin-left: 30px;
+  font-size: 16px;
+}
+
 .checkout {
   text-align: center;
   margin-top: 50px;
@@ -772,6 +814,13 @@
 
 .checkout-box .transaction-box .tb-info {
   padding: 15px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.checkout-box .transaction-box .tb-info:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
 }
 
 .checkout-box .transaction-box .tb-info h4 {
@@ -782,27 +831,39 @@
   margin-top: 20px;
 }
 
-.checkout-box .transaction-box .tb-info .choose-mem a.active {
-  background: #d6be58;
-  color: #fff;
+.checkout-box .transaction-box .tb-info .choose-mem .cm-card {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-right: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.checkout-box .transaction-box .tb-info .choose-mem a {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 150px;
-  height: 50px;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 14px;
-  font-family: 'SF Pro Display Light';
+.checkout-box .transaction-box .tb-info .choose-mem .cm-card input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkout-box .transaction-box .tb-info .choose-mem .cm-card .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.checkout-box .transaction-box .tb-info .choose-mem .cm-card .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .checkout-head {
@@ -846,5 +907,41 @@
 
 .cart-checkback a i, .cart-checkback button i {
   margin-right: 10px;
+}
+
+.cart-entries .entry {
+  margin: 10px 0;
+}
+
+.cart-entries .entry label {
+  display: block;
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.cart-entries .entry textarea {
+  height: 100px;
+  border: 1px solid #d0d0d4;
+  width: 100%;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+}
+
+.cart-entries .entry input {
+  border: 1px solid #d0d0d4;
+  width: 100%;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  padding: 5px 10px;
+}
+
+.cart-entries .entry input:focus {
+  outline: none;
+  border: 1px solid #d6be58;
 }
 /*# sourceMappingURL=style.css.map */

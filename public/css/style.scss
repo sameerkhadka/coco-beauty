@@ -232,6 +232,9 @@
     .addm-sing {
         margin: 15px 0;
 
+
+        
+
         input {
             border: 1px solid #d0d0d4;
             width: 100%;
@@ -658,6 +661,39 @@
     h6 {
         margin-right: 50px;
     }
+
+    h4 {
+        font-size:22px;
+
+    }
+}
+
+.cart-grand-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+
+    h4 {
+        margin-left: 20px;
+    }
+}
+
+.cart-amount {
+    .discount {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 5px 0;
+
+        h6 {
+            font-family: 'SF Pro Display Light';
+        }
+
+        h5 {
+            margin-left: 30px;
+            font-size: 16px;
+        }
+    }
 }
 
 .checkout {
@@ -747,6 +783,12 @@
 
         .tb-info {
             padding: 15px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            &:last-child {
+                margin-bottom: 0;
+                border-bottom: 0;
+            }
 
             h4 {
                 font-size: 22px;
@@ -755,22 +797,39 @@
             .choose-mem {
                 margin-top: 20px;
 
-                a.active {
-                    background: #d6be58;
-                    color: #fff;
+                .cm-card {
+                    display: inline-block;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-right: 50px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    user-select: none;
+
+                    input {
+                        position: absolute;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+
+                    .checkmark {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 25px;
+                        width: 25px;
+                        background-color: #eee;
+                        border-radius: 50%;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                        }
+                    }
+
                 }
 
-                a {
-                    display: inline-flex;
-                    width: 150px;
-                    height: 50px;
-                    border: 1px solid #dcdcdc;
-                    border-radius: 4px;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 14px;
-                    font-family: 'SF Pro Display Light';
-                }
             }
         }
     }
@@ -810,6 +869,47 @@
 
         i {
             margin-right: 10px;
+        }
+    }
+}
+
+.cart-entries {
+
+    .entry {
+        margin: 10px 0;
+
+        label {
+            display: block;
+            font-family: 'SF Pro Display Light';
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+      
+            height: 100px;
+            border: 1px solid #d0d0d4;
+            width: 100%;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+        }
+
+        input {
+            border: 1px solid #d0d0d4;
+            width: 100%;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+            padding: 5px 10px;
+
+
+            &:focus {
+                outline: none;
+                border: 1px solid #d6be58;
+            }
         }
     }
 }

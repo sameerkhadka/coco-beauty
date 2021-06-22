@@ -83,3 +83,58 @@ input[type=number] {
 .opcaity-hide .add-to-cart {
   display: none !important;
 }
+
+.cm-card:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.cm-card input:checked ~ .checkmark {
+  background-color: #d6be58 !important; 
+}
+
+.cm-card input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.cm-card .checkmark:after {
+  top: 9px;
+ left: 9px;
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ background: white;
+}
+
+.aside-btn {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  background: #d6be58;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'SF Pro Display';
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #444;
+  line-height: 28px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+  outline: none;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #d6be58;
+  color: white;
+}
+
+.select2-results__option  {
+  font-size: 13px;
+  font-family: 'SF Pro Display Light';
+}
