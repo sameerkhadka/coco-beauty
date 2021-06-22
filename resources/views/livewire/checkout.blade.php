@@ -1,14 +1,13 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-
 <div class="main">
+    @if(count($this->cart['items'])>0)
     <div class="main-content">
 
         <div class="checkout-box">
-            
+
             <div class="transaction-box">
                 <div class="tb-info">
                     <h4 class="transaction-tb-head">Personal Information</h4>
-                    
+
                     <div class="choose-mem">
                         <label class="cm-card">
                             Member
@@ -55,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="tb-info">
@@ -110,7 +109,7 @@
 
                     <div class="choose-mem">
                         <label class="cm-card">
-                            Cash 
+                            Cash
                             <input type="radio" checked="checked" name="payment-method">
                             <span class="checkmark"></span>
                         </label>
@@ -125,71 +124,56 @@
 
                 </div>
 
-  
+
             </div>
 
             <div class="cart-wrap">
                 <div class="checkout-head">
                     <h4>Service Cart</h4>
-                    <p>You have 2 items in your cart </p>
+                    <p>You have {{count($cart['items'])}} items in your cart </p>
                 </div>
-
+                @foreach($cart['items'] as $cartItem)
                 <div class="cart-sing">
                     <div class="cart-ser-des">
-                        <h5>Full Set Clear With White Tips</h5>
-                        <p>Normal</p>
+                        <h5>{{$cartItem['item']['name']}}</h5>
+                        <p>{{$cartItem['item']['type']}}</p>
                     </div>
-            
+
                     <div class="cart-qty">
-                        <input type="number" class="qty-value" value="1" readonly />
+                        <input type="number" class="qty-value" value="{{$cartItem['quantity']}}" readonly />
                     </div>
 
                     <div class="cart-price-total">
-                        <h6 >$50</h6>
-                    </div>
-            
-                </div>
-                <div class="cart-sing">
-                    <div class="cart-ser-des">
-                        <h5>Full Set Clear With White Tips</h5>
-                        <p>Gel</p>
-                        
-                    </div>
-            
-                    <div class="cart-qty">
-                        <input type="number" class="qty-value" value="2"  readonly/>
+                        <h6>${{$cartItem['item']['price']}}</h6>
                     </div>
 
-                    <div class="cart-price-total">
-                        <h6>$120</h6>
-                    </div>
-            
                 </div>
+                @endforeach
 
 
 
                 <div class='cart-amount'>
 
-                    
+
 
                     <div class="cart-total">
-                        <h4 class="cart-total-price">$170</h4>
+                        <h4 class="cart-total-price">${{$cart['total']}}</h4>
                     </div>
 
                     <div class="discount">
-                        <h6>Senior Discount</h6>   
+                        <h6>Senior Discount</h6>
 
-                        <h5>$17</h5>
+                        <h5>${{$seniorDiscount}}</h5>
                     </div>
 
                     <div class="discount">
                         <h6>Manual Discount</h6>
-                        <h5>$17</h5>
+                        <h5>${{$manualDiscount}}</h5>
                     </div>
 
                     <div class="cart-grand-total">
                         <h6>Grand Total</h6>
-                        <h4 class="cart-total-price">$150</h4>
+                        <h4 class="cart-total-price">${{$grandTotal}}</h4>
                     </div>
                 </div>
 
@@ -197,19 +181,18 @@
                     <a href="#" class="aside-btn">Proceed Transaction</a>
                 </div>
 
-                
+
 
             </div>
-        
+
         </div>
 
 
-    
+
     </div>
+    @endif
 </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
     $("#multiple").select2({
           placeholder: "Select a programming language",
