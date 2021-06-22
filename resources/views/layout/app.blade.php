@@ -42,8 +42,8 @@
             </div>
 
             <div class="navigation">
-                <ul class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
-                    <li>
+                <ul>
+                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                         <a href="{{ route('services') }}" title="Services" class="tooltips">
                             <img src="{{ asset('images/menu-icons/services.svg') }}" alt="">
                         </a>

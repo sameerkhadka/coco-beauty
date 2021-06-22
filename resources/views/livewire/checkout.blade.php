@@ -1,11 +1,30 @@
 <div class="main">
     <div class="main-content">
+<<<<<<< HEAD
         <div class="checkout-box">
         
             <div class="cart-wrap">
                 <div class="checkout-head">
                     <h4>Service Cart</h4>
                     <p>You have 2 items in your cart </p>
+=======
+    <div class="checkout-box">
+
+        <div class="cart-wrap">
+            <div class="checkout-head">
+                <h4>Service Cart</h4>
+                <p>You have 2 items in your cart </p>
+            </div>
+
+            <div class="cart-sing">
+                <div class="cart-ser-des">
+                    <h5>Full Set Clear With White Tips</h5>
+                    <p>Normal</p>
+                </div>
+
+                <div class="cart-qty">
+                    <input type="number" class="qty-value" value="1" readonly />
+>>>>>>> 0c773130c6c29427e050b3435453108673937bae
                 </div>
 
                 <div class="cart-sing">
@@ -23,6 +42,7 @@
                     </div>
             
                 </div>
+<<<<<<< HEAD
                 <div class="cart-sing">
                     <div class="cart-ser-des">
                         <h5>Full Set Clear With White Tips</h5>
@@ -43,12 +63,25 @@
                 <div class="cart-total">
                     <h6>Total</h6>
                     <h4 class="cart-total-price">$170</h4>
+=======
+
+            </div>
+            <div class="cart-sing">
+                <div class="cart-ser-des">
+                    <h5>Full Set Clear With White Tips</h5>
+                    <p>Gel</p>
+
+                </div>
+
+                <div class="cart-qty">
+                    <input type="number" class="qty-value" value="2"  readonly/>
+>>>>>>> 0c773130c6c29427e050b3435453108673937bae
                 </div>
 
                 <div class="cart-checkback">
                     <a href=""><i class="fas fa-long-arrow-alt-left"></i>Continue Shopping</a>
                 </div>
-        
+
             </div>
             <div class="transaction-box">
                 <div class="tb-info">
@@ -62,7 +95,14 @@
                     
                 </div>
             </div>
+<<<<<<< HEAD
         
         </div>
+=======
+
+        </div>
+
+    </div>
+>>>>>>> 0c773130c6c29427e050b3435453108673937bae
     </div>
 </div>
