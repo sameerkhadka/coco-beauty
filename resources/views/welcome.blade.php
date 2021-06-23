@@ -39,49 +39,49 @@
 
             <div class="mn-card">
                 <a href="{{ route('services') }}">
-                    <img src="./images/menu-icons/services.svg" alt="">
+                    <img src="./images/menu-icons/Services.svg" alt="">
                     Services
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('members') }}">
-                    <img src="./images/menu-icons/members.svg" alt="">
+                    <img src="./images/menu-icons/Members.svg" alt="">
                     Members
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('appointments') }}">
-                    <img src="./images/menu-icons/aoointment.svg" alt="">
+                    <img src="./images/menu-icons/Appointment.svg" alt="">
                     Appointment
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('transactions') }}">
-                    <img src="./images/menu-icons/transaction.svg" alt="">
+                    <img src="./images/menu-icons/Transaction.svg" alt="">
                     Transaction
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('gift-vouchers') }}">
-                    <img src="./images/menu-icons/gift.svg" alt="">
+                    <img src="./images/menu-icons/Gift Voucher.svg" alt="">
                     Gift Voucher
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="promotions">
-                    <img src="./images/menu-icons/promotion.svg" alt="">
+                    <img src="./images/menu-icons/Promotion.svg" alt="">
                     Promotion
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('birthdays') }}">
-                    <img src="./images/menu-icons/birthday.svg" alt="">
+                    <img src="./images/menu-icons/Birthday.svg" alt="">
                     Birthday
                 </a>
             </div>

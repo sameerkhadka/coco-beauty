@@ -45,7 +45,7 @@
                 <ul>
                     <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                         <a href="{{ route('services') }}" title="Services" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/services.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/Services.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='members' ? 'active' : '' }}">
@@ -55,7 +55,7 @@
                     </li>
                     <li class="{{ Request::segment(1)=='appointments' ? 'active' : '' }}">
                         <a href="{{ route('appointments') }}" title="Appointment" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/aoointment.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/Appointment.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='transactions' ? 'active' : '' }}">
@@ -65,7 +65,7 @@
                     </li>
                     <li class="{{ Request::segment(1)=='gift-vouchers' ? 'active' : '' }}">
                         <a href="{{ route('gift-vouchers') }}" title="Gifts Voucher" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/gift.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/Gift Voucher.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='promotions' ? 'active' : '' }}">

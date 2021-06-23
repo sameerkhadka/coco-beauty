@@ -138,3 +138,7 @@ input[type=number] {
   font-size: 13px;
   font-family: 'SF Pro Display Light';
 }
+
+.navigation li.active a img {
+  width: 25px;
+}

@@ -51,7 +51,7 @@
                             </td>
                             <td>
                                 <div class="actn-btn">
-                                    <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
+                                    <a href="{{ route('member-detail') }}" class="view-btn"><i class="far fa-eye"></i></a>
                                     <a href="#" wire:click="editMember({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
                                     <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
                                 </div>
