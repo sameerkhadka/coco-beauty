@@ -344,6 +344,7 @@
 .mem-desc {
   padding-top: 20px;
   padding-left: 20px;
+  text-align: left;
 }
 
 .mem-desc p {
@@ -943,5 +944,110 @@
 .cart-entries .entry input:focus {
   outline: none;
   border: 1px solid #d6be58;
+}
+
+.mem-detail {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.mem-detail .mem-det-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mem-detail .mem-det-top .profile-image {
+  width: 100px;
+  height: 100px;
+  font-family: 'SF Pro Display Black';
+  background: #d6be58;
+  border-radius: 50%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+  color: #fff;
+}
+
+.mem-detail .mem-det-top .mem-desc h3 {
+  margin-bottom: 3px;
+}
+
+.mem-detail .mem-det-top .mem-desc p {
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 0px;
+}
+
+.mem-detail .mem-det-top .mem-desc .reward-point {
+  border: 1px solid #d0d0d4;
+  padding: 8px;
+  font-size: 13px;
+  margin-top: 5px;
+  border-radius: 12px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 150px;
+}
+
+.mem-detail .mem-det-top .mem-desc .reward-point i {
+  color: #d6be58;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.mem-detail .mem-det-top .mem-desc .reward-point span {
+  font-family: 'SF Pro Display';
+  margin-left: 5px;
+}
+
+.mem-det-bottom {
+  border-top: 1px solid #e4e4e4;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.mem-det-bottom .mdb-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 8px 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mem-det-bottom .mdb-wrap p {
+  font-family: 'SF Pro Display Light';
+  margin-bottom: 0;
+  min-width: 210px;
+  font-size: 16px;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.mem-det-bottom .mdb-wrap p:last-child {
+  font-family: 'SF Pro Display Bold';
 }
 /*# sourceMappingURL=style.css.map */

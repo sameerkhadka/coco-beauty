@@ -41,5 +41,18 @@ if(btnOpen) {
 }
 
 
+    
 
+function profilePicture() {
+    var memberFirstName = document.querySelector('.first-name').innerText;
+    var memberLastName = document.querySelector('.last-name').innerText;
+    var profileImage = document.querySelector('.profile-image');
+
+    if(profileImage) {
+        var initials = memberFirstName.charAt(0) + memberLastName.charAt(0);
+        profileImage.innerHTML = initials ;
+    }
+}
+
+profilePicture();
 
