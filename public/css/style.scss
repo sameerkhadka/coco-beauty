@@ -735,8 +735,24 @@
         }
 
         h6 {
-            font-family: 'SF Pro Display'; 
+            font-family: 'SF Pro Display bold';
             margin-bottom: 0;
+            color: #d6be58;
+
+            input {
+                width: 60px;
+                padding: 8px;
+                margin-left: 5px;
+                border: 1px solid #dddddd;
+                border-radius: 8px;
+                color: #d6be58;
+
+                &:focus {
+                    outline: none;
+                    border: 1px solid #d6be58;
+                }
+            
+            }
         }
     }
 

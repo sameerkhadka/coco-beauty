@@ -68,7 +68,7 @@
                         <div class="cart-ser-des">
                             <h5>{{$item['item']['name']}}</h5>
                             <p>{{$item['item']['type'] ?? ''}} </p>
-                            $<input type="number" class="qty-value" wire:model="cart.items.{{$loop->index}}.item.price">
+                            <h6 class="cart-price">$<input type="number" class="qty-value" wire:model="cart.items.{{$loop->index}}.item.price"></h6>
 
                         </div>
 
