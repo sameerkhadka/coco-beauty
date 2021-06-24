@@ -341,6 +341,11 @@
   background: #e6e6ef;
 }
 
+.main-wrap {
+  background: #f9f9fa;
+  height: 100vh;
+}
+
 .mem-desc {
   padding-top: 20px;
   padding-left: 20px;
@@ -372,14 +377,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .mn-card-wrap .mn-card {
   margin: 15px;
-  border: 1px solid #df974b;
-  width: 200px;
-  height: 150px;
+  width: 20%;
+  height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -390,18 +394,23 @@
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
 
 .mn-card-wrap .mn-card a {
   color: #d6be58;
   font-family: 'SF Pro Display Bold';
   text-transform: uppercase;
+  text-align: center;
 }
 
 .mn-card-wrap .mn-card img {
-  width: 80px;
+  width: 100px;
   display: block;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 .search-filter {

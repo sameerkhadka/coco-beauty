@@ -39,50 +39,57 @@
 
             <div class="mn-card">
                 <a href="{{ route('services') }}">
-                    <img src="./images/menu-icons/Services.svg" alt="">
+                    <img src="./images/menu-icons/servicesbg.png" alt="">
                     Services
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('members') }}">
-                    <img src="./images/menu-icons/Members.svg" alt="">
+                    <img src="./images/menu-icons/membersbg.png" alt="">
                     Members
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('appointments') }}">
-                    <img src="./images/menu-icons/Appointment.svg" alt="">
+                    <img src="./images/menu-icons/appointmentbg.png" alt="">
                     Appointment
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('transactions') }}">
-                    <img src="./images/menu-icons/Transaction.svg" alt="">
+                    <img src="./images/menu-icons/transactionbg.png" alt="">
                     Transaction
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('gift-vouchers') }}">
-                    <img src="./images/menu-icons/Gift Voucher.svg" alt="">
+                    <img src="./images/menu-icons/giftvoucher.png" alt="">
                     Gift Voucher
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="promotions">
-                    <img src="./images/menu-icons/Promotion.svg" alt="">
+                    <img src="./images/menu-icons/promotionbg.png" alt="">
                     Promotion
                 </a>
             </div>
 
             <div class="mn-card">
                 <a href="{{ route('birthdays') }}">
-                    <img src="./images/menu-icons/Birthday.svg" alt="">
+                    <img src="./images/menu-icons/birthdaybg.png" alt="">
                     Birthday
+                </a>
+            </div>
+
+            <div class="mn-card">
+                <a href="{{ route('birthdays') }}">
+                    <img src="./images/menu-icons/birthdaybg.png" alt="">
+                    Settings
                 </a>
             </div>
         </div>
