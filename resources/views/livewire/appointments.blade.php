@@ -73,7 +73,7 @@
                     <label>Member</label>
                     <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.member_id">
                         @foreach ($members as $item)
-                            <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}" }}</option>
+                            <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
                         @endforeach
                     </select>
                 </div>

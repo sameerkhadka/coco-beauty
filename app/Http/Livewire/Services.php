@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Item;
 use App\Models\Service;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
 
@@ -46,9 +48,15 @@ class Services extends Component
     }
 
     public function removeItem($id){
-        $this->cart['items'] = collect($this->cart['items'])->filter(function($cartItem) use ($id){
-           return $cartItem['item']['id']!=$id;
-        })->values();
+        try{
+            $id = Crypt::decrypt($id);
+            $this->cart['items'] = collect($this->cart['items'])->filter(function($cartItem) use ($id){
+                return $cartItem['item']['id']!=$id;
+            })->values();
+        }catch(DecryptException $e){
+            $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'error','message'=>'Unexpected Error']);
+        }
+
     }
 
     public function emptyCart(){

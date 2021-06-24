@@ -3,7 +3,6 @@
     <div class="main-content">
 
         <div class="checkout-box">
-
             <div class="transaction-box">
                 <div class="tb-info">
                     <h4 class="transaction-tb-head">Personal Information</h4>
@@ -153,24 +152,17 @@
 
 
                 <div class='cart-amount'>
-
-
-
                     <div class="cart-total">
                         <h4 class="cart-total-price">${{$cart['total']}}</h4>
                     </div>
-
                     <div class="discount">
                         <h6>Senior Discount</h6>
-
                         <h5>${{$seniorDiscount}}</h5>
                     </div>
-
                     <div class="discount">
                         <h6>Manual Discount</h6>
                         <h5>${{$manualDiscount}}</h5>
                     </div>
-
                     <div class="cart-grand-total">
                         <h6>Grand Total</h6>
                         <h4 class="cart-total-price">${{$grandTotal}}</h4>

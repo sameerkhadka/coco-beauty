@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="cart-rem">
-                            <button class="cart-del" wire:click="removeItem({{$item['item']['id']}})"><i class="fas fa-times"></i></button>
+                            <button class="cart-del" wire:click="removeItem('{{Crypt::encrypt($item['item']['id'])}}')"><i class="fas fa-times"></i></button>
                         </div>
 
                     </div>
