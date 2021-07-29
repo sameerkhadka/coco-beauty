@@ -9,46 +9,56 @@
 
                     <div class="choose-mem">
                         <label class="cm-card">
-                            Member
-                            <input type="radio" checked="checked" name="personal-info">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="cm-card">
                             Non Member
-                            <input type="radio"  name="personal-info">
+                            <input type="radio" checked="checked" value="0"  wire:model="isMember">
                             <span class="checkmark"></span>
                         </label>
-
+                        <label class="cm-card">
+                            Member
+                            <input type="radio" value="1" wire:model="isMember">
+                            <span class="checkmark"></span>
+                        </label>
+                        @if($isMember)
+                            <div class="d-inline-block" style="min-width: 396px;">
+                                <select id="searchable" style="width: 100%" wire:model.debounce.500ms="memberID">
+                                    <option value="0" disabled>Select Name</option>
+                                    @foreach ($members as $item)
+                                        <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="cart-entries">
+
                         <div class="row">
+
                             <div class="col-md-6">
                                 <div class="entry">
                                     <label >Full Name</label>
-                                    <input type="text">
+                                    <input type="text" wire:model.defer="userDetails.fullName" {{ $isMember ? 'disabled' : '' }}>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="entry">
                                     <label >Phone</label>
-                                    <input type="number">
+                                    <input type="number" wire:model.defer="userDetails.phone" {{ $isMember ? 'disabled' : '' }}>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="entry">
                                     <label >Email</label>
-                                    <input type="email">
+                                    <input type="email" wire:model.defer="userDetails.email" {{ $isMember ? 'disabled' : '' }}>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="entry">
                                     <label >Address</label>
-                                    <input type="text">
+                                    <input type="text" wire:model.defer="userDetails.address" {{ $isMember ? 'disabled' : '' }}>
                                 </div>
                             </div>
                         </div>
@@ -64,14 +74,19 @@
                             <div class="col-md-8">
                                 <div class="entry">
                                     <label >Promotion</label>
-                                    <input type="number">
+                                    <select id="promotion_searchable" style="width: 100%" wire:model.debounce.500ms="promotionID">
+                                        <option value="0">--None--</option>
+                                        @foreach ($promotions as $item)
+                                            <option value="{{ $item->id }}">CBLP{{ "{$item->id} - {$item->name}, {$item->discount}% Discount" }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="entry">
                                     <label >Discount Amount</label>
-                                    <input type="number">
+                                    <input wire:model.debounce.500ms = "manualDiscount" type="number">
                                 </div>
                             </div>
 
@@ -155,17 +170,21 @@
                     <div class="cart-total">
                         <h4 class="cart-total-price">${{$cart['total']}}</h4>
                     </div>
+                    @if($promotionID)
                     <div class="discount">
-                        <h6>Senior Discount</h6>
-                        <h5>${{$seniorDiscount}}</h5>
+                        <h6>{{$transactions['promotion']['name']}} Discount</h6>
+                        <h5>${{$transactions['promotion']['discount_amount']}}</h5>
                     </div>
+                    @endif
+                    @if($manualDiscount)
                     <div class="discount">
                         <h6>Manual Discount</h6>
-                        <h5>${{$manualDiscount}}</h5>
+                        <h5>${{$transactions['manual_discount']}}</h5>
                     </div>
+                    @endif
                     <div class="cart-grand-total">
                         <h6>Grand Total</h6>
-                        <h4 class="cart-total-price">${{$grandTotal}}</h4>
+                        <h4 class="cart-total-price">${{$transactions['grand_total']}}</h4>
                     </div>
                 </div>
 
@@ -185,9 +204,32 @@
     @endif
 </div>
 
-<script>
-    $("#multiple").select2({
-          placeholder: "Select a programming language",
-          allowClear: true
-      });
-</script>
+@push('scripts')
+    <script>
+        $('#searchable').select2();
+        $('#searchable').change(function(){
+            var data = $('#searchable').select2("val");
+        @this.set('memberID',data);
+        });
+        window.addEventListener('memberSelect', function(e) {
+            $('#searchable').select2();
+            $('#searchable').change(function(){
+                var data = $('#searchable').select2("val");
+                @this.set('memberID',data);
+            });
+        })
+
+        $('#promotion_searchable').select2();
+        $('#promotion_searchable').change(function(){
+            var data = $('#promotion_searchable').select2("val");
+        @this.set('promotionID',data);
+        });
+        window.addEventListener('promotionSelect', function(e) {
+            $('#promotion_searchable').select2();
+            $('#promotion_searchable').change(function(){
+                var data = $('#promotion_searchable').select2("val");
+            @this.set('promotionID',data);
+            });
+        })
+    </script>
+@endpush

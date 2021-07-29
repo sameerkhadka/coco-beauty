@@ -72,6 +72,7 @@
                 <div class="addm-sing">
                     <label>Member</label>
                     <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.member_id">
+                        <option value="0" disabled>Select Member</option>
                         @foreach ($members as $item)
                             <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
                         @endforeach
@@ -127,6 +128,12 @@
 
 @push('scripts')
 <script>
+    $('#searchable').select2();
+    $('#searchable').change(function(){
+        var data = $('#searchable').select2("val");
+    @this.set('modelData.member_id',data);
+    });
+
     window.addEventListener('select2', function(e) {
         $('#searchable').select2();
         $('#searchable').change(function(){

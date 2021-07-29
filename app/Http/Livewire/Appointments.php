@@ -61,7 +61,7 @@ class Appointments extends Component
     public function addData(){
         $this->emptyData();
         $this->menuOpen = true;
-        $this->modelData['member_id'] = $this->members[0]['id'];
+        $this->modelData['member_id'] = "0";
     }
 
     //edit data

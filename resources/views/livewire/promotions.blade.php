@@ -1,139 +1,109 @@
-
-    <div class="main">
-        <div class="main-content">
-            <div class="main-header">
-                <h2>Promotions</h2>
-
-                <div class="mn-right">
-
-                    <a href="" class="del-btn">Delete</a>
-                    <a href="#" class="new-btn" id="aside-btn">Add New</a>
-                </div>
-            </div>
-
-            <div class="search">
-                <input type="text" placeholder="Search" class="searchInput" onkeyup="searchFunction()">
-                <i class="fas fa-search"></i>
-            </div>
-
-            <div class="content">
-                <table class="member " id="member">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Discount(%)</th>
-                            <th class="action">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>CBLP01</td>
-
-                            <td>Birthday Promotion</td>
-
-                            <td>10</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="" class="edit-btn"><i class="far fa-edit"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>CBLP02</td>
-
-                            <td>Seniors Discount</td>
-
-                            <td>10</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="" class="edit-btn"><i class="far fa-edit"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>CBLP03</td>
-
-                            <td>School Kids Discount</td>
-
-                            <td>10</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="" class="edit-btn"><i class="far fa-edit"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>CBLP04  </td>
-
-                            <td>Group Discount (4+ customer)</td>
-
-                            <td>10</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="" class="edit-btn"><i class="far fa-edit"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<div class="main">
+    <div class="main-content {{ $menuOpen ? 'aside-open' : '' }}">
+        <div class="main-header" x-data>
+            <h2>Promotions</h2>
+            <div class="mn-right">
+                @if (!isset($modelData['id']) && !$menuOpen)
+                    <a href="#" id="deleteMultiple" wire:click="{{ !empty($checkedItems) ? 'confirmBox()' : '' }}" class="del-btn">Delete</a>
+                    <a href="#" wire:click="addData()" class="new-btn">Add New</a>
+                @endif
+                @if($menuOpen)
+                    <a href="#" wire:click="cancelEdit()" class="new-btn">Cancel</a>
+                @endif
             </div>
         </div>
 
-        <div class="main-aside">
+        <div class="search">
+            <input type="text" placeholder="Search" class="searchInput" onkeyup="searchFunction()">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="content">
+            <table class="member" id="member">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" wire:model="checkAll">
+                        <span class="checkmark"></span>
+                    </th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Discount (%)</th>
+                    <th class="action">Action</th>
+                </tr>
+                </thead>
 
-            <div class="add-mem">
-                <h4>New Promotion</h4>
-
-                <div class="addm-sing">
-                    <label >Promotion Name</label>
-                    <input type="text">
-                </div>
-
-
-
-
-                <div class="addm-sing">
-                    <label >Discount %</label>
-                    <input type="number">
-                </div>
-
-                <a href="" class="aside-btn">Add Promotion</a>
-            </div>
+                <tbody x-data>
+                @foreach ($items as $item)
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="{{ $item->id }}" wire:model="checkedItems">
+                            <span class="checkmark"></span>
+                        </td>
+                        <td>CBLP{{$item->id}}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->discount }}</td>
+                        <td>
+                            <div class="actn-btn">
+                                <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
+                                <a href="#" wire:click="editData({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
+                                <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
+    <div class="main-aside {{ $menuOpen ? 'open' : '' }}">
+        <div class="add-mem">
+            <h4>{{ isset($modelData['id']) ? 'Update' : 'Add' }} Promotions</h4>
+            <form wire:submit.prevent="submit" autocomplete="off">
+                <div class="addm-sing">
+                    <label>Name</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.name">
+                </div>
+                <div class="addm-sing">
+                    <label>Discount</label>
+                    <input type="number" wire:model.debounce.500ms="modelData.discount">
+                </div>
+                <button wire:loading.attr="disabled" class="aside-btn ">{{ isset($modelData['id']) ? 'Update' : 'Add' }}
+                    Promotions</button>
+            </form>
+        </div>
+    </div>
+    <div wire:loading wire:target = "editData, cancelEdit, submit,addData, confirmBox, updateSorting" class="loading">
+        Loading! Please Wait...
+    </div>
+</div>
+
+<style>
+    .search-filter a.filter-active{
+        background: #b1b1b4;
+        color: #000;
+    }
+    .loading {
+        background: #d6be58;
+        position: absolute;
+        color: #000001;
+        top: 50%;
+        left: 48%;
+        padding: 0px 5px;
+        border: 1px solid #786618;
+        font-size: 12px;
+        border-radius: 4px;
+    }
+
+</style>
+
+@push('scripts')
+    <script>
+        window.addEventListener('select2', function(e) {
+            $('#searchable').select2();
+            $('#searchable').change(function(){
+                var data = $('#searchable').select2("val");
+            @this.set('modelData.service_id',data);
+            });
+        })
+    </script>
+@endpush
