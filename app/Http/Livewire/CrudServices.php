@@ -107,8 +107,8 @@ class CrudServices extends Component
                 // store image to directory and location to modelData.image i.e services/image.jpg
                 $this->serviceHardImage->storeAs('public/services', $imageName);
                 $this->modelData['image'] = "services/{$imageName}";
-                Service::find($this->modelData['id'])->update($this->modelData);
             }
+            Service::find($this->modelData['id'])->update($this->modelData);
             $this->emptyData();
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Service Updated Successfully']);
         }
