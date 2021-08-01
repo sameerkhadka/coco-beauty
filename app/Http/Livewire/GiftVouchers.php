@@ -11,7 +11,7 @@ class GiftVouchers extends Component
     protected $listeners = ['deleteConfirmed'=>'deleteSelected'];
 
     //extra
-    public $members;
+    public $members,$isMember="0";
 
     //commons
     public $items,$checkbox,$menuOpen=false, $submitButton = false, $checkedItems=[], $checkAll=false;
@@ -19,10 +19,17 @@ class GiftVouchers extends Component
     //model data
     public $modelData = [
         'gift_for'=>'',
+        'name'=>'',
         'amount'=>'',
         'issue_date'=>'',
         'expiry_date'=>'',
     ];
+
+    public function updatedIsMember(){
+        $this->modelData['gift_for']="0";
+        $this->modelData['name'] = "";
+    }
+
 
     //deleting
     public function deleteSelected(){
@@ -106,12 +113,14 @@ class GiftVouchers extends Component
         if(isset($this->modelData['id'])){
             if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
             if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
+            if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
             GiftVoucher::find($this->modelData['id'])->update($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Updated Successfully']);
         }
         else{
             if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
             if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
+            if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
             GiftVoucher::create($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Added Successfully']);
         }
@@ -122,8 +131,10 @@ class GiftVouchers extends Component
     private function emptyData(){
         $this->checkAll=false;
         $this->checkedItems = [];
+        $this->isMember = "0";
         $this->modelData = [
             'gift_for'=>'',
+            'name'=>'',
             'amount'=>'',
             'issue_date'=>'',
             'expiry_date'=>'',
@@ -134,12 +145,13 @@ class GiftVouchers extends Component
     public function mount()
     {
         $this->members = Member::all();
-
     }
 
     public function render()
     {
         $this->dispatchBrowserEvent('select2');
+        if($this->modelData['gift_for']) $this->isMember = "1";
+
         $this->items = GiftVoucher::orderBy('created_at','desc')->get();
         return view('livewire.gift-vouchers');
     }

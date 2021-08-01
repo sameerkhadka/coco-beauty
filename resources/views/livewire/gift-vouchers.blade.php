@@ -33,7 +33,6 @@
                     <th class="action">Action</th>
                 </tr>
                 </thead>
-
                 <tbody x-data>
                 @foreach ($items as $item)
                     <tr>
@@ -42,7 +41,7 @@
                             <span class="checkmark"></span>
                         </td>
                         <td>GC{{ $item->id }}</td>
-                        <td>{{ $item->member->first_name }}</td>
+                        <td>{{ $item->gift_for ? $item->member->first_name : $item->name }}</td>
                         <td>{{$item->amount}}</td>
                         <td>{{ $item->issue_date }}</td>
                         <td>{{ $item->expiry_date }}</td>
@@ -65,16 +64,34 @@
         <div class="add-mem">
             <h4>{{ isset($modelData['id']) ? 'Update' : 'Add' }} Gift Vouchers</h4>
             <form wire:submit.prevent="submit" autocomplete="off">
-                <div class="addm-sing">
-                    <label>Gift To</label>
-                    <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.gift_for">
-                        <option value="0" disabled>Select Member</option>
-                        @foreach ($members as $item)
-                            <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
-                        @endforeach
-                    </select>
+                <div class="choose-mem" >
+                        <label class="cm-card">
+                            Non Member
+                            <input type="radio" checked="checked" value="0"  wire:model="isMember">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="cm-card">
+                            Member
+                            <input type="radio" value="1" wire:model="isMember">
+                            <span class="checkmark"></span>
+                        </label>
                 </div>
-
+                @if($isMember)
+                <div class="addm-sing">
+                        <label>Gift To</label>
+                        <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.gift_for">
+                            <option value="0" disabled>Select Member</option>
+                            @foreach ($members as $item)
+                                <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
+                            @endforeach
+                        </select>
+                </div>
+                @else
+                <div class="addm-sing">
+                    <label>Name</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.name">
+                </div>
+                @endif
                 <div class="addm-sing">
                     <label>Amount</label>
                     <input type="text" wire:model.debounce.500ms="modelData.amount">
