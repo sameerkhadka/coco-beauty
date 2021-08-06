@@ -46,8 +46,8 @@
                                 <input type="checkbox" value="{{ $item->id }}" wire:model="checkedItems">
                                 <span class="checkmark"></span>
                             </td>
-                            <td>CBL{{ "{$item->member->id} - {$item->member->first_name} {$item->member->last_name}" }}</td>
-                            <td>{{ $item->member->phone }}</td>
+                            <td>{{ $item->member_id ? "CBL{$item->member->id} - {$item->member->first_name} {$item->member->last_name}" : $item->name }}</td>
+                            <td>{{ $item->member_id ? $item->member->phone :'-' }}</td>
                             <td>{{ $item->date }}</td>
                             <td>{{ $item->time }}</td>
                             <td>{{ $item->technician_name }}</td>
@@ -69,15 +69,34 @@
         <div class="add-mem">
             <h4>{{ isset($modelData['id']) ? 'Update' : 'Add' }} Appointments</h4>
             <form wire:submit.prevent="submit" autocomplete="off">
-                <div class="addm-sing">
-                    <label>Member</label>
-                    <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.member_id">
-                        <option value="0" disabled>Select Member</option>
-                        @foreach ($members as $item)
-                            <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
-                        @endforeach
-                    </select>
+                <div class="choose-mem" >
+                        <label class="cm-card">
+                            Non Member
+                            <input type="radio" checked="checked" value="0"  wire:model="isMember">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="cm-card">
+                            Member
+                            <input type="radio" value="1" wire:model="isMember">
+                            <span class="checkmark"></span>
+                        </label>
                 </div>
+                @if($isMember)
+                <div class="addm-sing">
+                        <label>Member</label>
+                        <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.member_id">
+                            <option value="0" disabled>Select Member</option>
+                            @foreach ($members as $item)
+                                <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
+                            @endforeach
+                        </select>
+                </div>
+                @else
+                <div class="addm-sing">
+                    <label>Name</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.name">
+                </div>
+                @endif
                 {{-- <div class="addm-sing">
                     <label>Phone</label>
                     <input type="text" wire:model.debounce.500ms="modelData.phone">

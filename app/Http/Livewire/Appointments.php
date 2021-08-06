@@ -12,7 +12,7 @@ class Appointments extends Component
     protected $listeners = ['deleteConfirmed'=>'deleteSelected'];
 
     //extra variables
-    public $members, $sortDate;
+    public $members, $sortDate, $isMember="0";
 
     //commons
     public $items,$checkbox,$menuOpen=false, $submitButton = false, $checkedItems=[], $checkAll=false;
@@ -20,11 +20,17 @@ class Appointments extends Component
     //model data
     public $modelData = [
         'member_id'=>'',
+        'name'=>'',
         'phone'=>'',
         'date'=>'',
         'time'=>'',
         'technician_name'=>''
     ];
+
+    public function updatedIsMember(){
+        $this->modelData['member_id']="0";
+        $this->modelData['name'] = "";
+    }
 
     //deleting
     public function deleteSelected(){
@@ -107,12 +113,16 @@ class Appointments extends Component
         if(isset($this->modelData['id'])){
             // if date is empty then set it to null as it will throw error
             if(!$this->modelData['date']) $this->modelData['date'] = null;
+            if(!$this->modelData['member_id']) $this->modelData['member_id'] = null;
+
             $appointment = Appointment::find($this->modelData['id'])->update($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Appointment Updated Successfully']);
         }
         else{
             // if date is empty then set it to null as it will throw error
             if(!$this->modelData['date']) $this->modelData['date'] = null;
+            if(!$this->modelData['member_id']) $this->modelData['member_id'] = null;
+
             Appointment::create($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Appointment Added Successfully']);
         }
@@ -126,6 +136,7 @@ class Appointments extends Component
         $this->checkedItems = [];
         $this->modelData = [
             'member_id'=>'',
+            'name'=>'',
             'phone'=>'',
             'date'=>'',
             'time'=>'',
@@ -176,6 +187,7 @@ class Appointments extends Component
     {
         $this->dispatchBrowserEvent('select2');
         $this->members =  Member::all();
+        if($this->modelData['member_id']) $this->isMember = "1";
 
         // sortDate is an array which stores date and type of sorting (eg: type: tomorrow)
         $sortDate = $this->sortDate;
