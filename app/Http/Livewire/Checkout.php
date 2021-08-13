@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BandiColourGel;
 use App\Models\BirthdayDiscountUsage;
+use App\Models\GiftVoucher;
 use App\Models\Member;
+use App\Models\OpiGelAndNormal;
 use App\Models\Promotion;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -11,13 +14,13 @@ use Livewire\Component;
 class Checkout extends Component
 {
     //resources
-    public $members,$promotions;
+    public $members,$promotions,$giftVouchers, $bandiColourGels,$opiGelAndNormals;
 
     public $cart = ['items' => [],'total'=>0];
 
     public $manualDiscount = "0";
     public $showBirthdayAlert = "0",$isBirthdayDiscount = false,$birthdayDiscountAlreadyUsed = false;
-    public $description="",$paymentMethod="",$promotionID = "0", $memberID="0" , $isMember = "0", $userDetails = ['fullName'=>'','phone'=>'','email'=>'','address'=>''];
+    public $modelBandiColourGel = [],$modelOpiGelAndNormal=[],$description="",$paymentMethod="",$promotionID = "0",$giftVoucherID="0", $memberID="0" , $isMember = "0", $userDetails = ['fullName'=>'','phone'=>'','email'=>'','address'=>''];
 
     public $transactions = [
         "member_id" => "0",
@@ -33,16 +36,24 @@ class Checkout extends Component
             "discount" => "",
             "discount_amount" => "0"
         ],
-        "manual_discount" => "0",
-        "gift_card" => [
+        "gift_voucher_id"=>"0",
+        "gift_voucher" => [
             "voucher_number" => "",
-            "amount" => "",
+            "discount" => "",
+            "discount_amount" => "0"
         ],
+        "manual_discount" => "0",
         "description" => "",
         "birthday_discount_amount" => "0",
         "is_birthday_discount" => "",
-        "payment_method" => ""
+        "payment_method" => "",
+        "bandi_colour_gel" => [],
+        "opiGelAndNormal" => [],
     ];
+
+    public function updatedModelBandiColourGel(){
+        $this->transactions['bandi_colour_gel'] = $this->modelBandiColourGel;
+    }
 
     public function updatedPaymentMethod(){
         $this->transactions['payment_method'] = $this->paymentMethod;
@@ -65,6 +76,28 @@ class Checkout extends Component
         $this->manualDiscount = $this->manualDiscount=="" ? "0" : $this->manualDiscount;
         $this->transactions['manual_discount'] = $this->manualDiscount ? $this->manualDiscount : "0";
         session(['transactions'=>$this->transactions]);
+    }
+    public function updatedGiftVoucherID(){
+        if($this->giftVoucherID){
+            $giftVoucher = GiftVoucher::find($this->giftVoucherID);
+            $this->transactions['gift_voucher_id'] = $this->giftVoucherID;
+            $this->transactions['gift_voucher']['name'] = $giftVoucher['name'];
+            $this->transactions['gift_voucher']['discount'] = $giftVoucher['discount'];
+            $this->transactions['gift_voucher']['discount_amount'] = ($giftVoucher['discount'] / 100) * $this->cart['total'];
+            session(['transactions'=>$this->transactions]);
+
+        }
+        else{
+            // default setting
+            $this->transactions['gift_voucher_id'] = "0";
+            $this->transactions['gift_voucher'] = [
+                "name" => "",
+                "discount" => "",
+                "discount_amount" => "0"
+            ];
+            session(['transactions'=>$this->transactions]);
+
+        }
     }
     public function updatedPromotionID(){
         if($this->promotionID){
@@ -91,9 +124,16 @@ class Checkout extends Component
     public function mount(){
         $this->members = Member::all();
         $this->promotions = Promotion::all();
+        $this->giftVouchers = GiftVoucher::all();
+        $this->bandiColourGels = BandiColourGel::all();
+        $this->opiGelAndNormals = OpiGelAndNormal::all();
         if(session('cart')) $this->cart = session('cart');
         if(session('transactions')){
             $this->transactions = session('transactions');
+            if($this->transactions['gift_voucher']){
+                $this->giftVoucherID = $this->transactions['gift_voucher_id'];
+                $this->updatedGiftVoucherID();
+            }
             if($this->transactions['promotion_id']){
                 $this->promotionID = $this->transactions['promotion_id'];
                 $this->updatedPromotionID();
@@ -167,7 +207,7 @@ class Checkout extends Component
     }
 
     private function calculateGrandTotal(){
-        $this->transactions['grand_total'] = $this->cart['total']-$this->transactions['promotion']['discount_amount']-($this->manualDiscount/100)*$this->cart['total'] - $this->transactions['birthday_discount_amount']  ;
+        $this->transactions['grand_total'] = $this->cart['total']-$this->transactions['gift_voucher']['discount_amount']-$this->transactions['promotion']['discount_amount']-($this->manualDiscount/100)*$this->cart['total'] - $this->transactions['birthday_discount_amount']  ;
     }
 
     private function clearUserDetails(){
@@ -183,6 +223,9 @@ class Checkout extends Component
     public function render()
     {
         $this->dispatchBrowserEvent('memberSelect');
+        $this->dispatchBrowserEvent('opiGelAndNormal');
+        $this->dispatchBrowserEvent('bandiColourGelSelect');
+        $this->dispatchBrowserEvent('giftVoucherSelect');
         $this->dispatchBrowserEvent('promotionSelect');
         $this->calculateGrandTotal();
         return view('livewire.checkout');

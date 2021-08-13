@@ -2,38 +2,25 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\GiftVoucher;
-use App\Models\Member;
+use App\Models\BandiColourGel;
 use Livewire\Component;
 
-class GiftVouchers extends Component
+class CrudBandiColourGel extends Component
 {
-    protected $listeners = ['deleteConfirmed'=>'deleteSelected'];
 
-    //extra
-    public $members,$isMember="0";
+    protected $listeners = ['deleteConfirmed'=>'deleteSelected'];
 
     //commons
     public $items,$checkbox,$menuOpen=false, $submitButton = false, $checkedItems=[], $checkAll=false;
 
     //model data
     public $modelData = [
-        'gift_for'=>'',
         'name'=>'',
-        'discount'=>'',
-        'issue_date'=>'',
-        'expiry_date'=>'',
     ];
-
-    public function updatedIsMember(){
-        $this->modelData['gift_for']="0";
-        $this->modelData['name'] = "";
-    }
-
 
     //deleting
     public function deleteSelected(){
-        GiftVoucher::destroy($this->checkedItems);
+        BandiColourGel::destroy($this->checkedItems);
 
         // if appointmentID has been
         if(isset($this->modelData['id'])){
@@ -66,14 +53,12 @@ class GiftVouchers extends Component
     public function addData(){
         $this->emptyData();
         $this->menuOpen = true;
-        $this->modelData['gift_for'] = "0";
-
     }
 
     //edit data
     public function editData($id){
         $this->emptyData();
-        $appointment = GiftVoucher::find($id)->toArray();
+        $appointment = BandiColourGel::find($id)->toArray();
         $this->modelData = $appointment;
         $this->menuOpen = true;
     }
@@ -111,18 +96,12 @@ class GiftVouchers extends Component
 
     public function submit(){
         if(isset($this->modelData['id'])){
-            if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
-            if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
-            if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
-            GiftVoucher::find($this->modelData['id'])->update($this->modelData);
-            $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Updated Successfully']);
+            BandiColourGel::find($this->modelData['id'])->update($this->modelData);
+            $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Item Updated Successfully']);
         }
         else{
-            if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
-            if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
-            if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
-            GiftVoucher::create($this->modelData);
-            $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Added Successfully']);
+            BandiColourGel::create($this->modelData);
+            $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Item Added Successfully']);
         }
         $this->emptyData();
         $this->menuOpen = false;
@@ -131,28 +110,19 @@ class GiftVouchers extends Component
     private function emptyData(){
         $this->checkAll=false;
         $this->checkedItems = [];
-        $this->isMember = "0";
         $this->modelData = [
-            'gift_for'=>'',
             'name'=>'',
-            'discount'=>'',
-            'issue_date'=>'',
-            'expiry_date'=>'',
         ];
 
     }
 
     public function mount()
     {
-        $this->members = Member::all();
-    }
 
+    }
     public function render()
     {
-        $this->dispatchBrowserEvent('select2');
-        if($this->modelData['gift_for']) $this->isMember = "1";
-
-        $this->items = GiftVoucher::orderBy('created_at','desc')->get();
-        return view('livewire.gift-vouchers');
+        $this->items = BandiColourGel::orderBy('id','desc')->get();
+        return view('livewire.crud-bandi-colour-gel');
     }
 }

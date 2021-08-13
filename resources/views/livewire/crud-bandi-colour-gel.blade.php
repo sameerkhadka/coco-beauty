@@ -1,7 +1,7 @@
 <div class="main">
     <div class="main-content {{ $menuOpen ? 'aside-open' : '' }}">
         <div class="main-header" x-data>
-            <h2>Gift Vouchers</h2>
+            <h2>Bandi Colour Gel</h2>
             <div class="mn-right">
                 @if (!isset($modelData['id']) && !$menuOpen)
                     <a href="#" id="deleteMultiple" wire:click="{{ !empty($checkedItems) ? 'confirmBox()' : '' }}" class="del-btn">Delete</a>
@@ -24,15 +24,11 @@
                     <th><input type="checkbox" wire:model="checkAll">
                         <span class="checkmark"></span>
                     </th>
-                    <th>V Num</th>
-                    <th>Gift For</th>
-                    <th>Discount</th>
-                    <th>Issue Date</th>
-                    <th>Expiry Date</th>
-                    <th>Used Date</th>
+                    <th>Name</th>
                     <th class="action">Action</th>
                 </tr>
                 </thead>
+
                 <tbody x-data>
                 @foreach ($items as $item)
                     <tr>
@@ -40,12 +36,7 @@
                             <input type="checkbox" value="{{ $item->id }}" wire:model="checkedItems">
                             <span class="checkmark"></span>
                         </td>
-                        <td>GC{{ $item->id }}</td>
-                        <td>{{ $item->gift_for ? $item->member->first_name : $item->name }}</td>
-                        <td>{{$item->discount}}</td>
-                        <td>{{ $item->issue_date }}</td>
-                        <td>{{ $item->expiry_date }}</td>
-                        <td>{{ $item->used_date ?? 'Not Used' }}</td>
+                        <td>{{ $item->name }}</td>
                         <td>
                             <div class="actn-btn">
                                 <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
@@ -62,50 +53,15 @@
 
     <div class="main-aside {{ $menuOpen ? 'open' : '' }}">
         <div class="add-mem">
-            <h4>{{ isset($modelData['id']) ? 'Update' : 'Add' }} Gift Vouchers</h4>
+            <h4>{{ isset($modelData['id']) ? 'Update' : 'Add' }} Items</h4>
             <form wire:submit.prevent="submit" autocomplete="off">
-                <div class="choose-mem" >
-                        <label class="cm-card">
-                            Non Member
-                            <input type="radio" checked="checked" value="0"  wire:model="isMember">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="cm-card">
-                            Member
-                            <input type="radio" value="1" wire:model="isMember">
-                            <span class="checkmark"></span>
-                        </label>
-                </div>
-                @if($isMember)
-                <div class="addm-sing">
-                        <label>Gift To</label>
-                        <select id="searchable" style="width: 100%" wire:model.debounce.500ms="modelData.gift_for">
-                            <option value="0" disabled>Select Member</option>
-                            @foreach ($members as $item)
-                                <option value="{{ $item->id }}">CBL{{ "{$item->id} - {$item->first_name} {$item->last_name}, {$item->phone}" }}</option>
-                            @endforeach
-                        </select>
-                </div>
-                @else
+
                 <div class="addm-sing">
                     <label>Name</label>
                     <input type="text" wire:model.debounce.500ms="modelData.name">
                 </div>
-                @endif
-                <div class="addm-sing">
-                    <label>Discount (%)</label>
-                    <input type="text" wire:model.debounce.500ms="modelData.discount">
-                </div>
-                <div class="addm-sing">
-                    <label>Issued Date</label>
-                    <input type="date" wire:model.debounce.500ms="modelData.issue_date">
-                </div>
-                <div class="addm-sing">
-                    <label>Expiry Date</label>
-                    <input type="date" wire:model.debounce.500ms="modelData.expiry_date">
-                </div>
                 <button wire:loading.attr="disabled" class="aside-btn ">{{ isset($modelData['id']) ? 'Update' : 'Add' }}
-                    Gift Vouchers</button>
+                    Items</button>
             </form>
         </div>
     </div>
@@ -135,12 +91,12 @@
 
 @push('scripts')
     <script>
-        window.addEventListener('select2', function(e) {
+       /** window.addEventListener('select2', function(e) {
             $('#searchable').select2();
             $('#searchable').change(function(){
                 var data = $('#searchable').select2("val");
-            @this.set('modelData.gift_for',data);
+                @this.set('modelData.service_id',data);
             });
-        })
+        }) */
     </script>
 @endpush

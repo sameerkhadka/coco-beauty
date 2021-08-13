@@ -1,7 +1,7 @@
 <div class="main">
             <div class="main-content">
                 <div class="mem-detail">
-                        
+
 
                         <!-- <h3 ><span class="first-name">Yogesh </span> <span class="last-name">Karki</span></h3>
                         <h6>+61 416 422 507</h6>
@@ -14,8 +14,8 @@
                             <div class="profile-image">AB</div>
 
                             <div class="mem-desc">
-                                <h3 ><span class="first-name">Yogesh </span> <span class="last-name">Karki</span></h3>
-                                <p>9860895638</p>
+                                <h3 ><span class="first-name">{{ $member->first_name }} </span> <span class="last-name">{{ $member->last_name }}</span></h3>
+                                <p>{{ $member->phone }}</p>
                                 <div class="reward-point">
                                 <i class="fas fa-star"></i> Reward Point <span>105</span>
                                 </div>
@@ -25,36 +25,36 @@
                         <div class="mem-det-bottom">
                            <div class="mdb-wrap">
                                <p>Member I.D</p>
-                               <p>CBL100</p>
+                               <p>CBL{{ $member->id }}</p>
                            </div>
 
                            <div class="mdb-wrap">
                                <p>DOB</p>
-                               <p>1992-06-17</p>
+                               <p>{{ $member->dob ?? '-' }}</p>
                            </div>
 
                            <div class="mdb-wrap">
                                <p>Address</p>
-                               <p>Surfers Paradise BLVD</p>
+                               <p>{{ $member->address ?? '-' }}</p>
                            </div>
 
                            <div class="mdb-wrap">
                                <p>Email</p>
-                               <p>yogesh@hueshine.com</p>
+                               <p>{{ $member->email ?? '-' }}</p>
                            </div>
                         </div>
-                  
+
                 </div>
 
                 <div class="main-header">
                     <h2>Transaction</h2>
                 </div>
-    
+
                 <div class="search">
                     <input type="text" placeholder="Search" class="searchInput" onkeyup="searchFunction()">
                     <i class="fas fa-search"></i>
                 </div>
-    
+
                 <div class="content">
                     <table class="member " id="member">
                         <thead>
@@ -66,7 +66,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-    
+
                         <tbody>
                             <tr>
                                 <td>
@@ -82,7 +82,7 @@
 
                                 <td>
                                     <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>                                    
+                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
                                     </div>
                                 </td>
 
@@ -102,7 +102,7 @@
 
                                 <td>
                                     <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>                                    
+                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
                                     </div>
                                 </td>
 
@@ -122,7 +122,7 @@
 
                                 <td>
                                     <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>                                    
+                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
                                     </div>
                                 </td>
 
@@ -142,7 +142,7 @@
 
                                 <td>
                                     <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>                                    
+                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
                                     </div>
                                 </td>
 
