@@ -33,13 +33,16 @@
                         </div>
 
                         <div class="cart-entries">
-
+                            @foreach($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">
+                                    {{$error}}
+                                </div>
+                            @endforeach
                             <div class="row">
-
                                 <div class="col-md-6">
                                     <div class="entry">
                                         <label>Full Name</label>
-                                        <input type="text" wire:model.defer="userDetails.fullName"
+                                        <input type="text" wire:model.defer="userDetails_fullName"
                                             {{ $isMember ? 'disabled' : '' }}>
                                     </div>
                                 </div>
@@ -47,7 +50,7 @@
                                 <div class="col-md-6">
                                     <div class="entry">
                                         <label>Phone</label>
-                                        <input type="number" wire:model.defer="userDetails.phone"
+                                        <input type="number" wire:model.defer="userDetails_phone"
                                             {{ $isMember ? 'disabled' : '' }}>
                                     </div>
                                 </div>
@@ -55,7 +58,7 @@
                                 <div class="col-md-6">
                                     <div class="entry">
                                         <label>Email</label>
-                                        <input type="email" wire:model.defer="userDetails.email"
+                                        <input type="email" wire:model.defer="userDetails_email"
                                             {{ $isMember ? 'disabled' : '' }}>
                                     </div>
                                 </div>
@@ -63,7 +66,7 @@
                                 <div class="col-md-6">
                                     <div class="entry">
                                         <label>Address</label>
-                                        <input type="text" wire:model.defer="userDetails.address"
+                                        <input type="text" wire:model.defer="userDetails_address"
                                             {{ $isMember ? 'disabled' : '' }}>
                                     </div>
                                 </div>
@@ -164,7 +167,7 @@
                                     <div class="entry">
                                         <label>OPI Gel And Normal</label>
                                         <select id="opi_gel_and_normal" multiple style="width: 100%"
-                                          {{-- wire:model.debounce.500ms="giftVoucherID"--}} >
+                                          wire:model.debounce.500ms="modelOpiGelAndNormal">
                                             @foreach ($opiGelAndNormals as $item)
                                                 <option value="{{ $item->id }}">
                                                     {{ $item->name }}
@@ -260,7 +263,7 @@
                     </div>
 
                     <div class="checkout">
-                        <a href="#" class="aside-btn">Proceed Transaction</a>
+                        <button href="#" class="aside-btn" wire:click="proceedTransaction">Proceed Transaction</button>
                     </div>
 
 
@@ -296,10 +299,15 @@
 
         /** opi gel and normal */
         $('#opi_gel_and_normal').select2();
+        $('#opi_gel_and_normal').change(function() {
+            var data = $('#opi_gel_and_normal').select2("val");
+            @this.set('modelOpiGelAndNormal', data);
+        });
         window.addEventListener('opiGelAndNormal', function(e) {
             $('#opi_gel_and_normal').select2();
             $('#opi_gel_and_normal').change(function() {
                 var data = $('#opi_gel_and_normal').select2("val");
+                @this.set('modelOpiGelAndNormal', data);
             });
         })
         /** searchable */

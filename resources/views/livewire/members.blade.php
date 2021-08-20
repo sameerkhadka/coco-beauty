@@ -28,7 +28,6 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Phone</th>
-                        <th>CheckBox Trial</th>
                         <th class="action">Action</th>
                     </tr>
                 </thead>
@@ -43,12 +42,6 @@
                             <td>CBL{{ $item->id }}</td>
                             <td>{{ $item->first_name . ' ' . $item->last_name }}</td>
                             <td>{{ $item->phone }}</td>
-                            <td>
-                                <label class="switch">
-                                    <input type="checkbox" wire:model="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
                             <td>
                                 <div class="actn-btn">
                                     <a href="{{ route('member-detail',"id={$item->id}") }}" class="view-btn"><i class="far fa-eye"></i></a>

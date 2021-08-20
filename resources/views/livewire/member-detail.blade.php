@@ -68,85 +68,27 @@
                         </thead>
 
                         <tbody>
+                            @foreach($transactions as $transaction)
                             <tr>
                                 <td>
                                     <input type="checkbox" >
                                     <span class="checkmark"></span>
                                 </td>
 
-                                <td>TXN20200602</td>
+                                <td>TXN{{$transaction->id}}</td>
 
-                                <td>2021-06-02</td>
+                                <td>{{$transaction->created_at}}</td>
 
-                                <td>40</td>
+                                <td>{{json_decode($transaction->cart)->grand_total}}</td>
 
                                 <td>
                                     <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
+                                        <a href="{{route('transaction-detail',"id={$transaction->id}")}}" class="view-btn"><i class="far fa-eye"></i></a>
                                     </div>
                                 </td>
 
                             </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="checkbox" >
-                                    <span class="checkmark"></span>
-                                </td>
-
-                                <td>TXN20200602</td>
-
-                                <td>2021-06-02</td>
-
-                                <td>40</td>
-
-                                <td>
-                                    <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
-                                    </div>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="checkbox" >
-                                    <span class="checkmark"></span>
-                                </td>
-
-                                <td>TXN20200602</td>
-
-                                <td>2021-06-02</td>
-
-                                <td>40</td>
-
-                                <td>
-                                    <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
-                                    </div>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <input type="checkbox" >
-                                    <span class="checkmark"></span>
-                                </td>
-
-                                <td>TXN20200602</td>
-
-                                <td>2021-06-02</td>
-
-                                <td>40</td>
-
-                                <td>
-                                    <div class="actn-btn">
-                                        <a href="" class="view-btn"><i class="far fa-eye"></i></a>
-                                    </div>
-                                </td>
-
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
