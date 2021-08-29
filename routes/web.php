@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
-$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail' , 'settings'];
+//livewire normal routes
+$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail'];
 
 foreach($routes as $route){
     Route::get($route,function() use ($route){
@@ -27,28 +28,22 @@ foreach($routes as $route){
     })->name($route);
 }
 
-Route::get('admin/services',function(){
+//admin routes
+Route::get("admin/settings",function() use ($route){
     return view('pages.main',[
-        'type'=>'crud-services'
+        'type' => "settings"
     ]);
-})->name('crud.services');
+})->name("settings");
 
-Route::get('admin/items',function(){
-    return view('pages.main',[
-        'type'=>'crud-items'
-    ]);
-})->name('crud.items');
+$routes = ['services','items','bandi-colour-gel','opi-gel-and-normal'];
 
-Route::get('admin/bandi-colour-gel',function(){
-    return view('pages.main',[
-        'type'=>'crud-bandi-colour-gel'
-    ]);
-})->name('crud.bandi-colour-gel');
+foreach($routes as $route){
+    Route::get("admin/{$route}",function() use ($route){
+        return view('pages.main',[
+            'type' => "crud-{$route}"
+        ]);
+    })->name("crud.{$route}");
+}
 
-Route::get('admin/opi-gel-and-normal',function(){
-    return view('pages.main',[
-        'type'=>'crud-opi-gel-and-normal'
-    ]);
-})->name('crud.opi-gel-and-normal');
 
 

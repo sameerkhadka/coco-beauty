@@ -54,7 +54,7 @@
                             <img src="{{ asset('images/menu-icons/Services.svg') }}" alt="">
                         </a>
                     </li>
-                    
+
                     <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                         <a href="{{ route('crud.items') }}" title="Services Item" class="tooltips">
                             <img src="{{ asset('images/menu-icons/simplified/Services.svg') }}" alt="">
@@ -66,13 +66,13 @@
                             <img src="{{ asset('images/menu-icons/simplified/color-gel.svg') }}" alt="">
                         </a>
                     </li>
-                    
+
                     <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                         <a href="{{ route('crud.opi-gel-and-normal') }}" title="Opi Gel And Normal" class="tooltips">
                             <img src="{{ asset('images/menu-icons/simplified/opi-gel-normal.svg') }}" alt="">
                         </a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
