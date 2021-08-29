@@ -58,6 +58,9 @@
         <div x-bind:class="open ? 'open' : ''" class="main-aside">
             <div class="cart-head">
                 <h4>Cart</h4>
+                @if($memberName)
+                <p>[selected member: {{$memberName}}]</p>
+                @endif
                 <button wire:click="emptyCart">Clear</button>
             </div>
             @if(count($cart['items'])>0)
@@ -69,7 +72,6 @@
                             <h5>{{$item['item']['name']}}</h5>
                             <p>{{$item['item']['type'] ?? ''}} </p>
                             <h6 class="cart-price">$<input type="number" class="qty-value" wire:model="cart.items.{{$loop->index}}.item.price"></h6>
-
                         </div>
 
                         <div class="cart-qty">

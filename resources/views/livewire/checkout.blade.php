@@ -20,7 +20,7 @@
                             </label>
                             @if ($isMember)
                                 <div class="d-inline-block" style="min-width: 396px;">
-                                    <select id="searchable" style="width: 100%" wire:model.debounce.500ms="memberID">
+                                    <select id="member_searchable" style="width: 100%" wire:model.debounce.500ms="memberID">
                                         <option value="0" disabled>Select Name</option>
                                         @foreach ($members as $item)
                                             <option value="{{ $item->id }}">
@@ -280,6 +280,11 @@
 
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                @this.rerender()
+            }, 0.1);
+        });
         /** bandi colour gel */
         $('#bandi_colour_gel').select2();
         $('#bandi_colour_gel').change(function() {
@@ -312,22 +317,21 @@
         })
         /** searchable */
 
-        $('#searchable').select2();
+        $('#member_searchable').select2();
 
-        @if ($this->memberID)
-            $('#searchable').select2().select2('val','{{ $this->memberID }}')
+        @if ($memberID)
+            $('#member_searchable').select2().select2('val','10')
         @endif
 
-        $('#searchable').change(function() {
-            var data = $('#searchable').select2("val");
-            @this.set('memberID', data);
+        $('#member_searchable').change(function() {
+            var memberDataID = $('#member_searchable').select2("val");
+            @this.set('memberID', memberDataID)
         });
         window.addEventListener('memberSelect', function(e) {
-            $('#searchable').select2();
-
-            $('#searchable').change(function() {
-                var data = $('#searchable').select2("val");
-                @this.set('memberID', data);
+            $('#member_searchable').select2();
+            $('#member_searchable').change(function() {
+                var memberDataID = $('#member_searchable').select2("val");
+                @this.set('memberID', memberDataID)
             });
         })
 
@@ -340,13 +344,13 @@
 
         $('#promotion_searchable').change(function() {
             var data = $('#promotion_searchable').select2("val");
-            @this.set('promotionID', data);
+            @this.set('promotionID', data)
         });
         window.addEventListener('promotionSelect', function(e) {
             $('#promotion_searchable').select2();
             $('#promotion_searchable').change(function() {
                 var data = $('#promotion_searchable').select2("val");
-                @this.set('promotionID', data);
+                @this.set('promotionID', data)
             });
         })
 
@@ -359,13 +363,13 @@
 
         $('#gift_voucher_searchable').change(function() {
             var data = $('#gift_voucher_searchable').select2("val");
-            @this.set('giftVoucherID', data);
+            @this.set('giftVoucherID', data)
         });
         window.addEventListener('giftVoucherSelect', function(e) {
             $('#gift_voucher_searchable').select2();
             $('#gift_voucher_searchable').change(function() {
                 var data = $('#gift_voucher_searchable').select2("val");
-                @this.set('giftVoucherID', data);
+                @this.set('giftVoucherID', data)
             });
         })
     </script>

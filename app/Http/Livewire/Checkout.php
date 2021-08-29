@@ -58,7 +58,9 @@ class Checkout extends Component
     ];
 
 
+    public function rerender(){
 
+    }
     public function updatedModelBandiColourGel(){
         $this->transactions['bandi_colour_gel'] = $this->modelBandiColourGel;
     }
@@ -89,7 +91,33 @@ class Checkout extends Component
         $this->transactions['manual_discount'] = $this->manualDiscount ? $this->manualDiscount : "0";
         session(['transactions'=>$this->transactions]);
     }
-
+    public function updatedMemberID(){
+        $this->clearUserDetails();
+        $member =  Member::find($this->memberID);
+        $this->userDetails_fullName = $member->first_name.' '.$member->last_name;
+        $this->userDetails_phone = $member->phone;
+        $this->userDetails_email = $member->email;
+        $this->userDetails_address = $member->address;
+        $this->updateTransactionObject();
+        if($member->dob){
+            $thisYear = Carbon::now()->year;
+            if(BirthdayDiscountUsage::where('member_id',$this->memberID)->whereYear('used_date',$thisYear)->first()){
+                $this->showBirthdayAlert = "0";
+                $this->birthdayDiscountAlreadyUsed = true;
+            }
+            else{
+                if(Carbon::create($member->dob)->month==Carbon::now()->month){
+                    $this->showBirthdayAlert = "1";
+                }
+                else{
+                    $this->showBirthdayAlert = "0";
+                }
+            }
+        }
+        else{
+            $this->showBirthdayAlert = "0";
+        }
+    }
     public function updatedGiftVoucherID(){
         if($this->giftVoucherID){
             $giftVoucher = GiftVoucher::find($this->giftVoucherID);
@@ -145,6 +173,11 @@ class Checkout extends Component
         if(session('cart')) $this->cart = session('cart');
         if(session('transactions')){
             $this->transactions = session('transactions');
+            if($this->transactions['member_id']){
+                $this->isMember = "1";
+                $this->memberID = $this->transactions['member_id'];
+                $this->updatedMemberID();
+            }
             if($this->transactions['gift_voucher']){
                 $this->giftVoucherID = $this->transactions['gift_voucher_id'];
                 $this->updatedGiftVoucherID();
@@ -158,11 +191,6 @@ class Checkout extends Component
                 $this->updatedManualDiscount();
             }
 
-            if($this->transactions['member_id']){
-                $this->isMember = "1";
-                $this->memberID = $this->transactions['member_id'];
-                $this->updatedMemberID();
-            }
             if($this->transactions['description']){
                 $this->description = $this->transactions['description'];
             }
@@ -187,34 +215,7 @@ class Checkout extends Component
         $this->updateTransactionObject();
     }
 
-    public function updatedMemberID(){
-        $this->clearUserDetails();
-        $member =  Member::find($this->memberID);
-        $this->userDetails_fullName = $member->first_name.' '.$member->last_name;
-        $this->userDetails_phone = $member->phone;
-        $this->userDetails_email = $member->email;
-        $this->userDetails_address = $member->address;
-        $this->updateTransactionObject();
-        if($member->dob){
-            $thisYear = Carbon::now()->year;
-            if(BirthdayDiscountUsage::where('member_id',$this->memberID)->whereYear('used_date',$thisYear)->first()){
-                $this->showBirthdayAlert = "0";
-                $this->birthdayDiscountAlreadyUsed = true;
-            }
-            else{
-                if(Carbon::create($member->dob)->month==Carbon::now()->month){
-                    $this->showBirthdayAlert = "1";
-                }
-                else{
-                    $this->showBirthdayAlert = "0";
-                }
-            }
-        }
-        else{
-            $this->showBirthdayAlert = "0";
-        }
 
-    }
 
     private function updateTransactionObject(){
         $this->transactions['member_id'] = $this->memberID;

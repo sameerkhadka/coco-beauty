@@ -44,7 +44,7 @@
                             <td>{{ $item->phone }}</td>
                             <td>
                                 <div class="actn-btn">
-                                    <a href="" class="servie-btn"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="{{ route('services',"key=".encrypt($item->id)) }}" class="servie-btn"><i class="fas fa-external-link-alt"></i></a>
                                     <a href="{{ route('member-detail',"id={$item->id}") }}" class="view-btn"><i class="far fa-eye"></i></a>
                                     <a href="#" wire:click="editMember({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
                                     <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
