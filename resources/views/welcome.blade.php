@@ -89,7 +89,7 @@
             </div>
 
             <div class="mn-card">
-                <a href="{{ route('birthdays') }}">
+                <a href="{{ route('settings') }}">
                     <img src="./images/menu-icons/settingbg.png" alt="">
                     Settings
                 </a>

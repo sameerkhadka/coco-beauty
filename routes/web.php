@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
-$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail'];
+$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail' , 'settings'];
 
 foreach($routes as $route){
     Route::get($route,function() use ($route){
