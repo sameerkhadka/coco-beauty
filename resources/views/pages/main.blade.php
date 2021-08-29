@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends( Request::segment(1)=='admin' ? 'layout.admin' : 'layout.app')
 
 @section('css')
     @livewireStyles
