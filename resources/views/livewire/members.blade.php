@@ -28,7 +28,6 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Phone</th>
-                        <th>CheckBox Trial</th>
                         <th class="action">Action</th>
                     </tr>
                 </thead>
@@ -44,14 +43,8 @@
                             <td>{{ $item->first_name . ' ' . $item->last_name }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>
-                                <label class="switch">
-                                    <input type="checkbox" wire:model="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                            <td>
                                 <div class="actn-btn">
-                                    <a href="{{ route('member-detail') }}" class="view-btn"><i class="far fa-eye"></i></a>
+                                    <a href="{{ route('member-detail',"id={$item->id}") }}" class="view-btn"><i class="far fa-eye"></i></a>
                                     <a href="#" wire:click="editMember({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
                                     <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
                                 </div>

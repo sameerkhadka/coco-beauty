@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
-$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail'];
+$routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail'];
 
 foreach($routes as $route){
     Route::get($route,function() use ($route){
@@ -38,5 +38,17 @@ Route::get('admin/items',function(){
         'type'=>'crud-items'
     ]);
 })->name('crud.items');
+
+Route::get('admin/bandi-colour-gel',function(){
+    return view('pages.main',[
+        'type'=>'crud-bandi-colour-gel'
+    ]);
+})->name('crud.bandi-colour-gel');
+
+Route::get('admin/opi-gel-and-normal',function(){
+    return view('pages.main',[
+        'type'=>'crud-opi-gel-and-normal'
+    ]);
+})->name('crud.opi-gel-and-normal');
 
 

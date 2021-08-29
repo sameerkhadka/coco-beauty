@@ -4,12 +4,6 @@
         <div class="main-content">
             <div class="main-header">
                 <h2>Birthday</h2>
-
-                <div class="mn-right">
-
-                    <a href="" class="del-btn">Delete</a>
-                    <a href="#" class="new-btn" id="aside-btn">Add New</a>
-                </div>
             </div>
 
             <div class="search">
@@ -17,8 +11,10 @@
                 <i class="fas fa-search"></i>
             </div>
 
-            <div class="search-filter">
-                <a href="">This Month</a> <a href="">Last Month</a>
+            <div class="search-filter" x-data>
+                <a class="{{ $sortDate['type']=='thisMonth' ? 'filter-active' : '' }}" href="#"  wire:click="updateSorting('thisMonth')">This Month</a>
+                <a class="{{ $sortDate['type']=='lastMonth' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('lastMonth')">Last Month</a>
+                <a class="{{ $sortDate['type']=='nextMonth' ? 'filter-active' : '' }}" href="#" wire:click="updateSorting('nextMonth')">Next Month</a>
             </div>
 
             <div class="content">
@@ -35,23 +31,24 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
+                        @foreach($members as $item)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" >
+                                    <span class="checkmark"></span>
+                                </td>
 
-                            <td>John Will Smith</td>
-                            <td>+97 89563241</td>
-                            <td>2000-08-20</td>
-                            <td>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-
+                                <td>{{$item->first_name.' '.$item->last_name}}</td>
+                                <td>{{$item->phone}}</td>
+                                <td>{{$item->dob}}</td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" {{$item->used ? 'checked' : ''}} disabled>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
@@ -91,3 +88,20 @@
             </div>
         </div>
 </div>
+<style>
+    .search-filter a.filter-active{
+        background: #b1b1b4;
+        color: #000;
+    }
+    .loading {
+        background: #d6be58;
+        position: absolute;
+        color: #000001;
+        top: 50%;
+        left: 48%;
+        padding: 0px 5px;
+        border: 1px solid #786618;
+        font-size: 12px;
+        border-radius: 4px;
+    }
+</style>

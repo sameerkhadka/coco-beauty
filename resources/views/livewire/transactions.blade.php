@@ -13,10 +13,10 @@
             </div>
 
             <div class="search-filter">
-                <a href="">Today</a>
-                <a href="">Tomorrow</a>
-                <a href="">Next Week</a>
-                <a href="">All</a>
+                <a class="{{ $sortDate['type']=='today' ? 'filter-active' : '' }}" href="#"  wire:click="updateSorting('today')">Today</a>
+                <a class="{{ $sortDate['type']=='tomorrow' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('tomorrow')">Tomorrow</a>
+                <a class="{{ $sortDate['type']=='nextWeek' ? 'filter-active' : '' }}" href="#" wire:click="updateSorting('nextWeek')">Next Week</a>
+                <a class="{{ $sortDate['type']=='all' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('all')">All</a>
             </div>
 
             <div class="content">
@@ -33,100 +33,51 @@
                     </thead>
 
                     <tbody>
+                        @foreach($transactions as $transaction)
                         <tr>
                             <td>
                                 <input type="checkbox" >
                                 <span class="checkmark"></span>
                             </td>
 
-                            <td>TXN20200602</td>
+                            <td>TXN{{$transaction->id}}</td>
 
-                            <td>John Will Smith</td>
+                            <td>{{$transaction->full_name}}</td>
 
-                            <td>2021-06-02</td>
+                            <td>{{$transaction->created_at}}</td>
 
-                            <td>40</td>
+                            <td>{{json_decode($transaction->cart)->grand_total}}</td>
 
                             <td>
                                 <div class="actn-btn">
-                                    <a href="transaction-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
+                                    <a href="{{route('transaction-detail',"id={$transaction->id}")}}" class="view-btn"><i class="far fa-eye"></i></a>
+                                    {{--<button class="delete-single"><i class="far fa-trash-alt"></i></button>--}}
                                 </div>
                             </td>
 
                         </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>TXN20200602</td>
-
-                            <td>Francisco Chang</td>
-
-                            <td>2021-06-02</td>
-
-                            <td>40</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="transaction-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>TXN20200602</td>
-
-                            <td>Roland Mendel</td>
-
-                            <td>2021-06-02</td>
-
-                            <td>40</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="transaction-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" >
-                                <span class="checkmark"></span>
-                            </td>
-
-                            <td>TXN20200602</td>
-
-                            <td>Giovanni Rovelli</td>
-
-                            <td>2021-06-02</td>
-
-                            <td>40</td>
-
-                            <td>
-                                <div class="actn-btn">
-                                    <a href="transaction-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
-                                    <button class="delete-single"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
+    <style>
+        .search-filter a.filter-active{
+            background: #b1b1b4;
+            color: #000;
+        }
+        .loading {
+            background: #d6be58;
+            position: absolute;
+            color: #000001;
+            top: 50%;
+            left: 48%;
+            padding: 0px 5px;
+            border: 1px solid #786618;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+    </style>
