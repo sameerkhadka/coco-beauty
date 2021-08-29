@@ -2,7 +2,7 @@
     <div class="main-content">
         <div class="main-header" x-data>
             <h2>General Settings</h2>
-            
+
         </div>
 
         <!-- <div class="search">
@@ -12,7 +12,7 @@
         <div class="content">
             <div class="setting-card">
                 <h5>Site Logo</h5>
-                <img src="./images/logo.png" alt="">
+                <img src="{{ asset('images/logo.png') }}" alt="">
             </div>
         </div>
     </div>
