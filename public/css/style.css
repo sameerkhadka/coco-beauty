@@ -537,6 +537,8 @@
   display: block;
   border-radius: 15px;
   margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .ser-tab ul.nav.nav-tabs li {
