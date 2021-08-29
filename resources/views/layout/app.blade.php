@@ -36,6 +36,7 @@
 <body>
 
     <section class="wrapper">
+        
         <div class="sidenav">
             <div class="logo">
                 <a href="{{ route('index')}} "><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>
