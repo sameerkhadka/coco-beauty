@@ -173,7 +173,7 @@
 }
 
 .main-content .content table th.action {
-  width: 135px;
+  width: 175px;
   text-align: center;
 }
 
@@ -1110,5 +1110,9 @@
   font-size: 17px;
   font-family: 'SF Pro Display';
   margin-bottom: 0;
+}
+
+.servie-btn {
+  background: #307ec1;
 }
 /*# sourceMappingURL=style.css.map */
