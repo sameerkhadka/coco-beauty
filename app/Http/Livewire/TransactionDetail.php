@@ -18,6 +18,9 @@ class TransactionDetail extends Component
     }
     public function render()
     {
-        return view('livewire.transaction-detail');
+        $opiGelAndNormal = json_decode($this->transaction->opi_gel_and_normal,true);
+        $bandiColourGel = json_decode($this->transaction->bandi_colour_gel,true);
+        $cart = json_decode($this->transaction->cart);
+        return view('livewire.transaction-detail',compact('opiGelAndNormal','bandiColourGel','cart'));
     }
 }
