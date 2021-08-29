@@ -38,46 +38,41 @@
     <section class="wrapper">
         <div class="sidenav">
             <div class="logo">
-                <a href=""><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>
+                <a href="{{ route('index')}}"><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>
             </div>
 
             <div class="navigation">
                 <ul>
                     <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
-                        <a href="{{ route('services') }}" title="Services" class="tooltips">
+                        <a href="{{ route('settings') }}" title="Admin" class="tooltips">
+                            <img src="{{ asset('./images/menu-icons/settings.svg') }}" alt="">
+                        </a>
+                    </li>
+
+                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                        <a href="{{ route('crud.services') }}" title="Services" class="tooltips">
                             <img src="{{ asset('images/menu-icons/Services.svg') }}" alt="">
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1)=='members' ? 'active' : '' }}">
-                        <a href="{{ route('members') }}" title="Members" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/members.svg') }}" alt="">
+                    
+                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                        <a href="{{ route('crud.items') }}" title="Services Item" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/simplified/Services.svg') }}" alt="">
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1)=='appointments' ? 'active' : '' }}">
-                        <a href="{{ route('appointments') }}" title="Appointment" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/Appointment.svg') }}" alt="">
+
+                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                        <a href="{{ route('crud.bandi-colour-gel') }}" title="Bandi Color Gel" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/simplified/color-gel.svg') }}" alt="">
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1)=='transactions' ? 'active' : '' }}">
-                        <a href="{{ route('transactions') }}" title="Transaction" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/transaction.svg') }}" alt="">
+                    
+                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                        <a href="{{ route('crud.opi-gel-and-normal') }}" title="Opi Gel And Normal" class="tooltips">
+                            <img src="{{ asset('images/menu-icons/simplified/opi-gel-normal.svg') }}" alt="">
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1)=='gift-vouchers' ? 'active' : '' }}">
-                        <a href="{{ route('gift-vouchers') }}" title="Gifts Voucher" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/Gift Voucher.svg') }}" alt="">
-                        </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='promotions' ? 'active' : '' }}">
-                        <a href="{{ route('promotions') }}" title="Promotions" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/promotion.svg') }}" alt="">
-                        </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='birthdays' ? 'active' : '' }}" >
-                        <a href="{{ route('birthdays') }}" title="Birthday" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/birthday.svg') }}" alt="">
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

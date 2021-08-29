@@ -89,7 +89,7 @@
             </div>
 
             <div class="mn-card">
-                <a href="{{ route('settings') }}">
+                <a href="{{ route('crud.services') }}">
                     <img src="./images/menu-icons/settingbg.png" alt="">
                     Settings
                 </a>

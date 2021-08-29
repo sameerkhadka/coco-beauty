@@ -1033,3 +1033,38 @@
     } 
  
 }
+
+.setting-card {
+    background: #fff;
+    padding: 20px;
+
+    h5 {
+        font-family: 'SF Pro Display';
+        font-size: 17px;
+    }
+
+    img {
+        width: 250px;
+        height: 200px;
+        object-fit: contain;
+        border: 1px solid #d0d0d4;
+        margin-top: 15px;
+    }
+
+}
+
+.trnx-detail {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 15px;
+
+    h4 {
+        font-size: 17px;
+        font-family: 'SF Pro Display';
+        margin-bottom: 0;
+    
+    }
+
+}
