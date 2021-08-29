@@ -38,39 +38,39 @@
     <section class="wrapper">
         <div class="sidenav">
             <div class="logo">
-                <a href=""><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>
+                <a href="{{ route('index')}} "><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>
             </div>
 
             <div class="navigation">
                 <ul>
                     <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
                         <a href="{{ route('services') }}" title="Services" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/Services.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Services.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='members' ? 'active' : '' }}">
                         <a href="{{ route('members') }}" title="Members" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/members.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Members.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='appointments' ? 'active' : '' }}">
                         <a href="{{ route('appointments') }}" title="Appointment" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/Appointment.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Appointment.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='transactions' ? 'active' : '' }}">
                         <a href="{{ route('transactions') }}" title="Transaction" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/transaction.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Transaction.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='gift-vouchers' ? 'active' : '' }}">
                         <a href="{{ route('gift-vouchers') }}" title="Gifts Voucher" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/Gift Voucher.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Gift Voucher.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='promotions' ? 'active' : '' }}">
                         <a href="{{ route('promotions') }}" title="Promotions" class="tooltips">
-                            <img src="{{ asset('images/menu-icons/promotion.svg') }}" alt="">
+                            <img src="{{ asset('images/menu-icons/simplified/Promotion.svg') }}" alt="">
                         </a>
                     </li>
                     <li class="{{ Request::segment(1)=='birthdays' ? 'active' : '' }}" >

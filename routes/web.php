@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 $routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail'];
 

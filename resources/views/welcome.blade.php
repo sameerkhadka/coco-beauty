@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Me | Coco Beauty</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -88,7 +90,7 @@
 
             <div class="mn-card">
                 <a href="{{ route('birthdays') }}">
-                    <img src="./images/menu-icons/birthdaybg.png" alt="">
+                    <img src="./images/menu-icons/settingbg.png" alt="">
                     Settings
                 </a>
             </div>
