@@ -9,6 +9,169 @@
 
 
 @media screen and (max-width: 768px) {
+    .wrapper {
+        height: auto;
+    }
+    
+    .mn-card-wrap .mn-card {
+        width: 40%;
+    }
+
+    .sidenav {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        overflow: visible;
+        z-index: 9;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .navigation {
+        display: block;
+    }
+    
+    .navigation ul {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 0;
+    }
+
+    .navigation li {
+        margin-bottom: 0;
+    }
+
+    .navigation li a img {
+        height: 25px;
+    }
+
+    .main {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .main-content.aside-open {
+        width: 100%;
+
+    }
+
+    .main-content {
+        padding-right: 0;
+    }
+
+    .main-content .content {
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .main-content .content table th:first-child {
+        width: 20px;
+    }
+    
+    .main-content .content table th.action {
+        width: auto;
+    }
+
+    .main-content .content table {
+        width: max-content;        
+        width: max-content;
+        border-collapse: separate;
+        border-spacing: 10px;
+
+    }
+
+    .main-content .content table th {
+        padding: 8px;
+    }
+
+    .main-aside.open {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        padding-top: 60px;
+        padding-bottom: 70px;
+        overflow: scroll;
+    }
+
+    a.new-btn {
+        position: relative;
+        z-index: 99;
+    }
+    
+    .search-filter a {
+        margin: 5px 2px;
+        display: inline-block;
+    }
+
+    .mem-desc {
+        padding-left: 0;
+    }
+
+    .mem-detail .mem-det-top .profile-image {
+        font-size: 30px;
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+
+    .mem-detail {
+        width: 100%;
+    }
+
+    .checkout-box {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 30px;
+    }
+    
+    .checkout-box .cart-wrap {
+        width: 100%;
+        height: auto;
+        margin-bottom: 40px;
+    }    
+
+    .checkout-box .transaction-box {
+        width: 100%;
+    }
+
+    .select-info {
+        min-width: 100%;
+        margin-top: 15px;
+    }
+    
+    .trnx-detail {
+        padding: 10px;
+    }
+
+    .trnx-detail h4 span {
+        display: block;
+        text-align: center;
+    }
+
+    .new-btn, .del-btn, .cart-btn {
+        width: 80px;
+        font-size: 15px;
+    }
+
+    .main .main-header h2 {
+        font-size: 20px;
+    }
+
+    .mobile-home-btn {
+        display: block;
+    } 
+
+    .mb-cart-close {
+        display: flex;
+    }  
 
 }
 

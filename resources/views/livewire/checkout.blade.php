@@ -19,7 +19,7 @@
                                 <span class="checkmark"></span>
                             </label>
                             @if ($isMember)
-                                <div class="d-inline-block" style="min-width: 396px;">
+                                <div class="d-inline-block select-info " >
                                     <select id="member_searchable" style="width: 100%" wire:model.debounce.500ms="memberID">
                                         <option value="0" disabled>Select Name</option>
                                         @foreach ($members as $item)

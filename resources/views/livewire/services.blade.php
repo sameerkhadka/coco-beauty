@@ -56,7 +56,10 @@
         </div>
 
         <div x-bind:class="open ? 'open' : ''" class="main-aside">
-            
+            <div class="mb-cart-close">
+                <a href="#">X</a>
+            </div>    
+
                 @if($memberName)
                     <div class="cart-for">
                         <p><span>Selected Member:</span> {{$memberName}}</p>

@@ -23,8 +23,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -36,6 +37,9 @@
 <body>
 
     <section class="wrapper">
+        <div class="mobile-home-btn">
+            <a href="{{ route('index')}} "><i class="fas fa-arrow-left"></i></a>
+        </div>
         <div class="sidenav">
             <div class="logo">
                 <a href="{{ route('index')}}"><img src="{{ asset('images/logo-white.png') }}" alt=""> </a>

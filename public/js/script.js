@@ -54,3 +54,9 @@ cartBtns.forEach(function(btn){
     })
 })
 
+var cartClose = document.querySelector('.mb-cart-close a')
+
+cartClose.addEventListener('click', function(e){
+    e.preventDefault();
+    document.querySelector('.main-aside').classList.remove('open')
+})

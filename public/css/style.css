@@ -237,6 +237,10 @@
   font-size: 18px;
 }
 
+.add-mem .choose-mem label.cm-card {
+  margin-right: 20px;
+}
+
 .add-mem .addm-sing {
   margin: 15px 0;
 }
@@ -474,6 +478,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .tab-content .ser-item h5 {
@@ -1137,5 +1143,34 @@
 .cart-for span {
   font-size: 14px;
   font-family: 'SF Pro Display Light';
+}
+
+.select-info {
+  min-width: 360px;
+}
+
+.mobile-home-btn {
+  display: none;
+  position: fixed;
+  width: 100%;
+  background: #f9f9fa;
+  padding-left: 10px;
+}
+
+.mb-cart-close {
+  position: fixed;
+  top: 20px;
+  border: 1px solid #868686;
+  width: 30px;
+  height: 30px;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  background: #fff;
 }
 /*# sourceMappingURL=style.css.map */
