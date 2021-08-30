@@ -17,7 +17,7 @@
                 <ul class="nav nav-tabs">
                     @foreach($services as $service)
                     <li >
-                        <a class="{{$loop->first ? 'active show' : ''}}" data-toggle="tab" href="#{{Str::slug($service->name)}}">
+                        <a wire:click="updateServiceID({{ $service->id }})" class="{{$activeService == $service->id  ? 'active show' : ''}}" data-toggle="tab" href="#{{Str::slug($service->name)}}">
                             <img src="/storage/{{$service->image}}" alt="">
                             <span>{{$service->name}}</span>
                         </a>
@@ -29,7 +29,7 @@
             <div class="content">
                   <div class="tab-content">
                       @foreach($services as $service)
-                          <div id="{{Str::slug($service->name)}}" class="tab-pane fade in {{$loop->first ? 'show active' : ''}}">
+                          <div id="{{Str::slug($service->name)}}" class="tab-pane fade in {{$activeService == $service->id ? 'show active' : ''}}">
                               <div class="tab-wrapper">
                                   <div class="row">
                                       @foreach($service->items as $item)
@@ -40,7 +40,7 @@
                                                   <h6 class="service-type">{{$item->type}}</h6>
                                                   <p class="service-price">{{$item->price ? '$'.$item->price : $item->range ?? '-'}}</p>
                                               </div>
-                                           
+
                                                 <a wire:click="addToCart({{$item->id}})" href='#' class='add-to-cart'>
                                                   +
                                                 </a>
@@ -58,7 +58,7 @@
         <div x-bind:class="open ? 'open' : ''" class="main-aside">
             <div class="mb-cart-close">
                 <a href="#">X</a>
-            </div>    
+            </div>
 
                 @if($memberName)
                     <div class="cart-for">
@@ -69,7 +69,7 @@
 
             <div class="cart-head">
                 <h4>Cart</h4>
-                
+
                 <button wire:click="emptyCart">Clear</button>
             </div>
             @if(count($cart['items'])>0)
