@@ -63,6 +63,21 @@
 
                     <div class="cart-entries">
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="entry">
+                                        <label>Description</label>
+                                        <textarea ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="entry">
+                                        <label>Remark</label>
+                                        <textarea ></textarea>
+                                </div>
+                            </div>
+
+
                             @if($transaction->description)
                             <div class="col-md-6">
                                 <div class="entry">

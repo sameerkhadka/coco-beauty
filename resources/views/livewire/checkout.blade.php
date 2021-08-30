@@ -150,6 +150,13 @@
                                         <textarea wire:model='description'></textarea>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="entry">
+                                        <label>Remark</label>
+                                        <textarea ></textarea>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="entry">
                                         <label>Bandi Colour Gel</label>

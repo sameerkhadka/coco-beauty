@@ -63,6 +63,7 @@
                         <th>ID</th>
                         <th>Date</th>
                         <th>Amount</th>
+                        <th>Remarks</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -80,6 +81,8 @@
                         <td>{{$transaction->created_at}}</td>
 
                         <td>{{json_decode($transaction->cart)->grand_total}}</td>
+
+                        <td><p>Full Body Spray Tan(3 pack Deal). Used 1 time</p> </td>
 
                         <td>
                             <div class="actn-btn">
