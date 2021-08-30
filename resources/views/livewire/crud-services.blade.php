@@ -39,7 +39,7 @@
                             <span class="checkmark"></span>
                         </td>
                         <td>{{ $item->name }}</td>
-                        <td><img style="width: 100px; height: 100px;border: solid 1px; border-radius: 10px; margin-bottom: 3px;" src="/storage/{{$item->image}}" alt=""></td>
+                        <td><img style="width: 100px; height: 100px; border-radius: 10px; margin-bottom: 3px;" src="/storage/{{$item->image}}" alt=""></td>
                         <td>{{ $item->order }}</td>
                         <td>
                             <div class="actn-btn">

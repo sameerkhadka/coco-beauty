@@ -1,4 +1,3 @@
-
     <div class="main" x-data="{open:false}">
         <div x-bind:class="open ? 'aside-open' : ''" class="main-content">
             <div class="main-header">
@@ -17,7 +16,7 @@
             <div  class="ser-tab">
                 <ul class="nav nav-tabs">
                     @foreach($services as $service)
-                    <li class="">
+                    <li >
                         <a class="{{$loop->first ? 'active show' : ''}}" data-toggle="tab" href="#{{Str::slug($service->name)}}">
                             <img src="/storage/{{$service->image}}" alt="">
                             <span>{{$service->name}}</span>
@@ -41,9 +40,10 @@
                                                   <h6 class="service-type">{{$item->type}}</h6>
                                                   <p class="service-price">{{$item->price ? '$'.$item->price : $item->range ?? '-'}}</p>
                                               </div>
-                                              <button wire:click="addToCart({{$item->id}})" class='add-to-cart'>
+                                           
+                                                <a wire:click="addToCart({{$item->id}})" href='#' class='add-to-cart'>
                                                   +
-                                              </button>
+                                                </a>
                                           </div>
                                       </div>
                                       @endforeach
@@ -56,11 +56,17 @@
         </div>
 
         <div x-bind:class="open ? 'open' : ''" class="main-aside">
+            
+                @if($memberName)
+                    <div class="cart-for">
+                        <p><span>Selected Member:</span> {{$memberName}}</p>
+                    </div>
+                @endif
+
+
             <div class="cart-head">
                 <h4>Cart</h4>
-                @if($memberName)
-                <p>[selected member: {{$memberName}}]</p>
-                @endif
+                
                 <button wire:click="emptyCart">Clear</button>
             </div>
             @if(count($cart['items'])>0)

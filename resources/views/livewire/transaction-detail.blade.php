@@ -3,9 +3,9 @@
 
     <div class="main-content">
         <div class="trnx-detail">
-            <h4>{{'TXN'.$transaction->id}}</h4>
-            <h4>{{$transaction->full_name}}</h4>
-            <h4>{{date_format($transaction->created_at,'Y/m/d')}}</h4>
+            <h4><span>Transaction Id:</span> {{'TXN'.$transaction->id}}</h4>
+            <h4> <span>Member:</span> {{$transaction->full_name}}</h4>
+            <h4><span>Transaction Date:</span> {{date_format($transaction->created_at,'Y/m/d')}}</h4>
         </div>
 
         <div class="checkout-box">

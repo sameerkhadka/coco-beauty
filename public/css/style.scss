@@ -518,10 +518,11 @@
     ul.nav.nav-tabs {
         border-bottom: 0;
 
-        li.active {
+        a.active {
+            
             background: #d6be58;
         }
-
+       
         img {
             width: 70px;
             height: 70px;
@@ -532,15 +533,20 @@
         }
 
         li {
-            width: 90px;
+            
             text-align: center;
-            padding: 5px;
-            border: 1px solid #f3f3f3;
-            margin-right: 15px;
-            border-radius: 20px;
-            background: #f3f3f3;
+            
+            
 
             a {
+                display: inline-block;
+                width: 90px;
+                padding: 5px;
+                border: 1px solid #f3f3f3;
+                margin-right: 15px;
+                border-radius: 20px;
+                background: #f3f3f3;
+
                 span {
                     font-size: 14px;
                     font-family: 'SF Pro Display Light';
@@ -1062,9 +1068,16 @@
     padding: 15px;
 
     h4 {
-        font-size: 17px;
-        font-family: 'SF Pro Display';
+
         margin-bottom: 0;
+        font-family: 'SF Pro Display Bold';
+        font-size: 18px;
+
+    span {
+        font-size: 14px;
+        font-family: 'SF Pro Display Light';
+        margin-right: 5px;
+    }
     
     }
 
@@ -1072,4 +1085,16 @@
 
 .servie-btn {
     background: #307ec1;
+}
+
+.cart-for {
+    text-align: center;
+    font-family: 'SF Pro Display Bold';
+    font-size: 18px;
+
+    span {
+        font-size: 14px;
+        font-family: 'SF Pro Display Light';
+    }
+
 }
