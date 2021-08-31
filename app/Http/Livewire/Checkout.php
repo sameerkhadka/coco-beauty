@@ -166,7 +166,7 @@ class Checkout extends Component
 
     public function mount(){
         $this->members = Member::all();
-        $this->promotions = Promotion::where('used_date',null)->get();
+        $this->promotions = Promotion::get();
         $this->giftVouchers = GiftVoucher::where('used_date',null)->get();
         $this->bandiColourGels = BandiColourGel::all();
         $this->opiGelAndNormals = OpiGelAndNormal::all();

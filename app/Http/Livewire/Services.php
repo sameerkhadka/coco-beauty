@@ -14,7 +14,6 @@ use Livewire\Component;
 class Services extends Component
 {
     public $services, $items;
-    public $activeService = 1;
 
     public $cart = ['items' => [],'total'=>0];
     public $transactions = [
@@ -44,9 +43,7 @@ class Services extends Component
         "bandi_colour_gel" => [],
         "opi_gel_and_normal" => [],
     ];
-    public function updateServiceID($id){
-        $this->activeService = $id;
-    }
+
     private function calculateTotal(){
         if(count($this->cart['items'])>0) $cartItems = collect($this->cart['items']);
         else $this->cart['total']=0;

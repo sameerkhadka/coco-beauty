@@ -1,4 +1,4 @@
-    <div class="main" x-data="{open:false}">
+    <div class="main" x-data="{open:false,activeServiceID:1}">
         <div x-bind:class="open ? 'aside-open' : ''" class="main-content">
             <div class="main-header">
                 <h2>Services</h2>
@@ -17,7 +17,7 @@
                 <ul class="nav nav-tabs">
                     @foreach($services as $service)
                     <li >
-                        <a wire:click="updateServiceID({{ $service->id }})" class="{{$activeService == $service->id  ? 'active show' : ''}}" data-toggle="tab" href="#{{Str::slug($service->name)}}">
+                        <a x-on:click="activeServiceID={{ $service->id }}" x-bind:class="activeServiceID == {{ $service->id }} ? 'active show' : ''"  data-toggle="tab" href="#{{Str::slug($service->name)}}">
                             <img src="/storage/{{$service->image}}" alt="">
                             <span>{{$service->name}}</span>
                         </a>
@@ -29,7 +29,7 @@
             <div class="content">
                   <div class="tab-content">
                       @foreach($services as $service)
-                          <div id="{{Str::slug($service->name)}}" class="tab-pane fade in {{$activeService == $service->id ? 'show active' : ''}}">
+                          <div id="{{Str::slug($service->name)}}" class="tab-pane fade in" x-bind:class="activeServiceID == {{ $service->id }} ? 'active show' : ''">
                               <div class="tab-wrapper">
                                   <div class="row">
                                       @foreach($service->items as $item)
