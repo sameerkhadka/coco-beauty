@@ -154,7 +154,7 @@
                                 <div class="col-md-6">
                                     <div class="entry">
                                         <label>Remark</label>
-                                        <textarea ></textarea>
+                                        <textarea wire:model='remarks'></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

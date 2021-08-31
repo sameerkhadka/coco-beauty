@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" id="app">
     <div class="main-content">
         <div class="mem-detail">
 
@@ -12,7 +12,6 @@
 
                 <div class="mem-det-top">
                     <div class="profile-image">AB</div>
-
                     <div class="mem-desc">
                         <h3 ><span class="first-name">{{ $member->first_name }} </span> <span class="last-name">{{ $member->last_name }}</span></h3>
                         <p>{{ $member->phone }}</p>
@@ -43,10 +42,12 @@
                         <p>{{ $member->email ?? '-' }}</p>
                     </div>
                 </div>
-
-                <div class="mem-notify">
-                    <p>Full Body Spray Tan(3 pack Deal). Used 1 time</p>
+                <div wire:ignore>
+                    <div class="mem-notify" v-for="item in notifications">
+                        <p>@{{item.remarks}}</p>
+                    </div>
                 </div>
+
 
         </div>
 
@@ -59,7 +60,7 @@
             <i class="fas fa-search"></i>
         </div>
 
-        <div class="content">
+        <div class="content"  wire:ignore>
             <table class="member " id="member">
                 <thead>
                     <tr>
@@ -74,38 +75,36 @@
                 </thead>
 
                 <tbody>
-                    @foreach($transactions as $transaction)
-                    <tr>
+                    <tr v-for="(item,index) in transactions" :key="index">
                         <td>
                             <input type="checkbox" >
                             <span class="checkmark"></span>
                         </td>
 
-                        <td>TXN{{$transaction->id}}</td>
+                        <td>TXN@{{ item.id }}</td>
 
-                        <td>{{$transaction->created_at}}</td>
+                        <td>@{{item.created_at}}</td>
 
-                        <td>{{json_decode($transaction->cart)->grand_total}}</td>
+                        <td>@{{JSON.parse(item.cart).grand_total}}</td>
 
-                        <td><textarea name="" >Full Body Spray Tan(3 pack Deal). Used 1 time</textarea>
-                            <button>Save</button>
+                        <td><textarea v-model="item.remarks" v-bind:disabled="item.status==true || item.status==1"></textarea>
+                            <button v-on:click="updateRemarks(item.id,index)" v-if="!item.status">Save</button>
                         </td>
 
                         <td>
                             <label class="switch">
-                                <input type="checkbox"  checked>
+                                <input type="checkbox" v-on:input="changeInStatus(item.id,index)" v-model="item.status">
                                 <span class="slider round"></span>
                             </label>
                         </td>
 
                         <td>
                             <div class="actn-btn">
-                                <a href="{{route('transaction-detail',"id={$transaction->id}")}}" class="view-btn"><i class="far fa-eye"></i></a>
+                                <a :href="`/transaction-detail?id=${item.id}`" class="view-btn"><i class="far fa-eye"></i></a>
                             </div>
                         </td>
 
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -113,9 +112,44 @@
 
 </div>
 
+{{--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 
+@push('scripts')
 <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    transactions: @json($transactions),
+                    notifications: "",
+                },
+                created(){
+                    this.updateNotification()
+                },
+                watch: {
+                    transactions: {
+                        handler:function (val) {
+                            this.updateNotification()
+                        },
+                        deep:true
+                    },
 
+                },
+                methods:{
+                    updateNotification(){
+                        let transactions = JSON.parse(JSON.stringify(this.transactions))
+                        this.notifications = transactions.filter(function(item){
+                            return item.remarks!='' && !item.status
+                        })
+                    },
+                    updateRemarks(id,index){
+                       @this.updateRemarks(id,this.transactions[index].remarks)
+                    },
+                    changeInStatus(id,index){
+                        @this.updateStatus(id,this.transactions[index].status)
+                    }
+                }
+            })
             function profilePicture() {
                 var memberFirstName = document.querySelector('.first-name').innerText;
                 var memberLastName = document.querySelector('.last-name').innerText;
@@ -131,5 +165,6 @@
 
 
             profilePicture();
-      
+
 </script>
+@endpush

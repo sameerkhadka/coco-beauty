@@ -36,6 +36,7 @@ class Services extends Component
         ],
         "manual_discount" => "0",
         "description" => "",
+        "remarks" => "",
         "grand_total"=>"0",
         "birthday_discount_amount" => "0",
         "is_birthday_discount" => "",

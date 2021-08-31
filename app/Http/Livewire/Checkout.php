@@ -22,7 +22,7 @@ class Checkout extends Component
 
     public $manualDiscount = "0";
     public $showBirthdayAlert = "0",$isBirthdayDiscount = false,$birthdayDiscountAlreadyUsed = false;
-    public $modelBandiColourGel = [],$modelOpiGelAndNormal=[],$description="",$paymentMethod="",$promotionID = "0",$giftVoucherID="0", $memberID="0" , $isMember = "0", $userDetails_fullName,$userDetails_phone,$userDetails_email,$userDetails_address;
+    public $modelBandiColourGel = [],$modelOpiGelAndNormal=[],$description="",$remarks="",$paymentMethod="",$promotionID = "0",$giftVoucherID="0", $memberID="0" , $isMember = "0", $userDetails_fullName,$userDetails_phone,$userDetails_email,$userDetails_address;
     protected $rules = [
         'userDetails_fullName' => 'required',
     ];
@@ -49,6 +49,7 @@ class Checkout extends Component
         ],
         "manual_discount" => "0",
         "description" => "",
+        "remarks" => "",
         "grand_total"=>"0",
         "birthday_discount_amount" => "0",
         "is_birthday_discount" => "",
@@ -83,6 +84,11 @@ class Checkout extends Component
 
     public function updatedDescription(){
         $this->transactions['description'] = $this->description;
+        session(['transactions'=>$this->transactions]);
+    }
+
+    public function updatedRemarks(){
+        $this->transactions['remarks'] = $this->remarks;
         session(['transactions'=>$this->transactions]);
     }
 
