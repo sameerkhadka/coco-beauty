@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
 //livewire normal routes
 $routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail'];
 

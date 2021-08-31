@@ -1,3 +1,8 @@
+@media screen and (max-width: 1424px) {
+    .login-wrap .login-form .lg-head {
+        left: 95px;
+    }
+}
 
 @media screen and (max-width: 1024px) {
 
@@ -172,6 +177,28 @@
     .mb-cart-close {
         display: flex;
     }  
+
+    .login-wrap .login-form {
+        width: 100%;
+        flex-flow: column;
+    }
+
+    
+
+    .login-wrap .login-img {
+        display: none;
+    }
+
+    .login-wrap {
+        height:auto;
+        overflow: visible;
+    }
+
+    .login-wrap .login-form .lg-head {
+        position: relative;
+        left: 0;
+        margin-bottom: 50px;
+    }
 
 }
 
