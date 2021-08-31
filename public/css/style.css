@@ -1124,11 +1124,21 @@
 .setting-card {
   background: #fff;
   padding: 20px;
+  margin: 20px 0;
 }
 
 .setting-card h5 {
   font-family: 'SF Pro Display';
-  font-size: 17px;
+  font-size: 16px;
+}
+
+.setting-card h4 {
+  font-family: 'SF Pro Display Bold';
+  font-size: 16px;
+}
+
+.setting-card h4 span {
+  font-family: 'SF Pro Display';
 }
 
 .setting-card img {
@@ -1137,6 +1147,57 @@
   -o-object-fit: contain;
      object-fit: contain;
   border: 1px solid #d0d0d4;
+  margin-top: 15px;
+}
+
+.setting-card .pass-change {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.setting-card .pass-change label {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  width: 150px;
+}
+
+.setting-card .pass-change input {
+  border: 1px solid #d0d0d4;
+  width: 350px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  padding: 8px 10px;
+}
+
+.setting-card .pass-change input:focus {
+  outline: none;
+  border: 1px solid #d6be58;
+}
+
+.setting-card .pass-change button {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 40px;
+  background: #d6be58;
+  color: #fff;
+  font-size: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'SF Pro Display';
   margin-top: 15px;
 }
 

@@ -14,6 +14,31 @@
                 <h5>Site Logo</h5>
                 <img src="{{ asset('images/logo.png') }}" alt="">
             </div>
+
+            <div class="setting-card">
+                <h4><span>Email: </span> admin@cocobeauty.com </h4>
+
+                <p>Change Password</p>
+
+                <div class="pass-change">
+                    <label >Old Password </label>
+                    <input type="password">
+                </div>
+
+                <div class="pass-change">
+                    <label >New Password </label>
+                    <input type="password">
+                </div>
+
+                <div class="pass-change">
+                    <label >Re-enter Password </label>
+                    <input type="password">
+                </div>
+
+                <div class="pass-change">
+                    <button>Change Password</button>
+                </div>
+            </div>
         </div>
     </div>
 
