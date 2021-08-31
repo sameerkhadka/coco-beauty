@@ -44,6 +44,10 @@
                     </div>
                 </div>
 
+                <div class="mem-notify">
+                    <p>Full Body Spray Tan(3 pack Deal). Used 1 time</p>
+                </div>
+
         </div>
 
         <div class="main-header">
@@ -64,6 +68,7 @@
                         <th>Date</th>
                         <th>Amount</th>
                         <th>Remarks</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -82,7 +87,16 @@
 
                         <td>{{json_decode($transaction->cart)->grand_total}}</td>
 
-                        <td><p>Full Body Spray Tan(3 pack Deal). Used 1 time</p> </td>
+                        <td><textarea name="" >Full Body Spray Tan(3 pack Deal). Used 1 time</textarea>
+                            <button>Save</button>
+                        </td>
+
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox"  checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
 
                         <td>
                             <div class="actn-btn">

@@ -182,6 +182,28 @@
                 font-size: 16px;
                 font-family: 'SF Pro Display Light';
                 padding: 12px 0;
+
+                textarea {
+                    width: 95%;
+                    border: 0;
+                    border: 1px solid #e4e4e4;
+                    margin-top: 13px;
+                    padding: 5px 8px;
+
+                    &:focus {
+                        outline: none;
+                        border: 1px solid #d6be58;
+                    }
+                }
+
+                button {
+                    background: #d6be58;
+                    color: #fff;
+                    font-size: 12px;
+                    padding: 4px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
             }
 
             tbody {
@@ -1021,6 +1043,18 @@
 }
 
 
+.mem-notify {
+    margin-top: 30px;
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    padding: 15px 0;
+
+    p {
+        margin-bottom: 0;
+    }
+
+}
 
 .mem-det-bottom {
     border-top: 1px solid #e4e4e4;

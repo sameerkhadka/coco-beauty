@@ -193,6 +193,28 @@
   padding: 12px 0;
 }
 
+.main-content .content table td textarea {
+  width: 95%;
+  border: 0;
+  border: 1px solid #e4e4e4;
+  margin-top: 13px;
+  padding: 5px 8px;
+}
+
+.main-content .content table td textarea:focus {
+  outline: none;
+  border: 1px solid #d6be58;
+}
+
+.main-content .content table td button {
+  background: #d6be58;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .main-content .content table tbody tr {
   border-bottom: 1px solid #d0d0d4;
 }
@@ -1056,6 +1078,18 @@
 .mem-detail .mem-det-top .mem-desc .reward-point span {
   font-family: 'SF Pro Display';
   margin-left: 5px;
+}
+
+.mem-notify {
+  margin-top: 30px;
+  background: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+  padding: 15px 0;
+}
+
+.mem-notify p {
+  margin-bottom: 0;
 }
 
 .mem-det-bottom {
