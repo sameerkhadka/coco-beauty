@@ -9,4 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected  $guarded = [];
+    protected $casts = [
+        "status" => 'integer',
+    ];
 }
