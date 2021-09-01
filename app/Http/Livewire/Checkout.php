@@ -278,6 +278,7 @@ class Checkout extends Component
         $cart['is_birthday_discount'] = $transactions['is_birthday_discount'];
         unset($transactions['grand_total'],$transactions['birthday_discount_amount'],$transactions['is_birthday_discount']);
         $transactions['cart'] = json_encode($cart);
+        $transactions['status'] = 0;
         Transaction::create($transactions);
 
         /** if the user is member i.e, member_id!=null then go further */
