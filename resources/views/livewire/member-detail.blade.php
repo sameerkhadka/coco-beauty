@@ -125,7 +125,7 @@
                     transactions: @json($transactions),
                     notifications: "",
                 },
-                created(){
+                mounted(){
                     this.updateNotification()
                 },
                 watch: {
