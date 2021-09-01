@@ -87,9 +87,11 @@
 
                         <td>@{{JSON.parse(item.cart).grand_total}}</td>
 
-                        <td><textarea v-model="item.remarks" v-bind:disabled="item.status==true || item.status==1"></textarea>
-                            <button v-on:click="updateRemarks(item.id,index)" v-if="!item.status">Save</button>
+                        <td v-if="item.status==false || item.status==0">
+                            <textarea v-model="item.remarks" ></textarea>
+                            <button v-on:click="updateRemarks(item.id,index)">Save</button>
                         </td>
+                        <td v-else>@{{ item.remarks }}</td>
 
                         <td>
                             <label class="switch">

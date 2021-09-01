@@ -23,7 +23,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -47,31 +47,31 @@
 
             <div class="navigation">
                 <ul>
-                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(2)=='settings' ? 'active' : '' }}">
                         <a href="{{ route('settings') }}" title="Admin" class="tooltips">
                             <img src="{{ asset('./images/menu-icons/settings.svg') }}" alt="">
                         </a>
                     </li>
 
-                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(2)=='services' ? 'active' : '' }}">
                         <a href="{{ route('crud.services') }}" title="Services" class="tooltips">
                             <img src="{{ asset('images/menu-icons/Services.svg') }}" alt="">
                         </a>
                     </li>
 
-                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(2)=='items' ? 'active' : '' }}">
                         <a href="{{ route('crud.items') }}" title="Services Item" class="tooltips">
                             <img src="{{ asset('images/menu-icons/simplified/Services.svg') }}" alt="">
                         </a>
                     </li>
 
-                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(2)=='bandi-colour-gel' ? 'active' : '' }}">
                         <a href="{{ route('crud.bandi-colour-gel') }}" title="Bandi Color Gel" class="tooltips">
                             <img src="{{ asset('images/menu-icons/simplified/color-gel.svg') }}" alt="">
                         </a>
                     </li>
 
-                    <li class="{{ Request::segment(1)=='services' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(2)=='opi-gel-and-normal' ? 'active' : '' }}">
                         <a href="{{ route('crud.opi-gel-and-normal') }}" title="Opi Gel And Normal" class="tooltips">
                             <img src="{{ asset('images/menu-icons/simplified/opi-gel-normal.svg') }}" alt="">
                         </a>
