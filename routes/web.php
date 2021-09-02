@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/sendmail',[EmailController::class,'email']);
 //livewire normal routes
 $routes = ['services','members','appointments','birthdays','gift-vouchers','transactions','promotions','checkout','member-detail','transaction-detail'];
 
