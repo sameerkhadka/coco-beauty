@@ -94,10 +94,12 @@
                         <td v-else>@{{ item.remarks }}</td>
 
                         <td>
-                            <label class="switch">
+                            <input type="checkbox" v-on:input="changeInStatus(item.id,index)" v-model="item.status">
+
+                            <!-- <label class="switch">
                                 <input type="checkbox" v-on:input="changeInStatus(item.id,index)" v-model="item.status">
                                 <span class="slider round"></span>
-                            </label>
+                            </label> -->
                         </td>
 
                         <td>
