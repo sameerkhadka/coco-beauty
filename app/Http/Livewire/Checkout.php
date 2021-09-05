@@ -301,7 +301,7 @@ class Checkout extends Component
                 'used_date'=>now()
             ]);
         /** clear all session data */
-        Session::flush();
+        Session::forget(['transactions','cart']);
         /** direct to home page now */
         return redirect(route('services'));
 

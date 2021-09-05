@@ -22,7 +22,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -36,6 +36,12 @@
     <section class="main-wrap">
         <div class="mn-head">
             <img src="./images/logo.png" alt="">
+        </div>
+        <div class="logout">
+            <form method="POST" action="{{route('logout')}}">
+                @csrf
+                <button class="btn btn-danger">Logout</button>
+            </form>
         </div>
 
         <div class="mn-card-wrap">

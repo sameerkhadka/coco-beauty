@@ -16,28 +16,38 @@
             </div>
 
             <div class="setting-card">
+                @if(session('validationErrors'))
+                    @foreach(session('validationErrors') as $error)
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
+                @endif
+                @if(session('success'))
+                    <div class="alert alert-success">{{session('success')}}</div>
+                @endif
                 <h4><span>Email: </span> admin@cocobeauty.com </h4>
 
                 <p>Change Password</p>
-
+                <form action="{{route('changePassword')}}" method="POST">
+                    @csrf
                 <div class="pass-change">
                     <label >Old Password </label>
-                    <input type="password">
+                    <input type="password" name="old_password" required>
                 </div>
 
                 <div class="pass-change">
                     <label >New Password </label>
-                    <input type="password">
+                    <input type="password" name="new_password1" required>
                 </div>
 
                 <div class="pass-change">
                     <label >Re-enter Password </label>
-                    <input type="password">
+                    <input type="password" name="new_password2" required>
                 </div>
 
                 <div class="pass-change">
                     <button>Change Password</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
