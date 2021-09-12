@@ -302,6 +302,7 @@ class Checkout extends Component
             ]);
         /** clear all session data */
         Session::forget(['transactions','cart']);
+        Session::flash('success','Transaction Successful');
         /** direct to home page now */
         return redirect(route('services'));
 
