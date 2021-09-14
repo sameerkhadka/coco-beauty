@@ -20,14 +20,14 @@
 <body>
 
 
-    
+
 <section class="wrapper" >
         <div class="container">
             <div class="content-head" style=" text-align: center; ">
-                <img src="./logo-icon.png" alt="" style=" width: 60px; margin-bottom: 15px; ">
-        
+                <img src="{{ asset('images/email/logo-icon.png') }}" alt="" style=" width: 60px; margin-bottom: 15px; ">
 
-                <img src="./birthday-gif.gif" alt="" style=" width: 100%; height: 300px; object-fit: cover; ">
+
+                <img src="{{ asset('images/email/birthday-gif.gif') }}" alt="" style=" width: 100%; height: 300px; object-fit: cover; ">
             </div>
 
             <div class="content-body" style="margin-top: 60px;">
@@ -35,7 +35,7 @@
 
                 <h3 class="subject" style="font-family:helvetica,sans-serif;font-weight: 800; text-decoration:none;color:#333;margin: 30px auto;padding:0;text-align: center;text-transform: uppercase;  font-size: 24px;width: 70%;margin-bottom:50px;">Coco Beauty Lounge love to wish you a very Happy Birthday</h3>
 
-                <p style="font-family:helvetica,sans-serif;text-decoration:none;color:#333;font-weight:300;display:block;font-size:16px;line-height:24px;margin:1em 0;padding:0"> 
+                <p style="font-family:helvetica,sans-serif;text-decoration:none;color:#333;font-weight:300;display:block;font-size:16px;line-height:24px;margin:1em 0;padding:0">
                     To celebrate your birthday this month, we have <span>$10 Gift Voucher waiting for you.</span>
                 </p style="font-family:helvetica,sans-serif;text-decoration:none;color:#333;font-weight:300;display:block;font-size:16px;line-height:24px;margin:1em 0;padding:0">
 

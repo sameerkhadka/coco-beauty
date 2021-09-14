@@ -10,6 +10,7 @@ use App\Models\OpiGelAndNormal;
 use App\Models\Promotion;
 use App\Models\Transaction;
 use Carbon\Carbon;
+use Mail;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
@@ -279,6 +280,23 @@ class Checkout extends Component
         unset($transactions['grand_total'],$transactions['birthday_discount_amount'],$transactions['is_birthday_discount']);
         $transactions['cart'] = json_encode($cart);
         $transactions['status'] = 0;
+
+        /** Thankyou email Send */
+        if($transactions['email']){
+            $data = [
+                'email'=>$transactions['email'],
+                'name'=>$transactions['full_name']
+            ];
+            Mail::send('email.thankyou', $data , function($message) use ($data)
+            {
+                $message->from('test@keronevatravel.com','Coco Beauty Lounge');
+                $message->to($data['email'], $data['name']);
+                $message->subject('Thankyou for choosing us!!😍😍');
+            });
+        }
+        /** End of thankyou email */
+
+
         Transaction::create($transactions);
 
         /** if the user is member i.e, member_id!=null then go further */
