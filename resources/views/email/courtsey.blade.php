@@ -39,7 +39,7 @@
         <h3 style="color:#000000; font-family:'Roboto', Arial,sans-serif; font-size: 22px;
             line-height: 20px;
             text-align: left;
-            font-weight: 400;">Dear John Doe</h3>
+            font-weight: 400;">Dear {{$name}}</h3>
 
         <div class="content" style="color:#000000; font-family:'Roboto', Arial,sans-serif; font-size:16px; line-height:26px; text-align:left">
             <p>Please accept our sincerest thanks and gratitude for your recent visit at COCO BEAUTY LOUNGE located at Chevron Renaissance Shopping Center. It was
