@@ -44,7 +44,7 @@
                 </div>
                 <div wire:ignore>
                     <div class="mem-notify" v-for="item in notifications">
-                        <p>@{{item.remarks}}</p>
+                        <p><span v-html="item.remarks"></span></p>
                     </div>
                 </div>
 
@@ -88,7 +88,8 @@
                         <td>@{{JSON.parse(item.cart).grand_total}}</td>
 
                         <td v-if="item.status==false || item.status==0">
-                            <textarea v-model="item.remarks" ></textarea>
+                            <vue-ckeditor :editor="editor" v-model="item.remarks" :config="editorConfig">
+                            </vue-ckeditor>
                             <button v-on:click="updateRemarks(item.id,index)">Save</button>
                         </td>
                         <td v-else>@{{ item.remarks }}</td>
@@ -118,12 +119,23 @@
 
 {{--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>--}}
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-
+<script src="{{ asset('js/plugins/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+<script src="{{ asset('js/plugins/@ckeditor/ckeditor5-vue2/dist/ckeditor.js') }}"></script>
 @push('scripts')
 <script type="text/javascript">
             var app = new Vue({
                 el: '#app',
+                components:{
+                    'vue-ckeditor': CKEditor.component
+                },
                 data: {
+                    editor: ClassicEditor,
+                    editorData: '',
+                    editorConfig: {
+                        // The configuration of the editor.
+                        toolbar: []
+
+                    },
                     transactions: @json($transactions),
                     notifications: "",
                 },
