@@ -18,7 +18,7 @@
 </head>
 <body >
 
-<section class="wrap" style="color:#000000;font-family:'Roboto', Arial,sans-serif;font-size:16px;line-height:26px;text-align:left;font-weight: 300;background: rgb(239 239 239);padding: 20px;min-height: 100vh;">
+<div style="color:#000000;font-family:'Roboto', Arial,sans-serif;font-size:16px;line-height:26px;text-align:left;font-weight: 300;background: rgb(239 239 239);padding: 20px;min-height: 100vh;">
     <div class="container" style="width: 530px;
             margin: 0 auto;
             background: #fff;
@@ -68,18 +68,18 @@
         padding: 40px 70px; font-weight: 300; box-shadow: 0 2px 9px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.12);" >
 
         <div class="coco-social" style="margin-bottom: 20px;">
-            <a href="" target="_blank" style="text-decoration: none;"> <img src="{{ asset('images/email/logo-facebook.svg') }}" alt="" style="width:20px; margin-right:10px;"> </a>
-            <a href="" target="_blank" style="text-decoration: none;"> <img src="{{ asset('images/email/logo-instagram.svg') }}" alt="" style="width:20px; "> </a>
+            <a href="" target="_blank" style="text-decoration: none;"> <img src="{{ asset('images/email/logo-facebook.png') }}" alt="" style="width:20px; margin-right:10px;"> </a>
+            <a href="" target="_blank" style="text-decoration: none;"> <img src="{{ asset('images/email/logo-instagram.png') }}" alt="" style="width:20px; "> </a>
 
         </div>
 
-        <p style="margin: 4px 0; margin-top: 0">COCO Beauty Lounge</p>
-        <p style="margin: 4px 0;">Chevron Renaissance Shopping Center</p>
-        <p style="margin: 4px 0;">Shop 21A/3240 Surfers Paradise BLVD, Surfers Paradise, 4217, QLD </p>
-        <p style="margin: 4px 0;">0416422507</p>
+        <p style="margin: 4px 0; margin-top: 0 color:#000000;">COCO Beauty Lounge</p>
+        <p style="margin: 4px 0; color:#000000;">Chevron Renaissance Shopping Center</p>
+        <p style="margin: 4px 0; color:#000000;">Shop 21A/3240 Surfers Paradise BLVD, Surfers Paradise, 4217, QLD </p>
+        <p style="margin: 4px 0; color:#000000;">0416422507</p>
     </div>
 
-</section>
+    </div>
 
 </body>
 </html>
