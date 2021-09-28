@@ -13,25 +13,20 @@
             box-sizing: border-box;
         }
 
-        .wrap {
-            background: rgb(239 239 239);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 530px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px 70px;
-            box-shadow: 0 2px 9px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.12);
-        }
+       
     </style>
 </head>
 <body >
 
-<section class="wrap" style="color:#000000; font-family:'Roboto', Arial,sans-serif; font-size:16px; line-height:26px; text-align:left; font-weight: 300;">
-    <div class="container">
+<section class="wrap" style="color:#000000;font-family:'Roboto', Arial,sans-serif;font-size:16px;line-height:26px;text-align:left;font-weight: 300;background: rgb(239 239 239);padding: 20px;min-height: 100vh;">
+    <div class="container" style="width: 530px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 70px;
+            box-shadow: 0 2px 9px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.12);
+            ">
+
+
         <div class="logo-head" style="text-align:center;">
             <img src="{{ asset('images/email/logo.png') }}" alt="" style=" width: 50%; margin-bottom: 15px; ">
         </div>
