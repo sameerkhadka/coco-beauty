@@ -115,7 +115,7 @@
 
                                 <div class="col-md-3">
                                     <div class="entry">
-                                        <label>Discount Amount (%)</label>
+                                        <label>Discount Amount </label>
                                         <input wire:model.debounce.500ms="manualDiscount" type="number">
                                     </div>
                                 </div>
