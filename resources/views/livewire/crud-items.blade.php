@@ -42,7 +42,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->service->name }}</td>
                         <td>{{ $item->type ?? '-' }}</td>
-                        <td>{{ $item->price ? '$'.$item->price : $item->range ?? '-' }}</td>
+                        <td>{{ $item->price ? '$'.$item->price : '$'.$item->range ?? '-' }}</td>
                         <td>
                             <div class="actn-btn">
                                 <a href="#" wire:click="editData({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>

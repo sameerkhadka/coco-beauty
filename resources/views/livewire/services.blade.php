@@ -38,7 +38,7 @@
                                               <div class="ser-item-desc">
                                                   <h5 class="service-name">{{$item->name}}</h5>
                                                   <h6 class="service-type">{{$item->type}}</h6>
-                                                  <p class="service-price">{{$item->price ? '$'.$item->price : $item->range ?? '-'}}</p>
+                                                  <p class="service-price">{{$item->price ? '$'.$item->price : '$'.$item->range ?? '-'}}</p>
                                               </div>
 
                                                 <a wire:click="addToCart({{$item->id}})" href='#' class='add-to-cart'>

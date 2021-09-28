@@ -287,7 +287,7 @@ class Checkout extends Component
                 'email'=>$transactions['email'],
                 'name'=>$transactions['full_name']
             ];
-            Mail::send('email.courtsey', $data , function($message) use ($data)
+            Mail::send('email.trial', $data , function($message) use ($data)
             {
                 $message->from('test@keronevatravel.com','Coco Beauty Lounge');
                 $message->to($data['email'], $data['name']);
