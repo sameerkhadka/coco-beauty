@@ -131,7 +131,7 @@ class Checkout extends Component
             $this->transactions['gift_voucher_id'] = $this->giftVoucherID;
             $this->transactions['gift_voucher']['name'] = $giftVoucher['name'];
             $this->transactions['gift_voucher']['discount'] = $giftVoucher['discount'];
-            $this->transactions['gift_voucher']['discount_amount'] = ($giftVoucher['discount'] / 100) * $this->cart['total'];
+            $this->transactions['gift_voucher']['discount_amount'] = $giftVoucher['discount'];
             session(['transactions'=>$this->transactions]);
 
         }
@@ -154,7 +154,7 @@ class Checkout extends Component
             $this->transactions['promotion_id'] = $this->promotionID;
             $this->transactions['promotion']['name'] = $promotion['name'];
             $this->transactions['promotion']['discount'] = $promotion['discount'];
-            $this->transactions['promotion']['discount_amount'] = ($promotion['discount'] / 100) * $this->cart['total'];
+            $this->transactions['promotion']['discount_amount'] = $promotion['discount'];
             session(['transactions'=>$this->transactions]);
 
         }
@@ -287,7 +287,7 @@ class Checkout extends Component
                 'email'=>$transactions['email'],
                 'name'=>$transactions['full_name']
             ];
-            Mail::send('email.thankyou', $data , function($message) use ($data)
+            Mail::send('email.courtsey', $data , function($message) use ($data)
             {
                 $message->from('test@keronevatravel.com','Coco Beauty Lounge');
                 $message->to($data['email'], $data['name']);

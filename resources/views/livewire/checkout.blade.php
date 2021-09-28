@@ -106,7 +106,7 @@
                                             <option value="0">--None--</option>
                                             @foreach ($promotions as $item)
                                                 <option value="{{ $item->id }}">
-                                                    CBLP{{ "{$item->id} - {$item->name}, {$item->discount}% Discount" }}
+                                                    CBLP{{ "{$item->id} - {$item->name}, $ {$item->discount} Discount" }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -128,7 +128,7 @@
                                             <option value="0">--None--</option>
                                             @foreach ($giftVouchers as $item)
                                                 <option value="{{ $item->id }}">
-                                                    GC{{ "{$item->id} - " . ($item->name ? $item->name : $item->member->first_name) . ", {$item->discount}% Discount" }}
+                                                    GC{{ "{$item->id} - " . ($item->name ? $item->name : $item->member->first_name) . ", $ {$item->discount} Discount" }}
                                                 </option>
                                             @endforeach
                                         </select>
