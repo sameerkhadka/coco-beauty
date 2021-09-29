@@ -154,7 +154,7 @@ class Checkout extends Component
             $this->transactions['promotion_id'] = $this->promotionID;
             $this->transactions['promotion']['name'] = $promotion['name'];
             $this->transactions['promotion']['discount'] = $promotion['discount'];
-            $this->transactions['promotion']['discount_amount'] = $promotion['discount'];
+            $this->transactions['promotion']['discount_amount'] = ($promotion['discount'] / 100) * $this->cart['total'];
             session(['transactions'=>$this->transactions]);
 
         }

@@ -100,7 +100,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="entry">
-                                        <label>Promotion</label>
+                                        <label>Promotion (%)</label>
                                         <select id="promotion_searchable" style="width: 100%"
                                             wire:model.debounce.500ms="promotionID">
                                             <option value="0">--None--</option>
@@ -115,7 +115,7 @@
 
                                 <div class="col-md-3">
                                     <div class="entry">
-                                        <label>Discount Amount </label>
+                                        <label>Discount (%)</label>
                                         <input wire:model.debounce.500ms="manualDiscount" type="number">
                                     </div>
                                 </div>
