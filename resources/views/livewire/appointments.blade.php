@@ -3,6 +3,7 @@
         <div class="main-header" x-data>
             <h2>Appointments</h2>
             <div class="mn-right">
+                <a href="#" wire:click="gotoCheckOutPage()" class="new-btn">Checkout</a>
                 @if (!isset($modelData['id']) && !$menuOpen)
                 <a href="#" id="deleteMultiple" wire:click="{{ !empty($checkedItems) ? 'confirmBox()' : '' }}" class="del-btn">Delete</a>
                 <a href="#" wire:click="addData()" class="new-btn">Add New</a>

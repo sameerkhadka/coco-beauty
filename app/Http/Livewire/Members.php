@@ -11,6 +11,17 @@ class Members extends Component
     public $checkbox,$menuOpen=false, $memberID, $firstName, $lastName, $address, $phone, $email, $dob, $members, $totalMembers, $submitButton = false, $checkedItems=[], $checkAll=false;
 
 
+    public function gotoCheckOutPage(){
+        if(session('cart')){
+            $cart = session('cart');
+            if(count($cart['items'])>0){
+                return $this->redirect('/checkout');
+            }
+
+        }
+        $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'info','message'=>'Cart is empty.']);
+    }
+
     //deleting
     public function deleteSelected(){
         Member::destroy($this->checkedItems);

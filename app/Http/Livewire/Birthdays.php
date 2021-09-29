@@ -17,6 +17,19 @@ class Birthdays extends Component
         $this->sortDate['month'] = Carbon::today()->month;
         $this->generateData();
     }
+
+    // go to checkout page
+    public function gotoCheckOutPage(){
+        if(session('cart')){
+            $cart = session('cart');
+            if(count($cart['items'])>0){
+                return $this->redirect('/checkout');
+            }
+
+        }
+        $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'info','message'=>'Cart is empty.']);
+    }
+
     private function generateData(){
         $thisYear = Carbon::now()->year;
         $this->members = Member::orderBy('created_at','desc')->whereMonth('dob',$this->sortDate['month'])->get()->map(function($item) use ($thisYear){

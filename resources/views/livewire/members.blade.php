@@ -3,7 +3,9 @@
         <div class="main-header" x-data>
             <h2>Members</h2>
             <div class="mn-right">
-                @if (!$memberID && !$menuOpen)
+                <a href="#" wire:click="gotoCheckOutPage()" class="new-btn">Checkout</a>
+
+                 @if (!$memberID && !$menuOpen)
                 <a href="#" id="deleteMultiple" wire:click="{{ !empty($checkedItems) ? 'confirmBox()' : '' }}" class="del-btn">Delete</a>
                 <a href="#" wire:click="addMember()" class="new-btn">Add New</a>
                 @endif

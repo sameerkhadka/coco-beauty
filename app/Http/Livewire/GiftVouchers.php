@@ -30,7 +30,17 @@ class GiftVouchers extends Component
         $this->modelData['name'] = "";
     }
 
+    // goto checkout page
+    public function gotoCheckOutPage(){
+        if(session('cart')){
+            $cart = session('cart');
+            if(count($cart['items'])>0){
+                return $this->redirect('/checkout');
+            }
 
+        }
+        $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'info','message'=>'Cart is empty.']);
+    }
     //deleting
     public function deleteSelected(){
         GiftVoucher::destroy($this->checkedItems);
