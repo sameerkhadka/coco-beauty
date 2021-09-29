@@ -217,7 +217,7 @@
                                                                 <div class="v-text-align" style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                     <p style="font-size: 14px; line-height: 140%;">
                                                                         <span style="font-size: 26px; line-height: 36.4px;">
-                                                                            <strong><span style="line-height: 36.4px; font-size: 26px;">Dear John Teller</span></strong>
+                                                                            <strong><span style="line-height: 36.4px; font-size: 26px;">Dear {{$full_name}}</span></strong>
                                                                         </span>
                                                                     </p>
                                                                 </div>
