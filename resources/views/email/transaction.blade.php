@@ -161,7 +161,7 @@
                                                                             <img
                                                                                 align="center"
                                                                                 border="0"
-                                                                                src="./logo.png"
+                                                                                src="{{asset('images/email/logo.png')}}"
                                                                                 alt="Image"
                                                                                 title="Image"
                                                                                 style="
@@ -201,14 +201,14 @@
                                                                             <strong><span style="line-height: 50.4px; font-size: 36px;"> Coco Beauty Lounge</span></strong>
                                                                         </span>
                                                                     </p>
-                                                             
+
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
 
-                                              
+
 
                                                 <table style="font-family: 'Montserrat', sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
                                                     <tbody>
