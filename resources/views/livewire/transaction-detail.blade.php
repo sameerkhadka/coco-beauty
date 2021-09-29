@@ -114,6 +114,64 @@
                     </div>
 
                 </div>
+
+                <div class="tb-info package-deals">
+                    <h4 class="transaction-tb-head">Package Deals</h4>
+
+                    <div class="row">
+                        <div class="col-md-6 duplicate">  <!-- this div is duplicate on add click -->
+                            <div class="cart-entries">
+                                <button class="pack-delete">x</button>
+
+                                <div class="entry">
+                                    <label >Package Deal </label>
+                                    <input type="text">
+                                </div>
+
+                                <div class="entry number-small">
+                                    <label >Pack Number </label>
+                                    <input type="number">
+                                </div>
+
+
+                                <div class="pack-dates">
+                                    <div class="entry">
+                                        <label >Used Dates </label>
+                                    </div>
+
+                                    <div class="pack-date-card">
+                                        <input class="form-check-input" type="checkbox" value="" >    
+                                        <input type="date" class="date-input">
+                                           
+                                  
+                                    </div>
+
+                                    <div class="pack-date-card">
+                                        <input class="form-check-input" type="checkbox" value="" >
+                                        <input type="date" class="date-input">
+                                      
+                                    </div>
+
+                                    <div class="pack-date-card">
+                                        <input class="form-check-input" type="checkbox" value="" >
+                                        <input type="date" class="date-input">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+                    
+
+                    <div class="pack-footer">
+                            <button class="add">Add</button>
+                            <button class="save">Save</button>
+
+                    </div>
+                </div>
             </div>
 
             <div class="cart-wrap">

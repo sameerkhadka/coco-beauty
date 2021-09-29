@@ -1299,3 +1299,71 @@
     }
 
 }
+
+.duplicate {
+    button.pack-delete {
+        position: absolute;
+        background: #d65858;
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border-radius: 50%;
+        top: 25px;
+        right: 25px;
+        line-height: 1;
+    }
+
+    .cart-entries {
+        border: 1px solid #dcdcdc;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 4px;
+    }
+
+    .pack-date-card {
+        margin: 15px 0;
+        padding: 0 20px;
+
+
+        input.date-input {
+            border: 1px solid #d0d0d4;
+            width: 80%;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+            padding: 5px 10px;
+        }
+    }
+}
+
+.package-deals {
+    .number-small {
+        width: 30%;
+    }
+}
+
+.pack-footer {
+    margin-top: 40px;
+
+    .add {
+        background: #d6be58;
+    }
+
+    .save {
+        background: #6bd658;
+        margin-left: 10px;
+    }
+    
+    button, a{
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 16px;
+        width: 100px;
+        height: 35px;
+        color: #fff;
+    }
+}
