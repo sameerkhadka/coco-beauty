@@ -27,6 +27,17 @@ class Appointments extends Component
         'technician_name'=>''
     ];
 
+    public function gotoCheckOutPage(){
+        if(session('cart')){
+            $cart = session('cart');
+            if(count($cart['items'])>0){
+                return $this->redirect('/checkout');
+            }
+
+        }
+        $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'info','message'=>'Cart is empty.']);
+    }
+
     public function updatedIsMember(){
         $this->modelData['member_id']="0";
         $this->modelData['name'] = "";
