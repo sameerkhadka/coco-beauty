@@ -23,6 +23,7 @@ class Appointments extends Component
         'member_id'=>'',
         'name'=>'',
         'phone'=>'',
+        'email'=>'',
         'date'=>'',
         'time'=>'',
         'technician_name'=>''
@@ -173,6 +174,7 @@ class Appointments extends Component
             'member_id'=>'',
             'name'=>'',
             'phone'=>'',
+            'email'=>'',
             'date'=>'',
             'time'=>'',
             'technician_name'=>''

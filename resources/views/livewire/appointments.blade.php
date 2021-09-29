@@ -33,6 +33,7 @@
                         </th>
                         <th>Name</th>
                         <th>Phone</th>
+                        <th>Email</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Technician</th>
@@ -48,7 +49,8 @@
                                 <span class="checkmark"></span>
                             </td>
                             <td>{{ $item->member_id ? "CBL{$item->member->id} - {$item->member->first_name} {$item->member->last_name}" : $item->name }}</td>
-                            <td>{{ $item->member_id ? $item->member->phone :'-' }}</td>
+                            <td>{{ $item->member_id ? $item->member->phone : (!empty($item->phone) ? $item->phone : '-') }}</td>
+                            <td>{{ $item->member_id ? $item->member->email : (!empty($item->email) ? $item->email : '-') }}</td>
                             <td>{{ $item->date }}</td>
                             <td>{{ $item->time }}</td>
                             <td>{{ $item->technician_name }}</td>
@@ -95,6 +97,14 @@
                 <div class="addm-sing">
                     <label>Name</label>
                     <input type="text" wire:model.debounce.500ms="modelData.name">
+                </div>
+                <div class="addm-sing">
+                    <label>Email</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.email">
+                </div>
+                <div class="addm-sing">
+                    <label>Phone</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.phone">
                 </div>
                 @endif
                 {{-- <div class="addm-sing">

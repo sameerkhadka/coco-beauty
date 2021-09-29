@@ -28,6 +28,7 @@
                     <th>V Num</th>
                     <th>Gift For</th>
                     <th>Discount</th>
+                    <th>Payment method</th>
                     <th>Issue Date</th>
                     <th>Expiry Date</th>
                     <th>Used Date</th>
@@ -44,13 +45,13 @@
                         <td>GC{{ $item->id }}</td>
                         <td>{{ $item->gift_for ? $item->member->first_name : $item->name }}</td>
                         <td>{{$item->discount}}</td>
+                        <td>{{ucfirst($item->transaction->payment_method)}}</td>
                         <td>{{ $item->issue_date }}</td>
                         <td>{{ $item->expiry_date }}</td>
                         <td>{{ $item->used_date ?? 'Not Used' }}</td>
                         <td>
                             <div class="actn-btn">
-                                <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
-                                <a href="#" wire:click="editData({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
+                                {{--<a href="#" wire:click="editData({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>--}}
                                 <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
                             </div>
                         </td>
@@ -97,6 +98,25 @@
                     <label>Discount (%)</label>
                     <input type="text" wire:model.debounce.500ms="modelData.discount">
                 </div>
+                <div class="tb-info payment-method">
+                    <h4 class="transaction-tb-head">Payment Method</h4>
+                    <div class="choose-mem">
+                        <label class="cm-card">
+                            Cash
+                            <input type="radio" wire:model='paymentMethod' value="cash" name="payment-method">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label class="cm-card">
+                            Card
+                            <input type="radio" wire:model='paymentMethod' value="card" name="payment-method">
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
                 <div class="addm-sing">
                     <label>Issued Date</label>
                     <input type="date" wire:model.debounce.500ms="modelData.issue_date">

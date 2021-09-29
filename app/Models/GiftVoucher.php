@@ -12,4 +12,7 @@ class GiftVoucher extends Model
     public  function member(){
         return $this->belongsTo(Member::class,'gift_for','id');
     }
+    public function transaction(){
+        return $this->belongsTo(Transaction::class,'transaction_id');
+    }
 }

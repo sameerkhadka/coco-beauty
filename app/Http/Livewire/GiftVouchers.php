@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\GiftVoucher;
 use App\Models\Member;
+use App\Models\Transaction;
 use Livewire\Component;
 
 class GiftVouchers extends Component
@@ -14,7 +15,7 @@ class GiftVouchers extends Component
     public $members,$isMember="0";
 
     //commons
-    public $items,$checkbox,$menuOpen=false, $submitButton = false, $checkedItems=[], $checkAll=false;
+    public $items,$checkbox,$menuOpen=false, $submitButton = false, $checkedItems=[], $checkAll=false, $paymentMethod = 'cash';
 
     //model data
     public $modelData = [
@@ -43,6 +44,10 @@ class GiftVouchers extends Component
     }
     //deleting
     public function deleteSelected(){
+        foreach (GiftVoucher::whereIn('id',$this->checkedItems)->get() as $item){
+            if($item->transaction_id)
+             Transaction::find($item->transaction_id)->delete();
+        }
         GiftVoucher::destroy($this->checkedItems);
 
         // if appointmentID has been
@@ -131,7 +136,30 @@ class GiftVouchers extends Component
             if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
             if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
             if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
-            GiftVoucher::create($this->modelData);
+            $giftVoucher = GiftVoucher::create($this->modelData);
+            // create transaction of that gift voucher
+            $modelTransaction = [];
+            $modelTransaction['type'] = 'voucher';
+            $modelTransaction['cart'] = json_encode([
+                'grand_total'=>$giftVoucher->discount
+            ]);
+            $modelTransaction['payment_method'] = $this->paymentMethod;
+            if($giftVoucher->gift_for){
+                $modelTransaction['member_id'] = $giftVoucher->gift_for;
+                $member = Member::find($giftVoucher->gift_for);
+                $modelTransaction['full_name'] = $member->first_name.' '.$member->last_name;
+                $modelTransaction['email'] = $member->email;
+                $modelTransaction['phone'] = $member->phone;
+            }else{
+                $modelTransaction['full_name']=$giftVoucher->name;
+                $modelTransaction['email'] =$giftVoucher->email;
+                $modelTransaction['phone'] =$giftVoucher->phone;
+            }
+            $transaction = Transaction::create($modelTransaction);
+            // set giftVoucher transaction id
+            $giftVoucher->transaction_id = $transaction->id;
+            $giftVoucher->update();
+
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Added Successfully']);
         }
         $this->emptyData();

@@ -23,7 +23,7 @@ class Checkout extends Component
 
     public $manualDiscount = "0";
     public $showBirthdayAlert = "0",$isBirthdayDiscount = false,$birthdayDiscountAlreadyUsed = false;
-    public $modelBandiColourGel = [],$modelOpiGelAndNormal=[],$description="",$remarks="",$paymentMethod="",$promotionID = "0",$giftVoucherID="0", $memberID="0" , $isMember = "0", $userDetails_fullName,$userDetails_phone,$userDetails_email,$userDetails_address;
+    public $modelBandiColourGel = [],$modelOpiGelAndNormal=[],$description="",$remarks="",$paymentMethod="cash",$promotionID = "0",$giftVoucherID="0", $memberID="0" , $isMember = "0", $userDetails_fullName,$userDetails_phone,$userDetails_email,$userDetails_address;
     protected $rules = [
         'userDetails_fullName' => 'required',
     ];

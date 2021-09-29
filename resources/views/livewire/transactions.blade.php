@@ -28,6 +28,7 @@
                             <th>Transaction By</th>
                             <th>Date</th>
                             <th>Amount</th>
+                            <th>Payment Method</th>
                             <th class="action">Action</th>
                         </tr>
                     </thead>
@@ -47,11 +48,15 @@
                             <td>{{$transaction->created_at}}</td>
 
                             <td>{{json_decode($transaction->cart)->grand_total}}</td>
+                            <td>{{ucfirst($transaction->payment_method)}}</td>
 
                             <td>
                                 <div class="actn-btn">
                                     <a href="{{route('transaction-detail',"id={$transaction->id}")}}" class="view-btn"><i class="far fa-eye"></i></a>
                                     {{--<button class="delete-single"><i class="far fa-trash-alt"></i></button>--}}
+                                    @if($transaction->type=='voucher')
+                                     (V)
+                                    @endif
                                 </div>
                             </td>
 
