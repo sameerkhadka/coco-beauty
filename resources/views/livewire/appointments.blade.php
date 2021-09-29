@@ -54,7 +54,6 @@
                             <td>{{ $item->technician_name }}</td>
                             <td>
                                 <div class="actn-btn">
-                                    <a href="member-detail.html" class="view-btn"><i class="far fa-eye"></i></a>
                                     <a href="#" wire:click="editData({{ $item->id }})" class="edit-btn"><i class="far fa-edit"></i></a>
                                     <a href="#" wire:click="confirmBox({{ $item->id }})" class="delete-single"><i class="far fa-trash-alt"></i></a>
                                 </div>
