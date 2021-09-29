@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Member;
 use Carbon\Carbon;
 use Livewire\Component;
+use Mail;
 
 class Appointments extends Component
 {
@@ -121,19 +122,42 @@ class Appointments extends Component
     }
 
     public function submit(){
-        if(isset($this->modelData['id'])){
-            // if date is empty then set it to null as it will throw error
-            if(!$this->modelData['date']) $this->modelData['date'] = null;
-            if(!$this->modelData['member_id']) $this->modelData['member_id'] = null;
+        $data = [
+            'email' => '',
+            'name' => '',
+            'creation' => '',
+            'time'=> $this->modelData['time'],
+            'date'=> $this->modelData['date'],
+            'technician_name' => $this->modelData['technician_name']
+        ];
+        // if date is empty then set it to null as it will throw error
+        if(!$this->modelData['date']) $this->modelData['date'] = null;
+        if(!$this->modelData['member_id']) {
+            $this->modelData['member_id'] = null;
+        }
+        else{
+            // if user is member
+            $member = Member::find($this->modelData['member_id']);
+            // if member have their email account then set data
+            if($member->email){
+                $data['email'] = $member->email;
+                $data['name'] = $member->first_name.' '.$member->last_name;
+            }
+        }
 
+        if(isset($this->modelData['id'])){
             $appointment = Appointment::find($this->modelData['id'])->update($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Appointment Updated Successfully']);
         }
         else{
-            // if date is empty then set it to null as it will throw error
-            if(!$this->modelData['date']) $this->modelData['date'] = null;
-            if(!$this->modelData['member_id']) $this->modelData['member_id'] = null;
-
+            if($data['email']){
+                Mail::send('email.appointment.creation', $data , function($message) use ($data)
+                {
+                    $message->from('test@keronevatravel.com','Coco Beauty Lounge');
+                    $message->to($data['email'], $data['name']);
+                    $message->subject('Appointment on '.$data['date']);
+                });
+            }
             Appointment::create($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'Appointment Added Successfully']);
         }
