@@ -95,7 +95,7 @@
                 </div>
                 @endif
                 <div class="addm-sing">
-                    <label>Discount (%)</label>
+                    <label>Discount Amount</label>
                     <input type="text" wire:model.debounce.500ms="modelData.discount">
                 </div>
                 <div class="tb-info payment-method">
