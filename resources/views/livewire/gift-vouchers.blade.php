@@ -45,7 +45,7 @@
                         <td>GC{{ $item->id }}</td>
                         <td>{{ $item->gift_for ? $item->member->first_name : $item->name }}</td>
                         <td>{{$item->discount}}</td>
-                        <td>{{ucfirst($item->transaction->payment_method)}}</td>
+                        <td>{{ $item->transaction ? ucfirst($item->transaction->payment_method) : '-'}}</td>
                         <td>{{ $item->issue_date }}</td>
                         <td>{{ $item->expiry_date }}</td>
                         <td>{{ $item->used_date ?? 'Not Used' }}</td>
