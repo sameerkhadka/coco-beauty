@@ -30,7 +30,6 @@
                     <th>Discount</th>
                     <th>Payment method</th>
                     <th>Issue Date</th>
-                    <th>Expiry Date</th>
                     <th>Used Date</th>
                     <th class="action">Action</th>
                 </tr>
@@ -47,7 +46,6 @@
                         <td>{{$item->discount}}</td>
                         <td>{{ $item->transaction ? ucfirst($item->transaction->payment_method) : '-'}}</td>
                         <td>{{ $item->issue_date }}</td>
-                        <td>{{ $item->expiry_date }}</td>
                         <td>{{ $item->used_date ?? 'Not Used' }}</td>
                         <td>
                             <div class="actn-btn">
@@ -93,6 +91,14 @@
                     <label>Name</label>
                     <input type="text" wire:model.debounce.500ms="modelData.name">
                 </div>
+                <div class="addm-sing">
+                    <label>Email</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.email">
+                </div>
+                <div class="addm-sing">
+                    <label>Phone</label>
+                    <input type="text" wire:model.debounce.500ms="modelData.phone">
+                </div>
                 @endif
                 <div class="addm-sing">
                     <label>Discount Amount</label>
@@ -120,10 +126,6 @@
                 <div class="addm-sing">
                     <label>Issued Date</label>
                     <input type="date" wire:model.debounce.500ms="modelData.issue_date">
-                </div>
-                <div class="addm-sing">
-                    <label>Expiry Date</label>
-                    <input type="date" wire:model.debounce.500ms="modelData.expiry_date">
                 </div>
                 <button wire:loading.attr="disabled" class="aside-btn ">{{ isset($modelData['id']) ? 'Update' : 'Add' }}
                     Gift Vouchers</button>

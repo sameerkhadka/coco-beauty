@@ -54,7 +54,7 @@ class Checkout extends Component
         "grand_total"=>"0",
         "birthday_discount_amount" => "0",
         "is_birthday_discount" => "",
-        "payment_method" => "",
+        "payment_method" => "cash",
         "bandi_colour_gel" => [],
         "opi_gel_and_normal" => [],
     ];
