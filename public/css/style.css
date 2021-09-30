@@ -161,7 +161,7 @@
 
 .main-content .content {
   height: calc(100% - 100px);
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .main-content .content table {
@@ -1424,5 +1424,90 @@
   width: 100px;
   height: 35px;
   color: #fff;
+}
+
+.table-footer {
+  padding: 50px;
+}
+
+.table-footer .summary-card.big {
+  font-size: 24px;
+}
+
+.table-footer .summary-card.big .text {
+  font-family: 'SF Pro Display Bold';
+}
+
+.table-footer .summary-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 350px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-left: auto;
+}
+
+.table-footer .summary-card .text {
+  width: 320px;
+  text-align: left;
+  font-family: 'SF Pro Display Light';
+}
+
+.table-footer .summary-card .amount {
+  font-family: 'SF Pro Display Bold';
+}
+
+.filter-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter-flex .date-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filter-flex .date-filter button {
+  background: #d6be58;
+  width: 70px;
+  height: 36px;
+  border-radius: 7px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+
+.filter-flex .date label {
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  margin-right: 5px;
+}
+
+.filter-flex .date input {
+  border: 1px solid #d0d0d4;
+  width: 80%;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: 'SF Pro Display Light';
+  padding: 5px 10px;
+}
+
+.filter-flex .date input:focus {
+  outline: none;
 }
 /*# sourceMappingURL=style.css.map */

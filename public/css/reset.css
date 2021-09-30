@@ -22,6 +22,7 @@ body {
     display: inline-flex;
     border: 0;
     background: transparent;
+    cursor: pointer;
   }
 
   button:focus {
@@ -141,4 +142,9 @@ input[type=number] {
 
 .navigation li.active a img {
   width: 25px;
+}
+
+.gift-img {
+  width: 25px;
+  margin-left: 10px;
 }

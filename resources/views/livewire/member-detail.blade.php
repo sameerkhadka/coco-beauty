@@ -88,8 +88,9 @@
                         <td>@{{JSON.parse(item.cart).grand_total}}</td>
 
                         <td v-if="item.status==false || item.status==0">
-                            <vue-ckeditor :editor="editor" v-model="item.remarks" :config="editorConfig">
-                            </vue-ckeditor>
+                            <!-- <vue-ckeditor :editor="editor" v-model="item.remarks" :config="editorConfig">
+                            </vue-ckeditor> -->
+                            <textarea v-model="item.remarks"></textarea>
                             <button v-on:click="updateRemarks(item.id,index)">Save</button>
                         </td>
                         <td v-else>@{{ item.remarks }}</td>
