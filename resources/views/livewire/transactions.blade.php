@@ -7,16 +7,32 @@
                 <h2>Transaction</h2>
             </div>
 
-            <div class="search">
+            <!-- <div class="search">
                 <input type="text" placeholder="Search" class="searchInput" onkeyup="searchFunction()">
                 <i class="fas fa-search"></i>
-            </div>
+            </div> -->
 
-            <div class="search-filter">
-                <a class="{{ $sortDate['type']=='today' ? 'filter-active' : '' }}" href="#"  wire:click="updateSorting('today')">Today</a>
-                <a class="{{ $sortDate['type']=='tomorrow' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('tomorrow')">Tomorrow</a>
-                <a class="{{ $sortDate['type']=='nextWeek' ? 'filter-active' : '' }}" href="#" wire:click="updateSorting('nextWeek')">Next Week</a>
-                <a class="{{ $sortDate['type']=='all' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('all')">All</a>
+            <div class="search-filter filter-flex">
+                <div>
+                    <a class="{{ $sortDate['type']=='today' ? 'filter-active' : '' }}" href="#"  wire:click="updateSorting('today')">Today</a>
+                    <a class="{{ $sortDate['type']=='all' ? 'filter-active' : ''}}" href="#" wire:click="updateSorting('all')">All</a>
+                </div>
+
+                <div class="date-filter">
+                    <div class="date">
+                        <label >From</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="date">
+                        <label >To</label>
+                        <input type="date">
+                    </div>
+
+                    <div>
+                        <button>Filter</button>
+                    </div>
+                </div>
             </div>
 
             <div class="content">
@@ -45,7 +61,7 @@
 
                             <td>{{$transaction->full_name}}</td>
 
-                            <td>{{$transaction->created_at}}</td>
+                            <td>{{$transaction->created_at->toDateString() }}</td>
 
                             <td>{{json_decode($transaction->cart)->grand_total}}</td>
                             <td>{{ucfirst($transaction->payment_method)}}</td>
@@ -55,7 +71,7 @@
                                     <a href="{{route('transaction-detail',"id={$transaction->id}")}}" class="view-btn"><i class="far fa-eye"></i></a>
                                     {{--<button class="delete-single"><i class="far fa-trash-alt"></i></button>--}}
                                     @if($transaction->type=='voucher')
-                                     (V)
+                                        <img class="gift-img" src="{{asset('images/card-outline.svg')}}" alt="">
                                     @endif
                                 </div>
                             </td>
@@ -64,6 +80,29 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="table-footer">
+                    <div class="summary-card">
+                        <div class="text">Gift Voucher</div>
+                        <div class="amount">$300</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="text">Card</div>
+                        <div class="amount">$250</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="text">Cash</div>
+                        <div class="amount">$300</div>
+                    </div>
+
+
+                    <div class="summary-card big">
+                        <div class="text">Grand Total</div>
+                        <div class="amount">$550</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

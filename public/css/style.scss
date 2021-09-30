@@ -154,7 +154,7 @@
 
     .content {
         height: calc(100% - 100px);
-        overflow: scroll;
+        overflow-y: scroll;
 
         table {
             width: 100%;
@@ -1365,5 +1365,82 @@
         width: 100px;
         height: 35px;
         color: #fff;
+    }
+}
+
+.table-footer {
+    padding: 50px;
+
+    .summary-card.big {
+        font-size: 24px;
+
+        .text {
+            font-family: 'SF Pro Display Bold';
+        }
+    }
+
+    .summary-card {
+        display: flex;
+        width: 350px;
+        justify-content: flex-end;
+        margin-left: auto;
+
+        .text {
+            width: 320px;
+            text-align: left;
+            font-family: 'SF Pro Display Light';
+        }
+        
+        .amount {
+            font-family: 'SF Pro Display Bold';
+        }
+    }
+}
+
+.filter-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .date-filter {
+        display: flex;
+    
+        button {
+            background: #d6be58;
+            width: 70px;
+            height: 36px;
+            border-radius: 7px;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+    }
+
+
+
+    .date {
+        label {
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+            margin-right: 5px;
+        }
+
+        input {
+            border: 1px solid #d0d0d4;
+            width: 80%;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-family: 'SF Pro Display Light';
+            padding: 5px 10px;
+
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        
     }
 }
