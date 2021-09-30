@@ -81,26 +81,32 @@
                     </tbody>
                 </table>
 
+                @php 
+                    $cash = \App\Models\Transaction::where('payment_method','cash')->sum('cart->grand_total');
+                    $card = \App\Models\Transaction::where('payment_method','card')->sum('cart->grand_total'); 
+                    $total = $cash + $card; 
+                @endphp
+
                 <div class="table-footer">
-                    <div class="summary-card">
+                    <!-- <div class="summary-card">
                         <div class="text">Gift Voucher</div>
                         <div class="amount">$300</div>
-                    </div>
+                    </div> -->
 
                     <div class="summary-card">
                         <div class="text">Card</div>
-                        <div class="amount">$250</div>
+                        <div class="amount">${{$card}}</div>
                     </div>
 
                     <div class="summary-card">
                         <div class="text">Cash</div>
-                        <div class="amount">$300</div>
+                        <div class="amount">${{$cash}}</div>
                     </div>
 
 
                     <div class="summary-card big">
                         <div class="text">Grand Total</div>
-                        <div class="amount">$550</div>
+                        <div class="amount">${{$total}}</div>
                     </div>
                 </div>
             </div>
