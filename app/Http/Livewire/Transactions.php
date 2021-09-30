@@ -15,6 +15,9 @@ class Transactions extends Component
             'date' => null,
             'type' => 'all'
         ];
+        $this->cash = Transaction::where('payment_method','cash')->sum('cart->grand_total');
+        $this->card = Transaction::where('payment_method','card')->sum('cart->grand_total'); 
+        $this->total = $this->cash + $this->card;
     }
     public function updateSorting($type){
         switch($type){
@@ -23,6 +26,9 @@ class Transactions extends Component
                     'date' => Carbon::today()->toDateString(),
                     'type' => $type
                 ];
+                $this->cash = Transaction::whereDate('created_at','=',$this->sortDate['date'])->where('payment_method','cash')->sum('cart->grand_total');
+                $this->card = Transaction::whereDate('created_at','=',$this->sortDate['date'])->where('payment_method','card')->sum('cart->grand_total'); 
+                $this->total = $this->cash + $this->card;
                 break;
             case 'tomorrow':
                 $this->sortDate=[
@@ -41,6 +47,9 @@ class Transactions extends Component
                     'date' => null,
                     'type' => 'all'
                 ];
+                $this->cash = Transaction::where('payment_method','cash')->sum('cart->grand_total');
+                $this->card = Transaction::where('payment_method','card')->sum('cart->grand_total'); 
+                $this->total = $this->cash + $this->card; 
                 break;
         }
 

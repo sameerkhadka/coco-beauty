@@ -22,13 +22,16 @@ class GiftVouchers extends Component
         'gift_for'=>'',
         'name'=>'',
         'discount'=>'',
+        'email'=>'',
+        'phone'=>'',
         'issue_date'=>'',
-        'expiry_date'=>'',
     ];
 
     public function updatedIsMember(){
         $this->modelData['gift_for']="0";
         $this->modelData['name'] = "";
+        $this->modelData['email'] = "";
+        $this->modelData['phone'] = "";
     }
 
     // goto checkout page
@@ -127,14 +130,12 @@ class GiftVouchers extends Component
     public function submit(){
         if(isset($this->modelData['id'])){
             if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
-            if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
             if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
             GiftVoucher::find($this->modelData['id'])->update($this->modelData);
             $this->dispatchBrowserEvent('from-backend',['is'=>'toastr','type'=>'success','message'=>'GiftVoucher Updated Successfully']);
         }
         else{
             if(!$this->modelData['issue_date']) $this->modelData['issue_date'] = null;
-            if(!$this->modelData['expiry_date']) $this->modelData['expiry_date'] = null;
             if(!$this->modelData['gift_for']) $this->modelData['gift_for'] = null;
             $giftVoucher = GiftVoucher::create($this->modelData);
             // create transaction of that gift voucher
@@ -174,8 +175,9 @@ class GiftVouchers extends Component
             'gift_for'=>'',
             'name'=>'',
             'discount'=>'',
+            'email'=>'',
+            'phone'=>'',
             'issue_date'=>'',
-            'expiry_date'=>'',
         ];
 
     }
