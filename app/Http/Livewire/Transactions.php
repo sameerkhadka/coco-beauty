@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Transactions extends Component
 {
-    public $transactions,$sortDate;
+    public $transactions,$sortDate,$cash,$card,$total,$gift,$from,$to;
 
     public function mount(){
         $this->sortDate = [
@@ -45,12 +45,29 @@ class Transactions extends Component
         }
 
     }
+
+    public function filter()
+    {
+       
+    }
+
     public function render()
     {
         $sortDate = $this->sortDate;
-        $this->transactions = Transaction::orderBy('created_at','desc')->when($sortDate['date'], function($query) use ($sortDate) {
+        $from = $this->from;
+        $to = $this->to;
+        $transactions = Transaction::orderBy('created_at','desc')->when($sortDate['date'], function($query) use ($sortDate) {
             return $query->whereDate('created_at','=',$sortDate['date']);
+        })->when($from, function($query) use ($from) {
+            return $query->whereDate('created_at','>=',$from);
+        })->when($to, function($query) use ($to) {
+            return $query->whereDate('created_at','<=',$to);
         })->get();
+        $this->transactions = $transactions;
+        $this->gift = $transactions->where('type','voucher')->sum('cart.grand_total');
+        $this->cash = $transactions->where('payment_method','cash')->sum('cart.grand_total');
+        $this->card = $transactions->where('payment_method','card')->sum('cart.grand_total'); 
+        $this->total = $this->cash + $this->card; 
         return view('livewire.transactions');
     }
 }
