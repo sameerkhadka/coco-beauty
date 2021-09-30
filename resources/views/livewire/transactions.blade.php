@@ -67,7 +67,21 @@
             </div>
         </div>
     </div>
-
+    @php 
+    $cash = \App\Models\Transaction::where('payment_method','cash')->get();
+    $card = \App\Models\Transaction::where('payment_method','card')->get();
+    $cash_total = 0;
+    $card_total = 0;
+    foreach($cash as $cas)
+    {
+        $cash_total = $cash_total + json_decode($cas->cart)->grand_total;
+    }
+    foreach($card as $car)
+    {
+        $card_total = $card_total + json_decode($car->cart)->grand_total;
+    }
+    $total = $cash_total + $card_total;
+    @endphp
     <style>
         .search-filter a.filter-active{
             background: #b1b1b4;
