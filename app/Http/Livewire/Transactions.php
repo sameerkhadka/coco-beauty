@@ -57,7 +57,7 @@ class Transactions extends Component
 
     public function filter()
     {
-       
+        dd("HELLO");
     }
 
     public function render()
